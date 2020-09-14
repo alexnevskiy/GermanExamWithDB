@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">GermanExam</string>
+    <string name="name">Имя</string>
+    <string name="surname">Фамилия</string>
+    <string name="student_class">Класс</string>
+    <string name="next">Далее</string>
 </resources>
