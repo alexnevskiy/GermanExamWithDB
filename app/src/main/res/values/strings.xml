@@ -4,4 +4,9 @@
     <string name="surname">Фамилия</string>
     <string name="student_class">Класс</string>
     <string name="next">Далее</string>
+    <string name="Exam">Экзамен</string>
+    <string name="variants">Варианты ЕГЭ</string>
+    <string name="settings">Настройки</string>
+    <string name="hello_screen">Введите имя, фамилию и класс, чтобы учитель
+        мог быстро ориентироваться в файлах записи вашего задания.</string>
 </resources>
