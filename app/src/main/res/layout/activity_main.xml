@@ -12,14 +12,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/hello_screen"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.476" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
@@ -78,7 +77,6 @@
         android:textSize="20sp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
