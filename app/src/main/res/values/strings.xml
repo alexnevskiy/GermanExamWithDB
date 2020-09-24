@@ -10,7 +10,7 @@
     <string name="hello_screen">Введите имя, фамилию и класс, чтобы учитель
         мог быстро ориентироваться в файлах записи вашего задания.</string>
     <string name="back">Назад</string>
-    <string name="start_test">"Prüfung starten "</string>
+    <string name="start_test">"Prüfung starten"</string>
     <string name="start_exam">Экзамен начнётся после нажатия кнопки \"Prüfung starten\"</string>
     <string name="task1">Aufgabe 1. Stellen Sie sich vor, dass Sie zusammen mit Ihrem Freund /
         Ihrer Freundin an einem Projekt arbeiten. Sie haben einen interessanten Beitrag für Ihr
