@@ -9,7 +9,7 @@
 
 Создайте layout ресурсы с использованием LinearLayout.
 
-<img src="C:\Users\kam-2\Desktop\Картинки\Скрины\Screenshot_1075.png"  />
+![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/LinearLayout.png)
 
 *Рис. 1. Созданное окно приложения на основе LinearLayout*
 
@@ -31,7 +31,7 @@
 
 Создайте layout ресурс с использованием ConstraintLayout.
 
-<img src="C:\Users\kam-2\Desktop\Картинки\Скрины\Screenshot_1073.png"  />
+![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/ConstraintLayout.png)
 
 *Рис. 2. Созданное окно приложения на основе ConstraintLayout*
 
@@ -47,7 +47,7 @@
 
 При помощи TableLayout переделано меню из части 2 с ConstraintLayout.
 
-![](C:\Users\kam-2\Desktop\Screenshot_1601049222.png)
+![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/TableLayout.png)
 
 *Рис. 3. Созданное окно приложения на основе TableLayout*
 
