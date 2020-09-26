@@ -97,7 +97,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
                 android:fontFamily="@font/calibrib"
-                android:lines="5"
+                android:lines="4"
                 app:autoSizeMaxTextSize="70sp"
                 app:autoSizeMinTextSize="10sp"
                 app:autoSizeTextType="uniform"
@@ -175,6 +175,7 @@
         <ProgressBar
             android:id="@+id/timeline"
             style="?android:attr/progressBarStyleHorizontal"
+            android:max="90"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -191,7 +192,7 @@
             app:autoSizeMaxTextSize="70sp"
             app:autoSizeMinTextSize="10sp"
             app:autoSizeTextType="uniform"
-            android:text="@string/timer" />
+            android:text="" />
 
         <Space
             android:layout_width="wrap_content"
