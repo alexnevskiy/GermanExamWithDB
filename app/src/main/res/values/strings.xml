@@ -7,16 +7,11 @@
     <string name="Exam">Экзамен</string>
     <string name="variants">Варианты ЕГЭ</string>
     <string name="settings">Настройки</string>
-    <string name="hello_screen">Введите имя, фамилию и класс, чтобы учитель
-        мог быстро ориентироваться в файлах записи вашего задания.</string>
+    <string name="hello_screen">Введите имя, фамилию и класс, чтобы учитель мог быстро ориентироваться в файлах записи вашего задания.</string>
     <string name="back">Назад</string>
     <string name="start_test">"Prüfung starten"</string>
     <string name="start_exam">Экзамен начнётся после нажатия кнопки \"Prüfung starten\"</string>
-    <string name="task1">Aufgabe 1. Stellen Sie sich vor, dass Sie zusammen mit Ihrem Freund /
-        Ihrer Freundin an einem Projekt arbeiten. Sie haben einen interessanten Beitrag für Ihr
-        Projekt gefunden und wollen ihn Ihrem Freund / Ihrer Freundin vorlesen. Lesen Sie diesen
-        Beitrag zunächst 1,5 Minuten still und danach laut vor. Sie haben zum Vorlesen höchstens
-        1,5 Minuten Zeit.</string>
+    <string name="task1">Aufgabe 1. Stellen Sie sich vor, dass Sie zusammen mit Ihrem Freund / Ihrer Freundin an einem Projekt arbeiten. Sie haben einen interessanten Beitrag für Ihr Projekt gefunden und wollen ihn Ihrem Freund / Ihrer Freundin vorlesen. Lesen Sie diesen Beitrag zunächst 1,5 Minuten still und danach laut vor. Sie haben zum Vorlesen höchstens 1,5 Minuten Zeit.</string>
     <string name="text1">"Karate ist ein japanisches Wort und heißt übersetzt \"leere Hand\". Das beschreibt diese Sportart sehr gut. Es geht um Selbstverteidigung und Nahkampf ohne Waffen. \nAngst, beim Karate einen Treffer abzubekommen, brauchst du nicht zu haben. Denn anders als beim Boxen verzichten Karate-Sportler (sie nennen sich übrigens Karatekas) auf Treffer am Gegner. Sie stoppen Fuß- und Fauststöße vor dem Auftreffen ab. Voraussetzung dafür ist Selbstdisziplin, Verantwortungsbewusstsein gegenüber dem Partner und natürlich eine gute Körperbeherrschung. \nDank seiner vielseitigen Anforderungen ist dieser Sport ein idealer Ausgleich zum Alltag. Beim Karate werden Kraft, Ausdauer, Schnelligkeit und Beweglichkeit trainiert. Das macht fit! Mit Entspannungstechniken, Atemübungen und Meditation steigert ein Karatekämpfer seine Konzentrationsfähigkeit und schult die eigene Körperwahrnehmung. "</string>
     <string name="preparation">Vorbereitung</string>
     <string name="task_one">Aufgabe 1</string>
