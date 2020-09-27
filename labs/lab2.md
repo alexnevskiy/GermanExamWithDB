@@ -56,31 +56,55 @@
 ***Вариант: 4***
 
 **Конфигурация устройства:**
+
 LOCALE_LANG: en
+
 LOCALE_REGION: rFR
+
 SCREEN_SIZE: small
+
 SCREEN_ASPECT: notlong
+
 ROUND_SCREEN: notround
+
 ORIENTATION: land
+
 UI_MODE: desk
+
 NIGHT_MODE: night
+
 PIXEL_DENSITY: xxxhdpi
+
 TOUCH: finger
+
 PRIMARY_INPUT: nokeys
+
 NAV_KEYS: dpad
+
 PLATFORM_VER: v26
 
 **Конфигурация ресурсов:**
+
 (default)
+
 rCA-round-port-night-mdpi-v26
+
 rUS-notlong-car-notnight-finger-nonav
+
 fr-rFR-port-television-night
+
 en-rCA-large-notlong-notnight-finger-dpad-v25
+
 rCA-finger-v27
+
 fr-round-v26
+
 en-12key-dpad-v26
+
 normal-round-v26
+
 notlong-notround-port-television
+
 xlarge-round-night-nodpi-dpad
 
 Исполним пошагово алгоритм для нахождения наиболее подходящего ресурса:
