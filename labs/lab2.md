@@ -105,3 +105,623 @@ xlarge-round-night-nodpi-dpad
 
 # 4. Сохранение состояния Activity
 
+Студент написал приложение: continuewatch. Это приложение по заданию должно считать, сколько секунд пользователь провел в этом приложении. Найдите ошибки в этом приложении и исправьте их.
+
+Написанное приложение студентом считает количество секунд постоянно, даже если приложение не активно, а также сбрасывает счётчик, если изменить ориентацию экрана или запустить приложение в режиме Split Screen. Для решения проблемы связанной с постоянным подсчётом секунд при неактивном приложении создана `boolean` переменная, которая отвечает за состояние приложения, то есть `false` - неактивно, `true` - активно. Вывод количества секунд на экран вынесен в отдельный метод `secondsDisplay()`. Активация данной переменной происходит в методах `onResume()` и `onPause()` соответственно. Чтобы решить проблему со сбросом счётчика  при изменении размеров окна, сохраняем значение счётчика на момент изменения окна в методе `onSaveInstanceState()` при помощи `Bundle`, который подаётся на вход самого `onSaveInstanceState()` и `onRestoreInstanceState()`. В методе `onRestoreInstanceState()` достаём сохранённое нами значение счётчика и присваиваем переменной `secondsElapsed` и далее запускаем `secondsDisplay()`.
+
+# Выводы:
+
+В процессе выполнения данной лабораторной работы в среде разработки Android Studio изучен жизненный цикл Activity и основные возможности и свойства alternative resources. Также изучен алгоритм для выбора best-matching resource, проведена работа по нахождению ошибок в приложении, связанных с жизненным циклом Activity, и их исправлению.
+
+# Приложение:
+
+## Листинг 1: Activity
+
+```java
+package com.example.germanexam;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.PersistableBundle;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Locale;
+
+public class TaskOne extends AppCompatActivity {
+
+    long timeLeft = 90000;
+    int counter = 0;
+    CountDownTimer countDownTimer;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.d("LifeCycleActivity", "onCreate()");
+        setContentView(R.layout.task1);
+        final TextView timeRemaining = (TextView) findViewById(R.id.time_remaining);
+        final ProgressBar timeline = (ProgressBar) findViewById(R.id.timeline);
+        countDownTimer = new CountDownTimer(timeLeft, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeft = millisUntilFinished;
+                updateTimer();
+                counter++;
+                timeline.setProgress(counter);
+            }
+
+            private void updateTimer() {
+                int minutes = (int) (timeLeft / 1000) / 60;
+                int seconds = (int) (timeLeft / 1000) % 60;
+
+                String timeLeftText = String.format(Locale.getDefault(), "-%02d:%02d", minutes, seconds);
+
+                timeRemaining.setText(timeLeftText);
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("LifeCycleActivity", "onStart()");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("LifeCycleActivity", "onResume()");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("LifeCycleActivity", "onPause()");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("LifeCycleActivity", "onStop()");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("LifeCycleActivity", "onRestart()");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("LifeCycleActivity", "onDestroy()");
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        Log.d("LifeCycleActivity", "onSaveInstanceState()");
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d("LifeCycleActivity", "onSaveInstanceState()");
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.d("LifeCycleActivity", "onRestoreInstanceState()");
+    }
+
+    @Override
+    public void onRestoreInstanceState(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState);
+        Log.d("LifeCycleActivity", "onRestoreInstanceState()");
+    }
+
+    @Override
+    public void setContentView(View view) {
+        super.setContentView(view);
+        Log.d("LifeCycleActivity", "setContentView()");
+    }
+
+    @Override
+    public void setContentView(View view, ViewGroup.LayoutParams params) {
+        super.setContentView(view, params);
+        Log.d("LifeCycleActivity", "setContentView()");
+    }
+
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+        Log.d("LifeCycleActivity", "setContentView()");
+    }
+}
+```
+
+## Листинг 2: Alternative Resources (меньше 480dp)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greyExam">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4" />
+
+        <TextView
+            android:id="@+id/Task1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:lines="1"
+            app:autoSizeMaxTextSize="70sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:text="@string/task_one" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5" />
+
+        <ImageView
+            android:id="@+id/clock"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_recent_history" />
+
+        <TextView
+            android:id="@+id/prep_ans"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:lines="2"
+            app:autoSizeMaxTextSize="70sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            android:fontFamily="@font/calibri"
+            android:text="@string/prep_ans" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/task1_logo"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="0"
+                android:background="@drawable/button_blue_circle"
+                android:gravity="center"
+                android:layout_gravity="top"
+                android:text="1"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibril"/>
+
+            <TextView
+                android:id="@+id/task1_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="23"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/calibrib"
+                android:lines="4"
+                app:autoSizeMaxTextSize="70sp"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeTextType="uniform"
+                android:text="@string/task1"
+                android:textColor="@android:color/black" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="25"
+                    android:fontFamily="@font/calibri"
+                    android:text="@string/text1"
+                    android:lines="22"
+                    app:autoSizeMaxTextSize="70sp"
+                    app:autoSizeMinTextSize="18sp"
+                    app:autoSizeTextType="uniform"
+                    android:textColor="@android:color/black"
+                    android:background="@android:color/white"
+                    android:padding="10dp"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4" />
+
+        <TextView
+            android:id="@+id/preparation"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:lines="1"
+            android:paddingRight="10dp"
+            app:autoSizeMaxTextSize="70sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            android:text="@string/preparation" />
+
+        <ProgressBar
+            android:id="@+id/timeline"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:max="90"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="6" />
+
+        <TextView
+            android:id="@+id/time_remaining"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:lines="1"
+            app:autoSizeMaxTextSize="70sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            android:text="" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4" />
+    </LinearLayout>
+</LinearLayout>
+```
+
+## Листинг 3: Alternative Resources (больше 480dp)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greyExam">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4" />
+
+        <TextView
+            android:id="@+id/Task1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:lines="1"
+            app:autoSizeMaxTextSize="70sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:text="@string/task_one" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5" />
+
+        <ImageView
+            android:id="@+id/clock"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_recent_history" />
+
+        <TextView
+            android:id="@+id/prep_ans"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:lines="2"
+            app:autoSizeMaxTextSize="70sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            android:fontFamily="@font/calibri"
+            android:text="@string/prep_ans" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/task1_logo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="0"
+                android:background="@drawable/button_blue_circle"
+                android:gravity="center"
+                android:layout_gravity="top"
+                android:text="1"
+                android:textColor="@android:color/white"
+                android:textSize="35sp"
+                android:fontFamily="@font/calibril"/>
+
+            <TextView
+                android:id="@+id/task1_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="23"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/calibrib"
+                android:lines="6"
+                app:autoSizeMaxTextSize="100sp"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeTextType="uniform"
+                android:text="@string/task1"
+                android:textColor="@android:color/black" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="25"
+                    android:fontFamily="@font/calibri"
+                    android:text="@string/text1"
+                    android:lines="30"
+                    app:autoSizeMaxTextSize="100sp"
+                    app:autoSizeMinTextSize="18sp"
+                    app:autoSizeTextType="uniform"
+                    android:textColor="@android:color/black"
+                    android:background="@android:color/white"
+                    android:padding="10dp"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4" />
+
+        <TextView
+            android:id="@+id/preparation"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:lines="1"
+            android:paddingRight="10dp"
+            app:autoSizeMaxTextSize="70sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            android:text="@string/preparation" />
+
+        <ProgressBar
+            android:id="@+id/timeline"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:max="90"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="6" />
+
+        <TextView
+            android:id="@+id/time_remaining"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:lines="1"
+            app:autoSizeMaxTextSize="70sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            android:text="" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4" />
+    </LinearLayout>
+</LinearLayout>
+```
+
+## Листинг 4: Continuewatch
+
+```kotlin
+package ru.spbstu.icc.kspt.lab2.continuewatch
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_main.*
+
+class MainActivity : AppCompatActivity() {
+    var secondsElapsed: Int = 0
+    var run = false
+
+    var backgroundThread = Thread {
+        while (true) {
+            Thread.sleep(1000)
+            if (run) {
+                secondsDisplay()
+            }
+        }
+    }
+
+    private fun secondsDisplay() {
+        textSecondsElapsed.post {
+            textSecondsElapsed.setText("Seconds elapsed: " + secondsElapsed++)
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        backgroundThread.start()
+    }
+
+    override fun onResume() {
+        run = true
+        super.onResume()
+    }
+
+    override fun onPause() {
+        run = false
+        super.onPause()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt("seconds", secondsElapsed)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        secondsElapsed = savedInstanceState.getInt("seconds")
+        secondsDisplay()
+        super.onRestoreInstanceState(savedInstanceState)
+    }
+}
+```

@@ -22,7 +22,6 @@ public class TaskOne extends AppCompatActivity {
     long timeLeft = 90000;
     int counter = 0;
     CountDownTimer countDownTimer;
-    boolean timerRunning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

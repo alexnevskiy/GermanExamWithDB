@@ -6,13 +6,20 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     var secondsElapsed: Int = 0
+    var run = false
 
     var backgroundThread = Thread {
         while (true) {
             Thread.sleep(1000)
-            textSecondsElapsed.post {
-                textSecondsElapsed.setText("Seconds elapsed: " + secondsElapsed++)
+            if (run) {
+                secondsDisplay()
             }
+        }
+    }
+
+    private fun secondsDisplay() {
+        textSecondsElapsed.post {
+            textSecondsElapsed.setText("Seconds elapsed: " + secondsElapsed++)
         }
     }
 
@@ -20,5 +27,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         backgroundThread.start()
+    }
+
+    override fun onResume() {
+        run = true
+        super.onResume()
+    }
+
+    override fun onPause() {
+        run = false
+        super.onPause()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt("seconds", secondsElapsed)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        secondsElapsed = savedInstanceState.getInt("seconds")
+        secondsDisplay()
+        super.onRestoreInstanceState(savedInstanceState)
     }
 }
