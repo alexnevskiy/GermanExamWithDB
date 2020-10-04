@@ -17,4 +17,10 @@
     <string name="task_one">Aufgabe 1</string>
     <string name="prep_ans">Vorbereitung 01:30\nAntwort 01:30</string>
     <string name="timer">-01:30</string>
+    <string name="student_name">Ученик: Иван Иванов</string>
+    <string name="person_class">Класс: 11А</string>
+    <string name="microphone_test">Проверка микрофона</string>
+    <string name="change_interface">Размер интерфейса</string>
+    <string name="about_application">О приложении</string>
+    <string name="change_data">Изменить данные</string>
 </resources>
