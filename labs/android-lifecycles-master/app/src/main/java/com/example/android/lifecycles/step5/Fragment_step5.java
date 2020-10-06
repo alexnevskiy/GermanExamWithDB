@@ -48,6 +48,7 @@ public class Fragment_step5 extends Fragment {
         View root = inflater.inflate(R.layout.fragment_step5, container, false);
         mSeekBar = root.findViewById(R.id.seekBar);
 
+        // TODO: get ViewModel
         mSeekBarViewModel = new ViewModelProvider(requireActivity()).get(SeekBarViewModel.class);
         subscribeSeekBar();
 
@@ -63,6 +64,7 @@ public class Fragment_step5 extends Fragment {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (fromUser) {
                     Log.d("Step5", "Progress changed!");
+                    // TODO: Set the ViewModel's value when the change comes from the user.
                     mSeekBarViewModel.seekbarValue.setValue(progress);
                 }
             }
@@ -74,6 +76,8 @@ public class Fragment_step5 extends Fragment {
             public void onStopTrackingTouch(SeekBar seekBar) { }
         });
 
+        // TODO: Update the SeekBar when the ViewModel is changed
+        // mSeekBarViewModel.seekbarValue.observe(...
         mSeekBarViewModel.seekbarValue.observe(
                 requireActivity(), new Observer<Integer>() {
                     @Override
@@ -83,6 +87,5 @@ public class Fragment_step5 extends Fragment {
                         }
                     }
                 });
-        // mSeekBarViewModel.seekbarValue.observe(...
     }
 }

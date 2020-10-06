@@ -47,6 +47,7 @@ public class LiveDataTimerViewModel extends ViewModel {
                 final long newValue = (SystemClock.elapsedRealtime() - mInitialTime) / 1000;
 
                 // setValue() cannot be called from a background thread so post to main thread.
+                //TODO post the new value with LiveData.postValue()
                 mElapsedTime.postValue(newValue);
             }
         }, ONE_SECOND, ONE_SECOND);
