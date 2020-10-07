@@ -1,5 +1,6 @@
 package com.example.germanexam;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
@@ -26,7 +28,6 @@ public class TaskOne extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("LifeCycleActivity", "onCreate()");
         setContentView(R.layout.task1);
         final TextView timeRemaining = (TextView) findViewById(R.id.time_remaining);
         final ProgressBar timeline = (ProgressBar) findViewById(R.id.timeline);
@@ -50,86 +51,33 @@ public class TaskOne extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-
             }
         }.start();
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("LifeCycleActivity", "onStart()");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("LifeCycleActivity", "onResume()");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("LifeCycleActivity", "onPause()");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d("LifeCycleActivity", "onStop()");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d("LifeCycleActivity", "onRestart()");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("LifeCycleActivity", "onDestroy()");
-    }
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-        Log.d("LifeCycleActivity", "onSaveInstanceState()");
-    }
-
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        Log.d("LifeCycleActivity", "onSaveInstanceState()");
-    }
-
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        Log.d("LifeCycleActivity", "onRestoreInstanceState()");
-    }
-
-    @Override
-    public void onRestoreInstanceState(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onRestoreInstanceState(savedInstanceState, persistentState);
-        Log.d("LifeCycleActivity", "onRestoreInstanceState()");
-    }
-
-    @Override
-    public void setContentView(View view) {
-        super.setContentView(view);
-        Log.d("LifeCycleActivity", "setContentView()");
-    }
-
-    @Override
-    public void setContentView(View view, ViewGroup.LayoutParams params) {
-        super.setContentView(view, params);
-        Log.d("LifeCycleActivity", "setContentView()");
-    }
-
-    @Override
-    public void setContentView(int layoutResID) {
-        super.setContentView(layoutResID);
-        Log.d("LifeCycleActivity", "setContentView()");
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.dialog_window_title);
+        builder.setNegativeButton(R.string.menu, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                setResult(0);
+                finish();
+            }
+        });
+        builder.setNeutralButton(R.string.desktop, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                setResult(1);
+                finish();
+            }
+        });
+        builder.setPositiveButton(R.string.variants_menu, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                setResult(2);
+                finish();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

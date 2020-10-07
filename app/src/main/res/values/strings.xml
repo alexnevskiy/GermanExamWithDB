@@ -23,4 +23,9 @@
     <string name="change_interface">Размер интерфейса</string>
     <string name="about_application">О приложении</string>
     <string name="change_data">Изменить данные</string>
+    <string name="save">Сохранить</string>
+    <string name="dialog_window_title">Куда Вы хотите перейти?</string>
+    <string name="desktop">Рабочий стол</string>
+    <string name="menu">Главное меню</string>
+    <string name="variants_menu">Выбор варианта</string>
 </resources>

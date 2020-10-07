@@ -25,7 +25,7 @@ public class Settings extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_map:
-                        Intent intent = new Intent(Settings.this, MainActivity.class);
+                        Intent intent = new Intent(Settings.this, Name.class);
                         startActivity(intent);
                         break;
                 }

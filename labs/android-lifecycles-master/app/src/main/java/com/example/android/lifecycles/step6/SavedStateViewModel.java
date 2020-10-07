@@ -23,6 +23,8 @@ import androidx.lifecycle.ViewModel;
 
 public class SavedStateViewModel extends ViewModel {
 
+    // TODO: Create constructor and use the LiveData from SavedStateHandle.
+
     private static final String NAME_KEY = "name";
 
     private SavedStateHandle mState;
