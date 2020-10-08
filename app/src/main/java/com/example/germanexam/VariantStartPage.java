@@ -22,7 +22,8 @@ public class VariantStartPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(VariantStartPage.this, TaskOne.class);
-                startActivityForResult(intent, 0);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
             }
         });
     }
@@ -33,40 +34,24 @@ public class VariantStartPage extends AppCompatActivity {
         builder.setTitle(R.string.dialog_window_title);
         builder.setNegativeButton(R.string.menu, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                setResult(0);
-                finish();
+                Intent intent = new Intent(VariantStartPage.this, Menu.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
         builder.setNeutralButton(R.string.desktop, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                setResult(1);
-                finish();
+                finishAffinity();
             }
         });
         builder.setPositiveButton(R.string.variants_menu, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                setResult(2);
-                finish();
+                Intent intent = new Intent(VariantStartPage.this, Variants.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
         AlertDialog dialog = builder.create();
         dialog.show();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 2) {
-            setResult(2);
-            finish();
-        }
-        if (resultCode == 1) {
-            setResult(1);
-            finish();
-        }
-        if (requestCode == 0) {
-            setResult(0);
-            finish();
-        }
     }
 }

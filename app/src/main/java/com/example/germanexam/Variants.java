@@ -52,7 +52,8 @@ public class Variants extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(Variants.this, VariantStartPage.class);
-                        startActivityForResult(intent, 2);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                        startActivity(intent);
                     }
                 });
 
@@ -60,18 +61,6 @@ public class Variants extends AppCompatActivity {
             }
 
             tableLayout.addView(tableRow, i);
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 1) {
-            setResult(1);
-            finish();
-        }
-        if (resultCode == 0) {
-            finish();
         }
     }
 }

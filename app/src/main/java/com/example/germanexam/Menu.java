@@ -57,7 +57,8 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Menu.this, VariantStartPage.class);
-                startActivityForResult(intent, 0);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
             }
         });
 
@@ -67,7 +68,7 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Menu.this, Variants.class);
-                startActivityForResult(intent, 0);
+                startActivity(intent);
             }
         });
 
@@ -93,17 +94,5 @@ public class Menu extends AppCompatActivity {
             backToast.show();
         }
         backPressedTime = System.currentTimeMillis();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 2) {
-            Intent intent = new Intent(Menu.this, Variants.class);
-            startActivity(intent);
-        }
-        if (resultCode == 1) {
-            finish();
-        }
     }
 }

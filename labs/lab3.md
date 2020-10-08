@@ -144,7 +144,7 @@ void saveNewName(String newName) {
 
 Отдельное внимание стоит уделить Bottom Navigation, которое является аналогом Activity 'About'. В задании предполагается, что при нажатии на Bottom Navigation должно открыться другое Activity, в приложении же открывается диалоговое окно с возможностью изменения внесённых при первом запуске приложения данных. Использование диалогового окна для достаточно простой задачи (как в нашем случае) позволяет сократить число классов Activity в приложении, тем самым экономя ресурсы памяти.
 
-![]()
+![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/Name_Dialog.png)
 
 ## 3) Настройки (Settings.java)
 
@@ -172,3 +172,645 @@ void saveNewName(String newName) {
 
 В данном окне не содержится никаких кнопок. При нажатии на системную кнопку "Назад" также открывается диалоговое окно с тремя кнопками: "Рабочий стол", "Главное меню" и "Выбор варианта". Вызываются такие же методы, что и в прошлом окне. Если бы пользователь нажимал на кнопки в следующем порядке начиная с главного меню: Экзамен - "Prüfung starten", то BackStack был бы следующим: Главное меню - Стартовая страница - Первое задание.
 
+# 3. Навигация (флаги Intent/атрибуты Activity)
+
+Решите предыдущую задачу с помощью Activity, Intent и флагов Intent либо атрибутов Activity.
+
+Дополните граф навигации новым(-и) переходом(-ами) с целью демонстрации  какого-нибудь (на свое усмотрение) атрибута Activity или флага Intent,  который еще не использовался для решения задачи. Поясните пример и  работу флага/атрибута.
+
+В этом пункте объединены задачи 3 и 4. Изменения коснулись не всех Activity, а только "Menu", "Variants", "VariantStartPage" и "TaskOne".
+
+## Главное меню (Menu.java)
+
+Здесь убраны все `startActivityForResult()` и заменены на обычные `startActivity()`, но с добавлением флага Intent. Теперь при нажатии на кнопку "Экзамен" в Intent при помощи метода `addFlags()` добавляется флаг `FLAG_ACTIVITY_NO_HISTORY`, который означает, что новое открытое окно не будет добавляться в историю, то есть в BackStack, и при открытии следующего нового Activity предыдущем в стеке будет "Главное меню", а не "Стартовая страница". Данный флаг прописан из-за того, что наличие Activity "Стартовая страница" просто не нужно, так как при нажатии системной кнопки "Назад" пользователь всё равно в него никогда больше не обратится, тем самым икономя системные ресурсы.
+
+## Варианты ЕГЭ (Variants.java)
+
+В данном Activity также заменён `startActivityForResult()` на `startActivity()` с добавленным флагом `FLAG_ACTIVITY_NO_HISTORY` в Intent. Флаг прописан всё по той же причине - отсутствие надобности окна "Стартовая страница" в BackStack.
+
+## Стартовая страница (VariantStartPage.java)
+
+При нажатии на кнопку для перехода к первому заданию также вызывается метод `startActivity()` с добавленным флагом `FLAG_ACTIVITY_NO_HISTORY` в Intent. Причина добавления флага всё та же. В диалоговом окне, которое вызывается при нажатии на системную кнопку "Назад", остались всё те же три кнопки. При нажатии на "Главное меню" вызывается метод `startActivity()` с добавленным флагом `FLAG_ACTIVITY_CLEAR_TOP` в Intent. Данный флаг означает, что если экземпляр данной Activity уже существует в BackStack, то все Activity, находящиеся поверх неё, разрушаются, и этот экземпляр становится вершиной стека, то есть пользователь снова возвращается в главное меню. При нажатии на "Рабочий стол" вызывается метод `finishAffinity()`, который завершает текущее Activity, а также все Activity, расположенные под ним в BackStack. Если нажать на "Выбор варианта", то происходит всё тоже самое, как и при нажатии на кнопку "Главное меню", только происходит переход в Activity "Варианты ЕГЭ".
+
+## Первое задание (TaskOne.java)
+
+Здесь при нажатии на системную кнопку "Назад" также всплывается диалоговое окно с тремя кнопками. При нажатии на кнопки происходит всё тоже самое, как описано выше.
+
+# Приложение:
+
+## Листинг 1: MainActivity.java
+
+```java
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Button buttonStart = findViewById(R.id.buttonStart);
+
+        buttonStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Menu.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+}
+```
+
+## Листинг 2: Menu.java
+
+```java
+public class Menu extends AppCompatActivity {
+
+    private long backPressedTime;
+    private Toast backToast;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.menu);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_map:
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Menu.this);
+                        LayoutInflater inflater = Menu.this.getLayoutInflater();
+                        builder.setView(inflater.inflate(R.layout.name_dialog, null))
+                                .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // Сохранение данных пользователя
+                                    }
+                                });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                }
+                return true;
+            }
+        });
+
+        Button buttonExam = findViewById(R.id.button_exam);
+
+        buttonExam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu.this, VariantStartPage.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
+        Button buttonVariants = findViewById(R.id.button_variants);
+
+        buttonVariants.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu.this, Variants.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
+        Button buttonSettings = findViewById(R.id.button_settings);
+
+        buttonSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu.this, Settings.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backToast = Toast.makeText(getBaseContext(), "Нажмите ещё раз, чтобы выйти", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 2) {
+            Intent intent = new Intent(Menu.this, Variants.class);
+            startActivity(intent);
+        }
+        if (resultCode == 1) {
+            finish();
+        }
+    }
+}
+```
+
+## Листинг 3: Settings.java
+
+```java
+public class Settings extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.settings);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_map:
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Settings.this);
+                        LayoutInflater inflater = Settings.this.getLayoutInflater();
+                        builder.setView(inflater.inflate(R.layout.name_dialog, null))
+                                .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // Сохранение данных пользователя
+                                    }
+                                });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                }
+                return true;
+            }
+        });
+    }
+}
+```
+
+## Листинг 4: Variants.java
+
+```java
+public class Variants extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.variants);
+
+        defineButtons();
+    }
+
+    public void defineButtons() {
+        int rows = 5;
+        int columns = 5;
+
+        TableLayout tableLayout = findViewById(R.id.variants_layout);
+
+        for (int i = 0; i < rows; i++) {
+
+            TableRow tableRow = new TableRow(this);
+            TableRow.LayoutParams paramsTable = new TableRow.LayoutParams(
+                    TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+            tableRow.setLayoutParams(paramsTable);
+
+            for (int j = 0; j < columns; j++) {
+                TableRow.LayoutParams paramsButton = new TableRow.LayoutParams(
+                        TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+                paramsButton.weight = 1.0f;
+                paramsButton.topMargin = 20;
+                paramsButton.leftMargin = 20;
+                paramsButton.rightMargin = 20;
+                paramsButton.bottomMargin = 20;
+                Button button = new Button(this);
+                button.setLayoutParams(paramsButton);
+                button.setText("" + (j + 1 + (i * rows)));
+                button.setId(j + 1 + (i * rows));
+                button.setBackground(getResources().getDrawable(R.drawable.button_blue));
+                button.setTextSize(30);
+                button.setTextColor(Color.parseColor("#FFFFFF"));
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Variants.this, VariantStartPage.class);
+                        startActivityForResult(intent, 2);
+                    }
+                });
+
+                tableRow.addView(button, j);
+            }
+
+            tableLayout.addView(tableRow, i);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 1) {
+            setResult(1);
+            finish();
+        }
+        if (resultCode == 0) {
+            finish();
+        }
+    }
+}
+```
+
+## Листинг 5: VariantStartPage.java
+
+```java
+public class VariantStartPage extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.variant_one_start);
+        Button buttonVariants = findViewById(R.id.button_start_test);
+
+        buttonVariants.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(VariantStartPage.this, TaskOne.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.dialog_window_title);
+        builder.setNegativeButton(R.string.menu, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                setResult(0);
+                finish();
+            }
+        });
+        builder.setNeutralButton(R.string.desktop, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                setResult(1);
+                finish();
+            }
+        });
+        builder.setPositiveButton(R.string.variants_menu, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                setResult(2);
+                finish();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 2) {
+            setResult(2);
+            finish();
+        }
+        if (resultCode == 1) {
+            setResult(1);
+            finish();
+        }
+        if (requestCode == 0) {
+            setResult(0);
+            finish();
+        }
+    }
+}
+```
+
+## Листинг 6: TaskOne.java
+
+```java
+public class TaskOne extends AppCompatActivity {
+
+    long timeLeft = 90000;
+    int counter = 0;
+    CountDownTimer countDownTimer;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.task1);
+        final TextView timeRemaining = findViewById(R.id.time_remaining);
+        final ProgressBar timeline = findViewById(R.id.timeline);
+        countDownTimer = new CountDownTimer(timeLeft, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeft = millisUntilFinished;
+                updateTimer();
+                counter++;
+                timeline.setProgress(counter);
+            }
+
+            private void updateTimer() {
+                int minutes = (int) (timeLeft / 1000) / 60;
+                int seconds = (int) (timeLeft / 1000) % 60;
+
+                String timeLeftText = String.format(Locale.getDefault(), "-%02d:%02d", minutes, seconds);
+
+                timeRemaining.setText(timeLeftText);
+            }
+
+            @Override
+            public void onFinish() {
+            }
+        }.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.dialog_window_title);
+        builder.setNegativeButton(R.string.menu, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                setResult(0);
+                finish();
+            }
+        });
+        builder.setNeutralButton(R.string.desktop, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                setResult(1);
+                finish();
+            }
+        });
+        builder.setPositiveButton(R.string.variants_menu, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                setResult(2);
+                finish();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+}
+```
+
+## Листинг 7: Menu.java с флагами
+
+```java
+public class Menu extends AppCompatActivity {
+
+    private long backPressedTime;
+    private Toast backToast;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.menu);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_map:
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Menu.this);
+                        LayoutInflater inflater = Menu.this.getLayoutInflater();
+                        builder.setView(inflater.inflate(R.layout.name_dialog, null))
+                                .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // Сохранение данных пользователя
+                                    }
+                                });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                }
+                return true;
+            }
+        });
+
+        Button buttonExam = findViewById(R.id.button_exam);
+
+        buttonExam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu.this, VariantStartPage.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+            }
+        });
+
+        Button buttonVariants = findViewById(R.id.button_variants);
+
+        buttonVariants.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu.this, Variants.class);
+                startActivity(intent);
+            }
+        });
+
+        Button buttonSettings = findViewById(R.id.button_settings);
+
+        buttonSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu.this, Settings.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backToast = Toast.makeText(getBaseContext(), "Нажмите ещё раз, чтобы выйти", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
+}
+```
+
+## Листинг 8: Variants.java с флагами
+
+```java
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Variants extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.variants);
+
+        defineButtons();
+    }
+
+    public void defineButtons() {
+        int rows = 5;
+        int columns = 5;
+
+        TableLayout tableLayout = findViewById(R.id.variants_layout);
+
+        for (int i = 0; i < rows; i++) {
+
+            TableRow tableRow = new TableRow(this);
+            TableRow.LayoutParams paramsTable = new TableRow.LayoutParams(
+                    TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+            tableRow.setLayoutParams(paramsTable);
+
+            for (int j = 0; j < columns; j++) {
+                TableRow.LayoutParams paramsButton = new TableRow.LayoutParams(
+                        TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+                paramsButton.weight = 1.0f;
+                paramsButton.topMargin = 20;
+                paramsButton.leftMargin = 20;
+                paramsButton.rightMargin = 20;
+                paramsButton.bottomMargin = 20;
+                Button button = new Button(this);
+                button.setLayoutParams(paramsButton);
+                button.setText("" + (j + 1 + (i * rows)));
+                button.setId(j + 1 + (i * rows));
+                button.setBackground(getResources().getDrawable(R.drawable.button_blue));
+                button.setTextSize(30);
+                button.setTextColor(Color.parseColor("#FFFFFF"));
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Variants.this, VariantStartPage.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                        startActivity(intent);
+                    }
+                });
+
+                tableRow.addView(button, j);
+            }
+
+            tableLayout.addView(tableRow, i);
+        }
+    }
+}
+```
+
+## Листинг 9: VariantStartPage.java с флагами
+
+```java
+public class VariantStartPage extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.variant_one_start);
+        Button buttonVariants = findViewById(R.id.button_start_test);
+
+        buttonVariants.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(VariantStartPage.this, TaskOne.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.dialog_window_title);
+        builder.setNegativeButton(R.string.menu, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(VariantStartPage.this, Menu.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+        builder.setNeutralButton(R.string.desktop, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                finishAffinity();
+            }
+        });
+        builder.setPositiveButton(R.string.variants_menu, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(VariantStartPage.this, Variants.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+}
+```
+
+## Листинг 10: TaskOne.java с флагами
+
+```java
+public class TaskOne extends AppCompatActivity {
+
+    long timeLeft = 90000;
+    int counter = 0;
+    CountDownTimer countDownTimer;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.task1);
+        final TextView timeRemaining = findViewById(R.id.time_remaining);
+        final ProgressBar timeline = findViewById(R.id.timeline);
+        countDownTimer = new CountDownTimer(timeLeft, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeft = millisUntilFinished;
+                updateTimer();
+                counter++;
+                timeline.setProgress(counter);
+            }
+
+            private void updateTimer() {
+                int minutes = (int) (timeLeft / 1000) / 60;
+                int seconds = (int) (timeLeft / 1000) % 60;
+
+                String timeLeftText = String.format(Locale.getDefault(), "-%02d:%02d", minutes, seconds);
+
+                timeRemaining.setText(timeLeftText);
+            }
+
+            @Override
+            public void onFinish() {
+            }
+        }.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.dialog_window_title);
+        builder.setNegativeButton(R.string.menu, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(TaskOne.this, Menu.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+        builder.setNeutralButton(R.string.desktop, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                finishAffinity();
+            }
+        });
+        builder.setPositiveButton(R.string.variants_menu, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(TaskOne.this, Variants.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+}
+```
