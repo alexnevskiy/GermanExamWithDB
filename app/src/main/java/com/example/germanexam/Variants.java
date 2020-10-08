@@ -24,7 +24,7 @@ public class Variants extends AppCompatActivity {
         int rows = 5;
         int columns = 5;
 
-        TableLayout tableLayout = (TableLayout) findViewById(R.id.variants_layout);
+        TableLayout tableLayout = findViewById(R.id.variants_layout);
 
         for (int i = 0; i < rows; i++) {
 

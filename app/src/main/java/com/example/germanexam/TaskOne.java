@@ -29,8 +29,8 @@ public class TaskOne extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task1);
-        final TextView timeRemaining = (TextView) findViewById(R.id.time_remaining);
-        final ProgressBar timeline = (ProgressBar) findViewById(R.id.timeline);
+        final TextView timeRemaining = findViewById(R.id.time_remaining);
+        final ProgressBar timeline = findViewById(R.id.timeline);
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {

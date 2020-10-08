@@ -1,13 +1,16 @@
 package com.example.germanexam;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
@@ -25,22 +28,30 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_map:
-                        Intent intent = new Intent(Menu.this, Name.class);
-                        startActivity(intent);
-                        break;
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Menu.this);
+                        LayoutInflater inflater = Menu.this.getLayoutInflater();
+                        builder.setView(inflater.inflate(R.layout.name_dialog, null))
+                                .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // Сохранение данных пользователя
+                                    }
+                                });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                 }
                 return true;
             }
         });
 
-        Button buttonExam = (Button) findViewById(R.id.button_exam);
+        Button buttonExam = findViewById(R.id.button_exam);
 
         buttonExam.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +61,7 @@ public class Menu extends AppCompatActivity {
             }
         });
 
-        Button buttonVariants = (Button) findViewById(R.id.button_variants);
+        Button buttonVariants = findViewById(R.id.button_variants);
 
         buttonVariants.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +71,7 @@ public class Menu extends AppCompatActivity {
             }
         });
 
-        Button buttonSettings = (Button) findViewById(R.id.button_settings);
+        Button buttonSettings = findViewById(R.id.button_settings);
 
         buttonSettings.setOnClickListener(new View.OnClickListener() {
             @Override

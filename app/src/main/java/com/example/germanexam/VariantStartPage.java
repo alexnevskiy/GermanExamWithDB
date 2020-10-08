@@ -16,7 +16,7 @@ public class VariantStartPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.variant_one_start);
-        Button buttonVariants = (Button) findViewById(R.id.button_start_test);
+        Button buttonVariants = findViewById(R.id.button_start_test);
 
         buttonVariants.setOnClickListener(new View.OnClickListener() {
             @Override
