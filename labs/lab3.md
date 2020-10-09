@@ -200,13 +200,17 @@ void saveNewName(String newName) {
 
 Решите предыдущую задачу (с расширенным графом) с использованием  navigation graph. Все Activity должны быть заменены на фрагменты, кроме Activity 'About', которая должна остаться самостоятельной Activity. В отчете сравните все решения.
 
-![]()
+![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/navigation_graph.png)
 
-![]()
+![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/navigation_exam_graph.png)
 
-Для выполнения данного задания создан отдельный проект, где все Activity заменены на фрагменты, Activity 'About' всё также осталось диалоговым окном. Для того, чтобы layout отображался в fragment, используется метод `onCreateView()`, а для регистрации нажатий на кнопки используетсяся метод `onActivityCreated()`. Навигация осуществлялась при помощи метода `Navigation.findNavController(view).navigate()` при нажатии на кнопки. Так как в приложении в меню предусмотрена ориентация "portrait", а во время самого экзамена "userLandscape", то в графе при переходе на стартовую страницу экзамена стоит не фрагмент, а Activity, у которой в AndroidManifest прописана ориентация "userLandscape", в то время как у стартовой MainActivity - "portrait". У Activity для экзамена предусмотрен свой собственный граф, который состоит из двух фрагментов.
+Для выполнения данного задания создан отдельный проект, где все Activity заменены на фрагменты, Activity 'About' всё также осталось диалоговым окном. Для того, чтобы layout отображался в fragment, используется метод `onCreateView()`, а для регистрации нажатий на кнопки используетсяся метод `onActivityCreated()`. Навигация осуществлялась при помощи метода `Navigation.findNavController(view).navigate()` при нажатии на кнопки. Так как в приложении в меню предусмотрена ориентация `"portrait"`, а во время самого экзамена `"userLandscape"`, то в графе при переходе на стартовую страницу экзамена стоит не фрагмент, а Activity, у которой в AndroidManifest прописана ориентация `"userLandscape"`, в то время как у стартовой MainActivity - `"portrait"`. У Activity для экзамена предусмотрен свой собственный граф, который состоит из двух фрагментов.
 
 К сожалению не удолось реализовать выбор выхода из окна экзамена, как это было сделано при помощи флагов в Intent.
+
+# Выводы:
+
+В процессе выполнения данной лабораторной работы в среде разработки Android Studio изучены: методы обработки жизненного цикла activity/fragment при помощи Lifecycle-Aware компонентов, а также основные возможности навигации внутри приложения: созданиие новых activity, navigation graph. Если сравнивать все решения между собой, то можно придти к выводу, что самым практичным является решение с использованием navigation graph. Он достаточно удобен для приложений за счёт того, что разработчик использует фрагменты, которые можно спокойно комбинировать между собой и заново их использовать, однако мне больше по душе использование Intent с флагами.
 
 # Приложение:
 
@@ -823,6 +827,471 @@ public class TaskOne extends AppCompatActivity {
         });
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+}
+```
+
+## Листинг 11: activity_main.xml с фрагментом
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <fragment
+        android:id="@+id/activity_main_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/navigation_graph"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+
+## Листинг 12: fragment_exam.xml
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExamActivity">
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/navigation_exam_graph"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+
+## Листинг 13: navigation_graph.xml
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.germanexamwithfragment.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/main_to_menu"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.germanexamwithfragment.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/menu_to_settings"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/menu_to_variants"
+            app:destination="@id/variantsFragment" />
+        <action
+            android:id="@+id/menu_to_exam"
+            app:destination="@id/examActivity2" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.germanexamwithfragment.SettingsFragment"
+        android:label="settings_menu"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/variantsFragment"
+        android:name="com.example.germanexamwithfragment.VariantsFragment"
+        android:label="fragment_variants"
+        tools:layout="@layout/fragment_variants" >
+        <action
+            android:id="@+id/variants_to_exam"
+            app:destination="@id/examActivity2" />
+    </fragment>
+    <activity
+        android:id="@+id/examActivity2"
+        android:name="com.example.germanexamwithfragment.ExamActivity"
+        android:label="fragment_variant_start_page"
+        tools:layout="@layout/fragment_variant_start_page" />
+</navigation>
+```
+
+## Листинг 14: navigation_exam_graph.xml
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_exam_graph"
+    app:startDestination="@id/variantStartPageFragment">
+    <fragment
+        android:id="@+id/variantStartPageFragment"
+        android:name="com.example.germanexamwithfragment.VariantStartPageFragment"
+        android:label="fragment_variant_start_page"
+        tools:layout="@layout/fragment_variant_start_page">
+        <action
+            android:id="@+id/start_page_to_task_one"
+            app:destination="@id/taskOneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskOneFragment"
+        android:name="com.example.germanexamwithfragment.TaskOneFragment"
+        android:label="fragment_task_one"
+        tools:layout="@layout/fragment_task_one" />
+</navigation>
+```
+
+## Листинг 15: MainActivity.java для фрагментов
+
+```java
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+}
+```
+
+## Листинг 16: ExamActivity.java
+
+```java
+public class ExamActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_exam);
+    }
+}
+```
+
+## Листинг 17: MainFragment.java
+
+```java
+public class MainFragment extends Fragment {
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Button button = getView().findViewById(R.id.buttonStart);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.main_to_menu);
+            }
+        });
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_main, container, false);
+    }
+}
+```
+
+## Листинг 18: MenuFragment.java
+
+```java
+public class MenuFragment extends Fragment {
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        BottomNavigationView bottomNavigationView = getView().findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_map:
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MenuFragment.this.getContext());
+                        LayoutInflater inflater = MenuFragment.this.getLayoutInflater();
+                        builder.setView(inflater.inflate(R.layout.name_dialog, null))
+                                .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // Сохранение данных пользователя
+                                    }
+                                });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                }
+                return true;
+            }
+        });
+
+        Button buttonExam = getView().findViewById(R.id.button_exam);
+
+        buttonExam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.menu_to_exam);
+            }
+        });
+
+        Button buttonVariants = getView().findViewById(R.id.button_variants);
+
+        buttonVariants.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.menu_to_variants);
+            }
+        });
+
+        Button buttonSettings = getView().findViewById(R.id.button_settings);
+
+        buttonSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.menu_to_settings);
+            }
+        });
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_menu, container, false);
+    }
+}
+```
+
+## Листинг 19: SettingsFragment.java
+
+```java
+public class SettingsFragment extends Fragment {
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        BottomNavigationView bottomNavigationView = getView().findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_map:
+                        AlertDialog.Builder builder = new AlertDialog.Builder(SettingsFragment.this.getContext());
+                        LayoutInflater inflater = SettingsFragment.this.getLayoutInflater();
+                        builder.setView(inflater.inflate(R.layout.name_dialog, null))
+                                .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // Сохранение данных пользователя
+                                    }
+                                });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                }
+                return true;
+            }
+        });
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_settings, container, false);
+    }
+}
+```
+
+## Листинг 20: VariantsFragment.java
+
+```java
+public class VariantsFragment extends Fragment {
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        defineButtons();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_variants, container, false);
+    }
+
+    public void defineButtons() {
+        int rows = 5;
+        int columns = 5;
+
+        TableLayout tableLayout = getView().findViewById(R.id.variants_layout);
+
+        for (int i = 0; i < rows; i++) {
+
+            TableRow tableRow = new TableRow(this.getContext());
+            TableRow.LayoutParams paramsTable = new TableRow.LayoutParams(
+                    TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+            tableRow.setLayoutParams(paramsTable);
+
+            for (int j = 0; j < columns; j++) {
+                TableRow.LayoutParams paramsButton = new TableRow.LayoutParams(
+                        TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+                paramsButton.weight = 1.0f;
+                paramsButton.topMargin = 20;
+                paramsButton.leftMargin = 20;
+                paramsButton.rightMargin = 20;
+                paramsButton.bottomMargin = 20;
+                Button button = new Button(this.getContext());
+                button.setLayoutParams(paramsButton);
+                button.setText("" + (j + 1 + (i * rows)));
+                button.setId(j + 1 + (i * rows));
+                button.setBackground(getResources().getDrawable(R.drawable.button_blue));
+                button.setTextSize(30);
+                button.setTextColor(Color.parseColor("#FFFFFF"));
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Navigation.findNavController(view).navigate(R.id.variants_to_exam);
+                    }
+                });
+
+                tableRow.addView(button, j);
+            }
+
+            tableLayout.addView(tableRow, i);
+        }
+    }
+}
+```
+
+## Листинг 21: VariantStartPageFragment.java
+
+```java
+public class VariantStartPageFragment extends Fragment {
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Button button = getView().findViewById(R.id.button_start_test);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.start_page_to_task_one);
+            }
+        });
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_variant_start_page, container, false);
+    }
+}
+```
+
+## Листинг 22: TaskOneFragment.java
+
+```java
+public class TaskOneFragment extends Fragment {
+
+    long timeLeft = 90000;
+    int counter = 0;
+    CountDownTimer countDownTimer;
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        final TextView timeRemaining = getView().findViewById(R.id.time_remaining);
+        final ProgressBar timeline = getView().findViewById(R.id.timeline);
+        countDownTimer = new CountDownTimer(timeLeft, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeft = millisUntilFinished;
+                updateTimer();
+                counter++;
+                timeline.setProgress(counter);
+            }
+
+            private void updateTimer() {
+                int minutes = (int) (timeLeft / 1000) / 60;
+                int seconds = (int) (timeLeft / 1000) % 60;
+
+                String timeLeftText = String.format(Locale.getDefault(), "-%02d:%02d", minutes, seconds);
+
+                timeRemaining.setText(timeLeftText);
+            }
+
+            @Override
+            public void onFinish() {
+            }
+        }.start();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_task_one, container, false);
     }
 }
 ```
