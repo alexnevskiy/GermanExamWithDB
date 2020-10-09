@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_exam_graph"
+    app:startDestination="@id/variantStartPageFragment">
+    <fragment
+        android:id="@+id/variantStartPageFragment"
+        android:name="com.example.germanexamwithfragment.VariantStartPageFragment"
+        android:label="fragment_variant_start_page"
+        tools:layout="@layout/fragment_variant_start_page">
+        <action
+            android:id="@+id/start_page_to_task_one"
+            app:destination="@id/taskOneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskOneFragment"
+        android:name="com.example.germanexamwithfragment.TaskOneFragment"
+        android:label="fragment_task_one"
+        tools:layout="@layout/fragment_task_one" />
+</navigation>
