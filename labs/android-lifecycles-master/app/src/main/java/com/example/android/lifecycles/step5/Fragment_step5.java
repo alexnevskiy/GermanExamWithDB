@@ -78,8 +78,7 @@ public class Fragment_step5 extends Fragment {
 
         // TODO: Update the SeekBar when the ViewModel is changed
         // mSeekBarViewModel.seekbarValue.observe(...
-        mSeekBarViewModel.seekbarValue.observe(
-                requireActivity(), new Observer<Integer>() {
+        mSeekBarViewModel.seekbarValue.observe(requireActivity(), new Observer<Integer>() {
                     @Override
                     public void onChanged(@Nullable Integer value) {
                         if (value != null) {
