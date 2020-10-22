@@ -38,7 +38,7 @@ public class BibLibAdapter extends RecyclerView.Adapter<BibLibAdapter.BibLibView
 
     @Override
     public void onBindViewHolder(@NonNull BibLibViewHolder holder, int position) {
-        BibEntry entry = database.getEntry(position);
+        BibEntry entry = database.getEntry(position % database.size());
         holder.textViewType.setText(entry.getType().name());
         switch (entry.getType()) {
             case ARTICLE:
@@ -96,7 +96,7 @@ public class BibLibAdapter extends RecyclerView.Adapter<BibLibAdapter.BibLibView
 
     @Override
     public int getItemCount() {
-        return database.size();
+        return Integer.MAX_VALUE;
     }
 
     static class BibLibViewHolder extends RecyclerView.ViewHolder {

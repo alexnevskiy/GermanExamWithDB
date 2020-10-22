@@ -38,9 +38,43 @@ SOFTWARE(BibTeXEntry.TYPE_SOFTWARE);
 
 После этого библиотека `biblib` снова собрана в .jar файл и добавлена в основной проект приложения.
 
-## Создание приложения с использованием RecyclerView
+## RecyclerView
 
-![]()
+![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/RecyclerView.png)
+
+Для решения данной задачи нужно подключить к проекту зависимость в gradle файле, чтобы использовать RecyclerView: `implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha06'`. В activity_main.xml добавлен RecyclerView, с которым мы и будем работать. Далее создан layout, который будет отображать элемент списка RecyclerView. В нём находится 4 TextView, которые отображают тип записи, название, автора и год написания, на мой взгляд, это самый содержательный и менее ёмкий формат для отображения данных.
+
+## MainActivity
+
+В данном классе извлекаются наши исходный файл с данными, который размещён в `raw` ресурсах. Здесь к нашему RecyclerView подключается `LinearLayoutManager`, который позволяет располагать данные в виде списка. Далее при помощи метода `setHasFixedSize()` задаётся, что размер RecyclerView будет фиксированного размера, так как в исходном файле конечное число записей. Также к RecyclerView добавлен `DividerItemDecoration` при помощи метода `addItemDecoration()`, который позволяет разделить данные в списке для более удобного отображения. В конце подключается `BibLibAdapter`, на вход которому подаётся извлечённый нами исходный файл.
+
+## BibLibAdapter
+
+Данный класс реализует адаптер для RecyclerView, обеспечивающий привязку данных к View, которые отображает RecyclerView (в нашем случае это TextView). `BibLibAdapter` содержит в себе вложенный статический класс `BibLibViewHolder`, который описывает представление элемента и данные о месте в RecyclerView. 
+
+В конструкторе класса `BibLibAdapter` считывается при помощи `InputStreamReader()` информация из файла и создаётся экземпляр класса `BibDatabase()` для работы с данными файла. 
+
+В методе `onCreateViewHolder()` создаётся экземпляр класса `LayoutInflater`, который позволяет из содержимого layout-файла создать View-элемент, и возвращается экземпляр нашего вложенного класса `BibLibViewHolder` с созданным View на входе.
+
+В методе `onBindViewHolder()` происходит отображение данных в указанной позиции, то есть он обновляет содержимое наших TextView. При помощи метода `getEntry()` получаем объект класса `BibEntry`, который позволяет извлекать данные из записи. Далее меняем отображаемый текст в наших TextView на нужные данные полей конкретной записи. При изменении типа записи используется конструкция switch case для разного визуального отображения записей разного типа.
+
+В методе `getItemCount()` выводится количество элементов в списке, то есть количество записей в файле.
+
+# 3. Бесконечный список
+
+Сделайте список из предыдущей задачи бесконечным: после последнего элемента все записи повторяются, начиная с первой.
+
+Для того, чтобы сделать список "бесконечным", нужно всего лишь изменить 2 строчки кода, а именно:
+
+В методе `onBindViewHolder()` при получении экземпляра класса указать не просто позицию, а остаток от деления позиции на количество записей в файле.
+
+В методе `getItemCount()` возвращать не количество элементов в списке, а максимальное возможное число Integer.
+
+# Выводы:
+
+При выполнении данной лабораторной работы произведено ознакомление с принципами работы adapter-based views: разработано приложение, выводящее все записи из `bibtex` файла на экран, используя библиотеку biblib и RecyclerView. Для отображения записей различного рода разработан адаптер `BibLibAdapter`. Все элементы из заданного файла выведены списком. Также код адаптера модифицирован так, чтобы после прокручивания последнего элемента, все записи повторялись, начиная с первой.
+
+Для упомянутой библиотеки написаны тесты для проверки двух использующихся флагов – `strict` (обозначающий режим, при котором в памяти может храниться ограниченное количество записей из файла) и `shuffle` (перемешивание извлечённых элементов). Написанные тесты успешно проходят, что позволяет собрать объектные файлы для последующего их использования в проектах в качестве библиотеки, что и было выполнено для работы над вторым пунктом.
 
 # Приложение:
 
@@ -116,5 +150,204 @@ public void shuffleFlag() throws IOException{
   URL = {http://wordsintheworld.ca/wow-conference-2020/conference-schedule/},
   AREA = {LINCOM},
   TYPE = {INPROCEEDINGS},
+}
+```
+
+## Листинг 4: activity_main.xml
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
+```
+
+## Листинг 5: biblib_entry.xml
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Type"
+        android:textSize="28dp"
+        android:gravity="center"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:textSize="24dp"/>
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Author"
+        android:textSize="16dp"/>
+
+    <TextView
+        android:id="@+id/year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Year"
+        android:gravity="end"
+        android:textSize="14dp"/>
+</LinearLayout>
+```
+
+## Листинг 6: MainActivity.java
+
+```java
+public class MainActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private BibLibAdapter bibLibAdapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        InputStream publications = getResources().openRawResource(R.raw.publications_ferro_en);
+
+        recyclerView = findViewById(R.id.recycler_view);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        recyclerView.setHasFixedSize(true);
+        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
+        recyclerView.addItemDecoration(itemDecoration);
+
+        try {
+            bibLibAdapter = new BibLibAdapter(publications);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        recyclerView.setAdapter(bibLibAdapter);
+    }
+}
+```
+
+## Листинг 7: BibLibAdapter.java
+
+```java
+public class BibLibAdapter extends RecyclerView.Adapter<BibLibAdapter.BibLibViewHolder> {
+
+    BibDatabase database;
+
+    BibLibAdapter(InputStream publications) throws IOException {
+        InputStreamReader reader = new InputStreamReader(publications);
+        database = new BibDatabase(reader);
+    }
+
+    @NonNull
+    @Override
+    public BibLibViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
+        View view = inflater.inflate(R.layout.biblib_entry, parent, false);
+
+        return new BibLibViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull BibLibViewHolder holder, int position) {
+        BibEntry entry = database.getEntry(position);
+        holder.textViewType.setText(entry.getType().name());
+        switch (entry.getType()) {
+            case ARTICLE:
+                holder.textViewType.setBackground(ResourcesCompat.getDrawable(holder.textViewType.getResources(), R.color.ARTICLE, null));
+                break;
+            case BOOK:
+                holder.textViewType.setBackground(ResourcesCompat.getDrawable(holder.textViewType.getResources(), R.color.BOOK, null));
+                break;
+            case BOOKLET:
+                holder.textViewType.setBackground(ResourcesCompat.getDrawable(holder.textViewType.getResources(), R.color.BOOKLET, null));
+                break;
+            case INBOOK:
+                holder.textViewType.setBackground(ResourcesCompat.getDrawable(holder.textViewType.getResources(), R.color.INBOOK, null));
+                break;
+            case INCOLLECTION:
+                holder.textViewType.setBackground(ResourcesCompat.getDrawable(holder.textViewType.getResources(), R.color.INCOLLECTION, null));
+                break;
+            case INPROCEEDINGS:
+                holder.textViewType.setBackground(ResourcesCompat.getDrawable(holder.textViewType.getResources(), R.color.INPROCEEDINGS, null));
+                break;
+            case MANUAL:
+                holder.textViewType.setBackground(ResourcesCompat.getDrawable(holder.textViewType.getResources(), R.color.MANUAL, null));
+                break;
+            case MASTERSTHESIS:
+                holder.textViewType.setBackground(ResourcesCompat.getDrawable(holder.textViewType.getResources(), R.color.MASTERSTHESIS, null));
+                break;
+            case MISC:
+                holder.textViewType.setBackground(ResourcesCompat.getDrawable(holder.textViewType.getResources(), R.color.MISC, null));
+                break;
+            case PHDTHESIS:
+                holder.textViewType.setBackground(ResourcesCompat.getDrawable(holder.textViewType.getResources(), R.color.PHDTHESIS, null));
+                break;
+            case PROCEEDINGS:
+                holder.textViewType.setBackground(ResourcesCompat.getDrawable(holder.textViewType.getResources(), R.color.PROCEEDINGS, null));
+                break;
+            case TECHREPORT:
+                holder.textViewType.setBackground(ResourcesCompat.getDrawable(holder.textViewType.getResources(), R.color.TECHREPORT, null));
+                break;
+            case UNPUBLISHED:
+                holder.textViewType.setBackground(ResourcesCompat.getDrawable(holder.textViewType.getResources(), R.color.UNPUBLISHED, null));
+                break;
+            case SOFTWARE:
+                holder.textViewType.setBackground(ResourcesCompat.getDrawable(holder.textViewType.getResources(), R.color.SOFTWARE, null));
+                break;
+            case EDITORIAL:
+                holder.textViewType.setBackground(ResourcesCompat.getDrawable(holder.textViewType.getResources(), R.color.EDITORIAL, null));
+                break;
+            default:
+                holder.textViewType.setBackground(ResourcesCompat.getDrawable(holder.textViewType.getResources(), R.color.colorPrimaryDark, null));
+        }
+        holder.textViewTitle.setText(entry.getField(Keys.TITLE));
+        holder.textViewAuthor.setText(entry.getField(Keys.AUTHOR));
+        holder.textViewYear.setText(entry.getField(Keys.YEAR));
+    }
+
+    @Override
+    public int getItemCount() {
+        return database.size();
+    }
+
+    static class BibLibViewHolder extends RecyclerView.ViewHolder {
+
+        TextView textViewType;
+        TextView textViewTitle;
+        TextView textViewAuthor;
+        TextView textViewYear;
+
+        public BibLibViewHolder(@NonNull View itemView) {
+            super(itemView);
+            textViewType = itemView.findViewById(R.id.type);
+            textViewTitle = itemView.findViewById(R.id.title);
+            textViewAuthor = itemView.findViewById(R.id.author);
+            textViewYear = itemView.findViewById(R.id.year);
+        }
+    }
 }
 ```
