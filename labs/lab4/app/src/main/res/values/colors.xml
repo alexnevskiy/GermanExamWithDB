@@ -3,4 +3,19 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="ARTICLE">#cadcd4</color>
+    <color name="BOOK">#e32636</color>
+    <color name="BOOKLET">#9966cc</color>
+    <color name="INBOOK">#00ffff</color>
+    <color name="INCOLLECTION">#66ff00</color>
+    <color name="INPROCEEDINGS">#cd7f32</color>
+    <color name="MANUAL">#ffd800</color>
+    <color name="MASTERSTHESIS">#b51677</color>
+    <color name="MISC">#146546</color>
+    <color name="PHDTHESIS">#e87383</color>
+    <color name="PROCEEDINGS">#7f8b17</color>
+    <color name="TECHREPORT">#09b6ee</color>
+    <color name="UNPUBLISHED">#c31456</color>
+    <color name="SOFTWARE">#c2bc15</color>
+    <color name="EDITORIAL">#eeb8b4</color>
 </resources>

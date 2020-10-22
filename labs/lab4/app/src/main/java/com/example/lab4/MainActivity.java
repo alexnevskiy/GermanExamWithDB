@@ -1,6 +1,7 @@
 package com.example.lab4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,8 +9,6 @@ import android.os.Bundle;
 
 import java.io.IOException;
 import java.io.InputStream;
-
-import name.ank.lab4.BibDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         recyclerView.setHasFixedSize(true);
+        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
+        recyclerView.addItemDecoration(itemDecoration);
 
         try {
             bibLibAdapter = new BibLibAdapter(publications);
