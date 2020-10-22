@@ -46,7 +46,7 @@ public class BibLibAdapter extends RecyclerView.Adapter<BibLibAdapter.BibLibView
 
     @Override
     public int getItemCount() {
-        return database.;
+        return database.size();
     }
 
     static class BibLibViewHolder extends RecyclerView.ViewHolder {

@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/android-lifecycles-master.iml" filepath="$PROJECT_DIR$/.idea/android-lifecycles-master.iml" group="android-lifecycles-master" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android-lifecycles-master-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android-lifecycles-master-app.iml" group="android-lifecycles-master/app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="android-lifecycles-master/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/labs-android-lifecycles-master.iml" filepath="$PROJECT_DIR$/.idea/modules/labs-android-lifecycles-master.iml" group="android-lifecycles-master" />
     </modules>
   </component>
 </project>
