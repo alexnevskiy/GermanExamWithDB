@@ -30,9 +30,9 @@ public class EspressoTest {
         onView(withId(R.id.button)).check(matches(withText("Tap on me")));
         onView(withId(R.id.button)).perform(click());
         onView(withId(R.id.button)).check(matches(withText("1 tap")));
-        onView(withId(R.id.editText)).perform(clearText());
         onView(withId(R.id.button)).perform(click());
         onView(withId(R.id.button)).check(matches(withText("2 tap")));
+        onView(withId(R.id.editText)).perform(clearText());
         onView(withId(R.id.editText)).perform(typeText("Espresso Test"));
         activityRule.getScenario().onActivity(activity ->
                 activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE));
