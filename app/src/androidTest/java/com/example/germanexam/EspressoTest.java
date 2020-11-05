@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.RootMatchers.isDialog;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -70,9 +71,43 @@ public class EspressoTest {
         onView(withId(R.id.time_remaining)).check(matches(isDisplayed()));
     }
 
+    private void dialogDataChangeCheck() {
+        onView(withId(R.id.editTextTextPersonName))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withId(R.id.editTextTextPersonSurname))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withId(R.id.editTextTextPersonClass))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withText("Сохранить"))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+    }
+
     private void pressBack() {
         onView(isRoot()).perform(ViewActions.pressBack());
     }
+
+    private void dialogExamCheck() {
+        onView(withText("Куда Вы хотите перейти?"))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withText("Выбор варианта"))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withText("Главное меню"))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withText("Рабочий стол"))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+    }
+
+    /**
+     Тестирование навигации "вперёд"
+     **/
 
     @Test
     public void fromHomeScreenToSettings() {
@@ -116,13 +151,19 @@ public class EspressoTest {
         taskOneCheck();
     }
 
+    /**
+     Проверка глубины BackStack
+     **/
+
     @Test
     public void simpleBackStackTest() {
         homeScreenCheck();
         onView(withId(R.id.buttonStart)).perform(click());
         menuCheck();
+        onView(withId(R.id.button_variants)).perform(click());
+        variantsCheck();
         pressBack();
-        homeScreenCheck();
+        menuCheck();
     }
 
     @Test
@@ -135,11 +176,11 @@ public class EspressoTest {
         onView(withId(R.id.button_start_test)).perform(click());
         taskOneCheck();
         pressBack();
-        variantStartPageCheck();
-        pressBack();
+        dialogExamCheck();
+        onView(withText("Главное меню"))
+                .inRoot(isDialog())
+                .perform(click());
         menuCheck();
-        pressBack();
-        homeScreenCheck();
     }
 
     @Test
@@ -152,7 +193,11 @@ public class EspressoTest {
         onView(withId(R.id.button_start_test)).perform(click());
         taskOneCheck();
         pressBack();
-        variantStartPageCheck();
+        dialogExamCheck();
+        onView(withText("Выбор варианта"))
+                .inRoot(isDialog())
+                .perform(click());
+        variantsCheck();
         pressBack();
         menuCheck();
         onView(withId(R.id.button_variants)).perform(click());
@@ -162,18 +207,20 @@ public class EspressoTest {
         onView(withId(R.id.button_start_test)).perform(click());
         taskOneCheck();
         pressBack();
-        variantStartPageCheck();
-        pressBack();
-        variantsCheck();
-        pressBack();
+        dialogExamCheck();
+        onView(withText("Главное меню"))
+                .inRoot(isDialog())
+                .perform(click());
         menuCheck();
         onView(withId(R.id.button_settings)).perform(click());
         settingsCheck();
         pressBack();
         menuCheck();
-        pressBack();
-        homeScreenCheck();
     }
+
+    /**
+     Проверка нижнего меню навигации
+     **/
 
     @Test
     public void bottomNavigationTest() {
@@ -181,36 +228,39 @@ public class EspressoTest {
         onView(withId(R.id.buttonStart)).perform(click());
         menuCheck();
         onView(withId(R.id.bottom_navigation)).perform(click());
+        dialogDataChangeCheck();
         onView(withId(R.id.editTextTextPersonName))
                 .inRoot(isDialog())
-                .check(matches(isDisplayed()));
+                .perform(typeText("Alexander"));
         onView(withId(R.id.editTextTextPersonSurname))
                 .inRoot(isDialog())
-                .check(matches(isDisplayed()));
+                .perform(typeText("Kobyzhev"));
         onView(withId(R.id.editTextTextPersonClass))
                 .inRoot(isDialog())
-                .check(matches(isDisplayed()));
+                .perform(typeText("3530901/80202"));
         onView(withText("Сохранить"))
                 .inRoot(isDialog())
-                .check(matches(isDisplayed()))
                 .perform(click());
         menuCheck();
         onView(withId(R.id.button_settings)).perform(click());
         settingsCheck();
+        onView(withText("Ученик: Alexander Kobyzhev")).check(matches(isDisplayed()));
+        onView(withText("Класс: 3530901/80202")).check(matches(isDisplayed()));
         onView(withId(R.id.bottom_navigation)).perform(click());
+        dialogDataChangeCheck();
         onView(withId(R.id.editTextTextPersonName))
                 .inRoot(isDialog())
-                .check(matches(isDisplayed()));
+                .perform(typeText("Ivan"));
         onView(withId(R.id.editTextTextPersonSurname))
                 .inRoot(isDialog())
-                .check(matches(isDisplayed()));
+                .perform(typeText("Ivanov"));
         onView(withId(R.id.editTextTextPersonClass))
                 .inRoot(isDialog())
-                .check(matches(isDisplayed()));
-        onView(withText("Сохранить"))
-                .inRoot(isDialog())
-                .check(matches(isDisplayed()));
+                .perform(typeText("11A"));
+        pressBack();
         pressBack();
         settingsCheck();
+        onView(withText("Ученик: Alexander Kobyzhev")).check(matches(isDisplayed()));
+        onView(withText("Класс: 3530901/80202")).check(matches(isDisplayed()));
     }
 }

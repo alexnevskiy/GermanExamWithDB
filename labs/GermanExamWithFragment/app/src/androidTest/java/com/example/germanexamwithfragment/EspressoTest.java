@@ -75,9 +75,28 @@ public class EspressoTest {
         onView(withId(R.id.time_remaining)).check(matches(isDisplayed()));
     }
 
+    private void dialogDataChangeCheck() {
+        onView(withId(R.id.editTextTextPersonName))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withId(R.id.editTextTextPersonSurname))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withId(R.id.editTextTextPersonClass))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withText("Сохранить"))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+    }
+
     private void pressBack() {
         onView(isRoot()).perform(ViewActions.pressBack());
     }
+
+    /**
+    Тестирование навигации "вперёд"
+     **/
 
     @Test
     public void fromHomeScreenToSettings() {
@@ -120,6 +139,10 @@ public class EspressoTest {
         onView(withId(R.id.button_start_test)).perform(click());
         taskOneCheck();
     }
+
+    /**
+     Проверка глубины BackStack
+     **/
 
     @Test
     public void simpleBackStackTest() {
@@ -180,41 +203,25 @@ public class EspressoTest {
         homeScreenCheck();
     }
 
+    /**
+     Проверка нижнего меню навигации
+     **/
+
     @Test
     public void bottomNavigationTest() {
         homeScreenCheck();
         onView(withId(R.id.buttonStart)).perform(click());
         menuCheck();
         onView(withId(R.id.bottom_navigation)).perform(click());
-        onView(withId(R.id.editTextTextPersonName))
-                .inRoot(isDialog())
-                .check(matches(isDisplayed()));
-        onView(withId(R.id.editTextTextPersonSurname))
-                .inRoot(isDialog())
-                .check(matches(isDisplayed()));
-        onView(withId(R.id.editTextTextPersonClass))
-                .inRoot(isDialog())
-                .check(matches(isDisplayed()));
+        dialogDataChangeCheck();
         onView(withText("Сохранить"))
                 .inRoot(isDialog())
-                .check(matches(isDisplayed()))
                 .perform(click());
         menuCheck();
         onView(withId(R.id.button_settings)).perform(click());
         settingsCheck();
         onView(withId(R.id.bottom_navigation)).perform(click());
-        onView(withId(R.id.editTextTextPersonName))
-                .inRoot(isDialog())
-                .check(matches(isDisplayed()));
-        onView(withId(R.id.editTextTextPersonSurname))
-                .inRoot(isDialog())
-                .check(matches(isDisplayed()));
-        onView(withId(R.id.editTextTextPersonClass))
-                .inRoot(isDialog())
-                .check(matches(isDisplayed()));
-        onView(withText("Сохранить"))
-                .inRoot(isDialog())
-                .check(matches(isDisplayed()));
+        dialogDataChangeCheck();
         pressBack();
         settingsCheck();
     }

@@ -169,6 +169,106 @@
 - Закрытие диалогового окна при помощи нажатия на системную кнопку "Назад"
 - Делается проверка всех `View` в настройках приложения
 
+# 3. Доработка приложения из Лаб №3
+
+Попробуйте применить принцип TDD: у Вас в руках есть тест (из  предыдущего пункта), который описывает некоторое желаемое поведение. Три решения Лаб №3 (два с помощью Activity и одно с помощью Fragment)  должны приводить к одному и тому же результату (с т.з. пользователя).  Убедитесь, что все три варианта решения проходят разработанные тесты.  При необходимости исправьте программу или тесты (в тестах тоже бывают  ошибки и неточности).
+
+Как я писал ранее в решении 2 задачи лабораторной работы, функционал приложения с Activity отличается от приложения с фрагментами, поэтому достичь поставленной задачи при одинаковых тестах невозможно на всех трёх решениях. Принято решение переписать тест из предыдущего пункта так, чтобы он работал на двух реализациях приложения с Activity без внесения в него правок для каждого из двух решений. Все тесты успешно проходят проверку как при решении со `startActivityForResult()`, так и при решении с флагами.
+
+## Тестирование навигации "вперёд"
+
+При тестировании навигации "вперёд" изменения не потребовались, так как для всех решений переход между Activity/Fragment через кнопки навигации происходит одинаково.
+
+## Проверка глубины BackStack
+
+На данном этапе проверки уже внесены изменения в методы, а также добавлен один вспомогательный метод для проверки всплывающего диалогового окна при нажатии системной кнопки "Назад".
+
+### simpleBackStackTest()
+
+Так как в решении с Activity при переходе из начального экрана в главное меню приложения доступ к начальному экрану за ненадобностью является закрытым, то пришлось изменить структуру теста. Теперь она следующая:
+
+- Делается проверка всех `View` на начальном экране
+- Переход к меню через кнопку "Далее"
+- Делается проверка всех `View` в главном меню приложения
+- Переход к меню выбора варианта через кнопку "Варианты ЕГЭ"
+- Делается проверка всех `View` в меню выбора варианта
+- Возвращение к предыдущему Activity (главное меню приложения) через системную кнопку "Назад"
+- Делается проверка всех `View` в главном меню приложения
+
+### mediumBackStackTest()
+
+Как мы помним из реализации приложения с Activity из 3 лабораторной работы, при нажатии системной кнопки "Назад" на стартовом экране экзамена и в первом задании ЕГЭ появляется диалоговое окно, где пользователю предоставляется выбор, куда он хочет перейти: на рабочий стол, в главное меню или в меню выбора варианта. Поэтому структура теста немного изменилась, теперь она следующая:
+
+- Делается проверка всех `View` на начальном экране
+- Переход к меню через кнопку "Далее"
+- Делается проверка всех `View` в главном меню приложения
+- Переход к стартовому экрана экзамена через кнопку "Экзамен"
+- Делается проверка всех `View` на стартовом экране экзамена
+- Переход к первому заданию через кнопку "Prüfung starten"
+- Делается проверка всех `View` в первом задании
+- Появление диалогового окна при нажатии на системную кнопку "Назад"
+- Делается проверка всех `View` в диалоговом окне (титул окна, 3 кнопки: "Выбор варианта", "Главное меню", "Рабочий стол")
+- Переход к главному меню через кнопку "Главное меню" диалогового окна
+- Делается проверка всех `View` в главном меню приложения
+
+### fullBackStackTest()
+
+Последний тест также охватывает все Activity приложения, как и в тестах для фрагментов, но с некоторыми изменениями в виде проверки диалогового окна и нажатия в нём кнопок навигации. Структура теста следующая:
+
+- Делается проверка всех `View` на начальном экране
+- Переход к меню через кнопку "Далее"
+- Делается проверка всех `View` в главном меню приложения
+- Переход к стартовому экрана экзамена через кнопку "Экзамен"
+- Делается проверка всех `View` на стартовом экране экзамена
+- Переход к первому заданию через кнопку "Prüfung starten"
+- Делается проверка всех `View` в первом задании
+- Появление диалогового окна при нажатии на системную кнопку "Назад"
+- Делается проверка всех `View` в диалоговом окне (титул окна, 3 кнопки: "Выбор варианта", "Главное меню", "Рабочий стол")
+- Переход к меню выбора варианта через кнопку "Выбор варианта" диалогового окна
+- Делается проверка всех `View` в меню выбора варианта
+- Возвращение к предыдущему Activity (главное меню) через системную кнопку "Назад"
+- Делается проверка всех `View` в главном меню приложения
+- Переход к меню выбора варианта через кнопку "Варианты ЕГЭ"
+- Делается проверка всех `View` в меню выбора варианта
+- Переход к стартовому экрана экзамена через кнопку "1" (может быть любая кнопка)
+- Делается проверка всех `View` на стартовом экране экзамена
+- Переход к первому заданию через кнопку "Prüfung starten"
+- Делается проверка всех `View` в первом задании
+- Появление диалогового окна при нажатии на системную кнопку "Назад"
+- Делается проверка всех `View` в диалоговом окне (титул окна, 3 кнопки: "Выбор варианта", "Главное меню", "Рабочий стол")
+- Переход к главному меню приложения через кнопку "Главное меню" диалогового окна
+- Делается проверка всех `View` в главном меню приложения
+- Переход к настройкам через кнопку "Настройки"
+- Делается проверка всех `View` в настройках приложения
+- Возвращение к предыдущему Activity (главное меню) через системную кнопку "Назад"
+- Делается проверка всех `View` в главном меню приложения
+
+## Проверка нижнего меню навигации
+
+На данном этапе разработки приложения появилась возможность сохранения данных пользователя при первом включении и изменении данных через нижнее навигационное меню. Поэтому в данном тесте реализована не только проверка открытия и закрытия диалогового окна при нажатии на нижнее меню навигации, но и сохранение данных пользователя, которые можно увидеть в настройках приложения. Так как Espresso ругается на ввод текста кириллицей, пришлось вводить данные пользователя на английском языке. Структура теста следующая:
+
+- Делается проверка всех `View` на начальном экране
+- Переход к меню через кнопку "Далее"
+- Делается проверка всех `View` в главном меню приложения
+- Переход к диалоговому окну при нажатии на нижнее навигационное меню
+- Делается проверка всех `View` в диалоговом окне (3 EditText и кнопка "Сохранить")
+- Ввод данных пользователя (Alexander, Kobyzhev, 3530901/80202)
+- Закрытие диалогового окна и сохранение данных при помощи нажатия на кнопку "Сохранить"
+- Делается проверка всех `View` в главном меню приложения
+- Переход к настройкам через кнопку "Настройки"
+- Делается проверка всех `View` в настройках приложения
+- Делается отдельная проверка введённых ранее данных пользователя
+- Переход к диалоговому окну при нажатии на нижнее навигационное меню
+- Делается проверка всех `View` в диалоговом окне (3 EditText и кнопка "Сохранить")
+- Ввод данных пользователя (Ivan, Ivanov, 11A)
+- Закрытие диалогового окна при помощи двойного нажатия на системную кнопку "Назад"
+- Делается проверка всех `View` в настройках приложения
+- Делается отдельная проверка введённых ранее данных пользователя (отображается "Ученик: Alexander Kobyzhev", "Класс: 3530901/80202", так как диалоговое окно было закрыто через системную кнопку назад, а не через кнопку "Сохранить")
+
+# Выводы:
+
+В процессе выполнения данной лабораторной работы в среде разработки Android Studio произведено знакомство с принципами и получены практические навыки разработки UI тестов для Android приложений. Написаны простейшие UI тесты для приложения, состоящего всего лишь из одной кнопки и одного текстового поля. Произведено тестирование навигации более простого в реализации приложения из 3 лабораторной работы с фрагментами, а также переписаны некоторые тесты для более сложного в плане функционала приложения с Activity. Всего получилось 8 UI тестов для основного приложения: как простые, демонстрирующие возможности перехода между двумя окнами, так и трудные, охватывающие всё приложение целиком. Все тесты успешно проходят проверку как при решении со `startActivityForResult()`, так и при решении с флагами. 
+
 # Приложение:
 
 ## Листинг 1: activity_main для UI теста
@@ -333,9 +433,28 @@ public class EspressoTest {
         onView(withId(R.id.time_remaining)).check(matches(isDisplayed()));
     }
 
+    private void dialogDataChangeCheck() {
+        onView(withId(R.id.editTextTextPersonName))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withId(R.id.editTextTextPersonSurname))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withId(R.id.editTextTextPersonClass))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withText("Сохранить"))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+    }
+
     private void pressBack() {
         onView(isRoot()).perform(ViewActions.pressBack());
     }
+
+    /**
+    Тестирование навигации "вперёд"
+     **/
 
     @Test
     public void fromHomeScreenToSettings() {
@@ -378,6 +497,10 @@ public class EspressoTest {
         onView(withId(R.id.button_start_test)).perform(click());
         taskOneCheck();
     }
+
+    /**
+     Проверка глубины BackStack
+     **/
 
     @Test
     public void simpleBackStackTest() {
@@ -438,44 +561,277 @@ public class EspressoTest {
         homeScreenCheck();
     }
 
+    /**
+     Проверка нижнего меню навигации
+     **/
+
     @Test
     public void bottomNavigationTest() {
         homeScreenCheck();
         onView(withId(R.id.buttonStart)).perform(click());
         menuCheck();
         onView(withId(R.id.bottom_navigation)).perform(click());
-        onView(withId(R.id.editTextTextPersonName))
-                .inRoot(isDialog())
-                .check(matches(isDisplayed()));
-        onView(withId(R.id.editTextTextPersonSurname))
-                .inRoot(isDialog())
-                .check(matches(isDisplayed()));
-        onView(withId(R.id.editTextTextPersonClass))
-                .inRoot(isDialog())
-                .check(matches(isDisplayed()));
+        dialogDataChangeCheck();
         onView(withText("Сохранить"))
                 .inRoot(isDialog())
-                .check(matches(isDisplayed()))
                 .perform(click());
         menuCheck();
         onView(withId(R.id.button_settings)).perform(click());
         settingsCheck();
         onView(withId(R.id.bottom_navigation)).perform(click());
-        onView(withId(R.id.editTextTextPersonName))
-                .inRoot(isDialog())
-                .check(matches(isDisplayed()));
-        onView(withId(R.id.editTextTextPersonSurname))
-                .inRoot(isDialog())
-                .check(matches(isDisplayed()));
-        onView(withId(R.id.editTextTextPersonClass))
-                .inRoot(isDialog())
-                .check(matches(isDisplayed()));
-        onView(withText("Сохранить"))
-                .inRoot(isDialog())
-                .check(matches(isDisplayed()));
+        dialogDataChangeCheck();
         pressBack();
         settingsCheck();
     }
 }
 ```
 
+## Листинг 5: EspressoText.java для приложения с Activity
+
+```java
+@RunWith(AndroidJUnit4.class)
+public class EspressoTest {
+    @Rule
+    public ActivityScenarioRule<MainActivity> activityRule =
+            new ActivityScenarioRule<>(MainActivity.class);
+
+    private void homeScreenCheck() {
+        onView(withId(R.id.buttonStart)).check(matches(isDisplayed()));
+        onView(withId(R.id.editTextTextPersonName)).check(matches(isDisplayed()));
+        onView(withId(R.id.editTextTextPersonSurname)).check(matches(isDisplayed()));
+        onView(withId(R.id.editTextTextPersonClass)).check(matches(isDisplayed()));
+    }
+
+    private void menuCheck() {
+        onView(withId(R.id.button_exam)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_variants)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_settings)).check(matches(isDisplayed()));
+        onView(withId(R.id.bottom_navigation)).check(matches(isDisplayed()));
+    }
+
+    private void settingsCheck() {
+        onView(withId(R.id.microphone_test)).check(matches(isDisplayed()));
+        onView(withId(R.id.change_interface)).check(matches(isDisplayed()));
+        onView(withId(R.id.about_application)).check(matches(isDisplayed()));
+        onView(withId(R.id.settings)).check(matches(isDisplayed()));
+        onView(withId(R.id.student_name)).check(matches(isDisplayed()));
+        onView(withId(R.id.person_class)).check(matches(isDisplayed()));
+    }
+
+    private void variantsCheck() {
+        for (int i = 0; i < 25; i++) {
+            onView(withText(Integer.toString(i + 1))).check(matches(isDisplayed()));
+        }
+    }
+
+    private void variantStartPageCheck() {
+        onView(withId(R.id.start_test)).check(matches(isDisplayed()));
+        onView(withId(R.id.button_start_test)).check(matches(isDisplayed()));
+    }
+
+    private void taskOneCheck() {
+        onView(allOf(withId(R.id.Task1), withText("Aufgabe 1"))).check(matches(isDisplayed()));
+        onView(withId(R.id.clock)).check(matches(isDisplayed()));
+        onView(withId(R.id.prep_ans)).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.task1_logo), withText("1"))).check(matches(isDisplayed()));
+        onView(withId(R.id.task1_text)).check(matches(isDisplayed()));
+        onView(withId(R.id.text1)).check(matches(isDisplayed()));
+        onView(withId(R.id.preparation)).check(matches(isDisplayed()));
+        onView(withId(R.id.timeline)).check(matches(isDisplayed()));
+        onView(withId(R.id.time_remaining)).check(matches(isDisplayed()));
+    }
+
+    private void dialogDataChangeCheck() {
+        onView(withId(R.id.editTextTextPersonName))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withId(R.id.editTextTextPersonSurname))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withId(R.id.editTextTextPersonClass))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withText("Сохранить"))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+    }
+
+    private void pressBack() {
+        onView(isRoot()).perform(ViewActions.pressBack());
+    }
+
+    private void dialogExamCheck() {
+        onView(withText("Куда Вы хотите перейти?"))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withText("Выбор варианта"))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withText("Главное меню"))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+        onView(withText("Рабочий стол"))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()));
+    }
+
+    /**
+     Тестирование навигации "вперёд"
+     **/
+
+    @Test
+    public void fromHomeScreenToSettings() {
+        homeScreenCheck();
+        onView(withId(R.id.buttonStart)).perform(click());
+        menuCheck();
+        onView(withId(R.id.button_settings)).perform(click());
+        settingsCheck();
+    }
+
+    @Test
+    public void fromHomeScreenToVariants() {
+        homeScreenCheck();
+        onView(withId(R.id.buttonStart)).perform(click());
+        menuCheck();
+        onView(withId(R.id.button_variants)).perform(click());
+        variantsCheck();
+    }
+
+    @Test
+    public void fromHomeScreenToExamThroughMenu() {
+        homeScreenCheck();
+        onView(withId(R.id.buttonStart)).perform(click());
+        menuCheck();
+        onView(withId(R.id.button_exam)).perform(click());
+        variantStartPageCheck();
+        onView(withId(R.id.button_start_test)).perform(click());
+        taskOneCheck();
+    }
+
+    @Test
+    public void fromHomeScreenToExamThroughVariants() {
+        homeScreenCheck();
+        onView(withId(R.id.buttonStart)).perform(click());
+        menuCheck();
+        onView(withId(R.id.button_variants)).perform(click());
+        variantsCheck();
+        onView(withText("1")).perform(click());
+        variantStartPageCheck();
+        onView(withId(R.id.button_start_test)).perform(click());
+        taskOneCheck();
+    }
+
+    /**
+     Проверка глубины BackStack
+     **/
+
+    @Test
+    public void simpleBackStackTest() {
+        homeScreenCheck();
+        onView(withId(R.id.buttonStart)).perform(click());
+        menuCheck();
+        onView(withId(R.id.button_variants)).perform(click());
+        variantsCheck();
+        pressBack();
+        menuCheck();
+    }
+
+    @Test
+    public void mediumBackStackTest() {
+        homeScreenCheck();
+        onView(withId(R.id.buttonStart)).perform(click());
+        menuCheck();
+        onView(withId(R.id.button_exam)).perform(click());
+        variantStartPageCheck();
+        onView(withId(R.id.button_start_test)).perform(click());
+        taskOneCheck();
+        pressBack();
+        dialogExamCheck();
+        onView(withText("Главное меню"))
+                .inRoot(isDialog())
+                .perform(click());
+        menuCheck();
+    }
+
+    @Test
+    public void fullBackStackTest() {
+        homeScreenCheck();
+        onView(withId(R.id.buttonStart)).perform(click());
+        menuCheck();
+        onView(withId(R.id.button_exam)).perform(click());
+        variantStartPageCheck();
+        onView(withId(R.id.button_start_test)).perform(click());
+        taskOneCheck();
+        pressBack();
+        dialogExamCheck();
+        onView(withText("Выбор варианта"))
+                .inRoot(isDialog())
+                .perform(click());
+        variantsCheck();
+        pressBack();
+        menuCheck();
+        onView(withId(R.id.button_variants)).perform(click());
+        variantsCheck();
+        onView(withText("1")).perform(click());
+        variantStartPageCheck();
+        onView(withId(R.id.button_start_test)).perform(click());
+        taskOneCheck();
+        pressBack();
+        dialogExamCheck();
+        onView(withText("Главное меню"))
+                .inRoot(isDialog())
+                .perform(click());
+        menuCheck();
+        onView(withId(R.id.button_settings)).perform(click());
+        settingsCheck();
+        pressBack();
+        menuCheck();
+    }
+
+    /**
+     Проверка нижнего меню навигации
+     **/
+
+    @Test
+    public void bottomNavigationTest() {
+        homeScreenCheck();
+        onView(withId(R.id.buttonStart)).perform(click());
+        menuCheck();
+        onView(withId(R.id.bottom_navigation)).perform(click());
+        dialogDataChangeCheck();
+        onView(withId(R.id.editTextTextPersonName))
+                .inRoot(isDialog())
+                .perform(typeText("Alexander"));
+        onView(withId(R.id.editTextTextPersonSurname))
+                .inRoot(isDialog())
+                .perform(typeText("Kobyzhev"));
+        onView(withId(R.id.editTextTextPersonClass))
+                .inRoot(isDialog())
+                .perform(typeText("3530901/80202"));
+        onView(withText("Сохранить"))
+                .inRoot(isDialog())
+                .perform(click());
+        menuCheck();
+        onView(withId(R.id.button_settings)).perform(click());
+        settingsCheck();
+        onView(withText("Ученик: Alexander Kobyzhev")).check(matches(isDisplayed()));
+        onView(withText("Класс: 3530901/80202")).check(matches(isDisplayed()));
+        onView(withId(R.id.bottom_navigation)).perform(click());
+        dialogDataChangeCheck();
+        onView(withId(R.id.editTextTextPersonName))
+                .inRoot(isDialog())
+                .perform(typeText("Ivan"));
+        onView(withId(R.id.editTextTextPersonSurname))
+                .inRoot(isDialog())
+                .perform(typeText("Ivanov"));
+        onView(withId(R.id.editTextTextPersonClass))
+                .inRoot(isDialog())
+                .perform(typeText("11A"));
+        pressBack();
+        pressBack();
+        settingsCheck();
+        onView(withText("Ученик: Alexander Kobyzhev")).check(matches(isDisplayed()));
+        onView(withText("Класс: 3530901/80202")).check(matches(isDisplayed()));
+    }
+}
+```
