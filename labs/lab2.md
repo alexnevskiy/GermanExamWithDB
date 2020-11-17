@@ -9,7 +9,7 @@
 
 ## Пример 1: Split Screen
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/Split%20Screen.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/Split%20Screen.png)
 
 *Рис. 1. Методы жизненного цикла приложения в режиме Split Screen*
 
@@ -17,7 +17,7 @@
 
 ## Пример 2: Звонок на устройство
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/Call%20device.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/Call%20device.png)
 
 *Рис. 2. Методы жизненного цикла приложения во время звонка*
 
@@ -25,7 +25,7 @@
 
 ## Пример 3: Вызов Google Assistant
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/Google%20Assistant.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/Google%20Assistant.png)
 
 *Рис. 3. Методы жизненного цикла приложения при вызове Google Assistant*
 
@@ -35,15 +35,15 @@
 
 Продемонстрируйте работу альтернативного ресурса (тип ресурса согласно 4 варианту) на каком-либо примере.
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/Alternative%20Resources.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/Alternative%20Resources.png)
 
 *Рис. 4. Экран запущенного приложения с разрешением меньше 480dp*
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/Alternative%20Resources%20480dp.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/Alternative%20Resources%20480dp.png)
 
 *Рис. 5. Экран запущенного приложения с разрешением больше 480dp и конфигурацией Available height*
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/Alternative%20Resources%20480dp%20without%20Available%20height.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/Alternative%20Resources%20480dp%20without%20Available%20height.png)
 
 *Рис. 6. Экран запущенного приложения с разрешением больше 480dp без конфигурации Available height*
 

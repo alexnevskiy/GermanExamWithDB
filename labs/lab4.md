@@ -40,7 +40,7 @@ SOFTWARE(BibTeXEntry.TYPE_SOFTWARE);
 
 ## RecyclerView
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/RecyclerView.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/RecyclerView.png)
 
 Для решения данной задачи нужно подключить к проекту зависимость в gradle файле, чтобы использовать RecyclerView: `implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha06'`. В activity_main.xml добавлен RecyclerView, с которым мы и будем работать. Далее создан layout, который будет отображать элемент списка RecyclerView. В нём находится 4 TextView, которые отображают тип записи, название, автора и год написания, на мой взгляд, это самый содержательный и менее ёмкий формат для отображения данных.
 

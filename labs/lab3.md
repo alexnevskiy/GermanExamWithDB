@@ -132,43 +132,43 @@ void saveNewName(String newName) {
 
 ## 1) Окно входа (MainActivity.java)
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/MainActivity.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/MainActivity.png)
 
 Данное окно появляется при входе в приложение, где пользователя просят ввести свои данные. При нажатии на кнопку "Далее" вызывается метод `startActivity()` для перехода в следующее окно (главное меню приложения) и метод `finish()`, чтобы данное окно не находилось в BackStack, так как оно использоваться больше не будет.
 
 ## 2) Главное меню (Menu.java)
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/Menu.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/Menu.png)
 
 В данном окне мы видим три большие синие кнопки "Экзамен", "Варианты ЕГЭ" и "Настройки", а также Bottom Navigation, при нажатии на который мы можем изменить свои данные, которые вводили ранее. Такой же Bottom Navigation также доступен и в окне настроек приложения. При нажатии на кнопку "Экзамен" будет вызыван метод `startActivityForResult()` с `requestCode` равным 0 для перехода в окно начала экзамена. В моём приложении requestCode = 0 означает главное меню, 1 - рабочий стол телефона, 2 - меню выбора варианта. При нажатии на кнопку "Варианты ЕГЭ" также вызывается `startActivityForResult()` с `requestCode` равным 0, только на этот раз для перехода в окно выбора варианта. Если нажать на кнопку "Настройки", то будет вызван метод `startActivity()`. При завершении Activity, которые запущены при нажатии на кнопки "Экзамен" и "Варианты ЕГЭ", получаем `resultCode`, который обрабатываем в `onActivityResult()`. Если код равен 2, то используем метод `startActivity()` для перехода в окно выбора варианта, если же код равен 1, то выполняется метод `finish()` для закрытия приложения.
 
 Отдельное внимание стоит уделить Bottom Navigation, которое является аналогом Activity 'About'. В задании предполагается, что при нажатии на Bottom Navigation должно открыться другое Activity, в приложении же открывается диалоговое окно с возможностью изменения внесённых при первом запуске приложения данных. Использование диалогового окна для достаточно простой задачи (как в нашем случае) позволяет сократить число классов Activity в приложении, тем самым экономя ресурсы памяти.
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/Name_Dialog.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/Name_Dialog.png)
 
 ## 3) Настройки (Settings.java)
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/Settings.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/Settings.png)
 
 Здесь мы видим введённые нами данные при запуске приложения, а также кнопки для проверки микрофона, настройки интерфейса и сведении о приложении (пока эти кнопки не работают). Также можно видеть Bottom Navigation, который ничем не отличается от описанного выше.
 
 ## 4) Варианты ЕГЭ (Variants.java)
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/Variants.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/Variants.png)
 
 В этом окне находятся кнопки выбора варианта, пока что их 25 штук. При нажатии на кнопку вызывается метод `startActivityForResult()` с `requestCode` равным 2. Здесь же обрабатываем завершённые до этого Activity в методе `onActivityResult()`: `resultCode` = 1 - устанавливаем код 1 при помощи метода `setResult()`, `resultCode` = 0 - вызываем метод `finish()` и переходим в главное меню.
 
 ## 5) Стартовая страница (VariantStartPage.java)
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/VariantStartPage.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/VariantStartPage.png)
 
 В данное окно можно перейти по кнопке "Экзамен" в главном меню и по любой кнопке в меню выбора варианта. В данном окне одна кнопка для перехода к первому заданию, при нажатии на которую вызывается метод `startActivityForResult()` с `requestCode` равным 0. При нажатии на системную кнопку "Назад" открывается диалоговое окно с тремя кнопками: "Рабочий стол", "Главное меню" и "Выбор варианта". При нажатии на "Рабочий стол" вызывается метод `setResult()` с кодом 1 и метод `finish()`. При нажатии на "Главное меню" вызывается метод `setResult()` с кодом 0 и метод `finish()`. При нажатии на "Выбор варианта" вызывается метод `setResult()` с кодом 2 и метод `finish()`. Здесь же обрабатываем завершённые до этого Activity в методе `onActivityResult()`: `resultCode` = 2 - `setResult()` с кодом 2 и `finish()`, `resultCode` = 1 - `setResult()` с кодом 1 и `finish()`, `resultCode` = 0 - `setResult()` с кодом 0 и `finish()`.
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/VariantStartPageDialog.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/VariantStartPageDialog.png)
 
 ## 6) Первое задание (TaskOne.java)
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/TaskOneDialog.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/TaskOneDialog.png)
 
 В данном окне не содержится никаких кнопок. При нажатии на системную кнопку "Назад" также открывается диалоговое окно с тремя кнопками: "Рабочий стол", "Главное меню" и "Выбор варианта". Вызываются такие же методы, что и в прошлом окне. Если бы пользователь нажимал на кнопки в следующем порядке начиная с главного меню: Экзамен - "Prüfung starten", то BackStack был бы следующим: Главное меню - Стартовая страница - Первое задание.
 
@@ -200,9 +200,9 @@ void saveNewName(String newName) {
 
 Решите предыдущую задачу (с расширенным графом) с использованием  navigation graph. Все Activity должны быть заменены на фрагменты, кроме Activity 'About', которая должна остаться самостоятельной Activity. В отчете сравните все решения.
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/navigation_graph.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/navigation_graph.png)
 
-![](https://raw.githubusercontent.com/alexnevskiy/GermanExam/master/labs/images/navigation_exam_graph.png)
+![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/navigation_exam_graph.png)
 
 Для выполнения данного задания создан отдельный проект, где все Activity заменены на фрагменты, Activity 'About' всё также осталось диалоговым окном. Для того, чтобы layout отображался в fragment, используется метод `onCreateView()`, а для регистрации нажатий на кнопки используетсяся метод `onActivityCreated()`. Навигация осуществлялась при помощи метода `Navigation.findNavController(view).navigate()` при нажатии на кнопки. Так как в приложении в меню предусмотрена ориентация `"portrait"`, а во время самого экзамена `"userLandscape"`, то в графе при переходе на стартовую страницу экзамена стоит не фрагмент, а Activity, у которой в AndroidManifest прописана ориентация `"userLandscape"`, в то время как у стартовой MainActivity - `"portrait"`. У Activity для экзамена предусмотрен свой собственный граф, который состоит из двух фрагментов.
 
