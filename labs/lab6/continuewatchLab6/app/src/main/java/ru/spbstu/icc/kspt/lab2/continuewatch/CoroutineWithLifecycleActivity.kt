@@ -4,15 +4,17 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.whenResumed
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 
-class CoroutineActivity : AppCompatActivity() {
+class CoroutineWithLifecycleActivity : AppCompatActivity() {
     var secondsElapsed: Int = 0
 
-    private var scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
-    private lateinit var job: Job
+    private var scope: LifecycleCoroutineScope = lifecycleScope
 
     private fun secondsDisplay() {
         textSecondsElapsed.post {
@@ -21,12 +23,13 @@ class CoroutineActivity : AppCompatActivity() {
     }
 
     private fun startCoroutine() {
-        job = scope.launch {
-            while (true) {
-                delay(1000)
-                launch(Dispatchers.Main) { secondsDisplay() }
-                Log.d("Job", "Job running with hashcode: " + job.hashCode())
-                Log.d("CoroutineScope", "CoroutineScope running with hashcode: " + scope.hashCode())
+        scope.launch(Dispatchers.Default) {
+            whenResumed {
+                while (true) {
+                    delay(1000)
+                    launch(Dispatchers.Main) { secondsDisplay() }
+                    Log.d("CoroutineScope", "CoroutineScope running with hashcode: " + scope.hashCode())
+                }
             }
         }
     }
@@ -35,18 +38,6 @@ class CoroutineActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         startCoroutine()
-    }
-
-    override fun onResume() {
-        if (!job.isActive) {
-            startCoroutine()
-        }
-        super.onResume()
-    }
-
-    override fun onPause() {
-        job.cancel()
-        super.onPause()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

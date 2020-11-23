@@ -61,10 +61,12 @@
 
 Чтобы Kotlin Coroutins можно было пользоваться, добавим новую зависимость в `build.gradle`:
 
-```xml
+```groovy
 implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7"
 implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2"
 ```
+
+### Создание Kotlin Coroutines при помощи CoroutineScope
 
 Для решения данной задачи создадим новый класс `CoroutineActivity`, в котором инициализируем потоки при помощи coroutine.
 
@@ -79,6 +81,20 @@ implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2"
 В методе `onPause()` отменяем нашу `job` при помощи функции `cancel()`, чтобы подсчёт секунд прекратился.
 
 Приложение реализованное при помощи Kotlin Coroutins при стресс-тесте выдаёт ожидаемые результаты, подсчёт времени при открытом приложении работает исправно.
+
+### Создание Kotlin Coroutines при помощи lifecycleScope
+
+Чтобы мы могли пользоваться `LifecycleScope` в нашем приложении, нужно добавить добавить новую зависимость в `build.gradle`:
+
+```groovy
+implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+```
+
+Что же такое `LifecycleScope` и почему я решил использовать его в решении данного задания? `LifecycleScope` определяется для каждого `Lifecycle` объекта, то есть для нашей Activity в частности. И любые корутины, запущенные в этом scope, отменяются при уничтожении жизненного цикла, то есть нашей Activity. Для решения данной задачи это очень даже подходит, так как мы не должны считать количество секунд, если приложение неактивно. При использовании `CoroutineScope` мы вручную отменяли работу корутин в методе `onPause()` и сами предусматривали когда их нужно запускать, то есть в методе `onCreate()` и если понадобится, то в методе `onResume()`. При использовании `LifecycleScope` этого же можно добиться при помощи различных функций типа `whenCreated()`, `whenStarted()` и `whenResumed()`. Любой запуск корутины внутри этих блоков приостанавливается, если жизненный цикл не находится по крайней мере в минимально желаемом состоянии.
+
+Теперь рассмотрим сам код, отличия минимальные. При описании класса мы создаём одно свойство `scope`, которое хранит в себе `lifecycleScope` и `job` создавать нам не имеет никакого смысла. В методе `onCreate()` всё также вызываем нашу приватную функцию `startCoroutine()`, в которой в качестве аргумента при запуске `scope` указываем `Dispatchers.Default`, так как по умолчанию `scope` запускается в главном (UI) потоке. Внутри лямбды указываем, что данный код нужно запускать при состоянии `RESUMED` нашего `Activity` при помощи supsend-функции `whenResumed`. Переопределять `onPause()` и `onResume()` теперь не имеет никакого смысла, потому что `lifecycleScope` всё сделает за нас.
+
+Данное решение также успешно прошло стресс-тест и потоки работают только при активном окне приложения. Код приложения уменьшился, что не может не радовать.
 
 # 2. Загрузка картинки в фоновом потоке (AsyncTask)
 
@@ -112,7 +128,7 @@ android:screenOrientation="portrait"
 
 Перепишите предыдущее приложение с использованием Kotlin Coroutines.
 
-Для возможности работы с использованием Kotlin Coroutines прописываем зависимости в `build.gradle`.
+Для возможности работы с использованием Kotlin Coroutines прописываем зависимости в `build.gradle`. В данном решении ограничимся обычным `CoroutineScope`.
 
 Для решения данной задачи написан класс `CoroutineActivity`, который содержит в себе реализацию приложения на Kotlin Coroutines. Как и в решении 1 задания при описании класса создаются два свойства: `scope` - хранит в себе `CoroutineScope` с диспетчером IO, который рекомендуют использовать при обращении к интернет-ресурсам и `job` - в неё мы далее определим `Job` при запуске корутины. 
 
@@ -132,7 +148,7 @@ android:screenOrientation="portrait"
 
 Для того, чтобы воспользоваться ею, нужно прописать зависимости в `build.gradle`:
 
-```xml
+```groovy
 implementation 'com.squareup.picasso:picasso:2.71828'
 ```
 
@@ -343,7 +359,52 @@ class CoroutineActivity : AppCompatActivity() {
 }
 ```
 
-## Листинг 4: activity_main.xml (PictureDownloading)
+## Листинг 4: CoroutineWithLifecycleActivity.kt
+
+```kotlin
+class CoroutineWithLifecycleActivity : AppCompatActivity() {
+    var secondsElapsed: Int = 0
+
+    private var scope: LifecycleCoroutineScope = lifecycleScope
+
+    private fun secondsDisplay() {
+        textSecondsElapsed.post {
+            textSecondsElapsed.setText("Seconds elapsed: " + secondsElapsed++)
+        }
+    }
+
+    private fun startCoroutine() {
+        scope.launch(Dispatchers.Default) {
+            whenResumed {
+                while (true) {
+                    delay(1000)
+                    launch(Dispatchers.Main) { secondsDisplay() }
+                    Log.d("CoroutineScope", "CoroutineScope running with hashcode: " + scope.hashCode())
+                }
+            }
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        startCoroutine()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt("seconds", secondsElapsed)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        secondsElapsed = savedInstanceState.getInt("seconds")
+        secondsDisplay()
+        super.onRestoreInstanceState(savedInstanceState)
+    }
+}
+```
+
+## Листинг 5: activity_main.xml (PictureDownloading)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -407,7 +468,7 @@ class CoroutineActivity : AppCompatActivity() {
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
-## Листинг 5: AsyncTaskActivity.kt (PictureDownloading)
+## Листинг 6: AsyncTaskActivity.kt (PictureDownloading)
 
 ```kotlin
 class AsyncTaskActivity : AppCompatActivity() {
@@ -482,7 +543,7 @@ class AsyncTaskActivity : AppCompatActivity() {
 }
 ```
 
-## Листинг 6: CoroutineActivity.kt (PictureDownloading)
+## Листинг 7: CoroutineActivity.kt (PictureDownloading)
 
 ```kotlin
 class CoroutineActivity : AppCompatActivity() {
@@ -543,7 +604,7 @@ class CoroutineActivity : AppCompatActivity() {
 }
 ```
 
-## Листинг 7: PicassoActivity.kt (PictureDownloading)
+## Листинг 8: PicassoActivity.kt (PictureDownloading)
 
 ```kotlin
 class PicassoActivity : AppCompatActivity() {
