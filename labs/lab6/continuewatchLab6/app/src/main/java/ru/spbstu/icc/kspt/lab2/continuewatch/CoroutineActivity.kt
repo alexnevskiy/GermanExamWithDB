@@ -3,8 +3,6 @@ package ru.spbstu.icc.kspt.lab2.continuewatch
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.LifecycleOwner
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 
