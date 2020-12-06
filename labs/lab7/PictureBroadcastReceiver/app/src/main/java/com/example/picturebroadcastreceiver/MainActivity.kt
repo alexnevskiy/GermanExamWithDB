@@ -11,12 +11,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-    companion object {
-        lateinit var textView: TextView
-    }
-
     val intentAction = "com.example.pictureurldownloading.PICTURE_DOWNLOAD"
     lateinit var button: Button
+    lateinit var textView: TextView
     private lateinit var broadcastReceiver: PictureBroadcastReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {

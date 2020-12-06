@@ -12,7 +12,7 @@
 
 ## IntentService
 
-Приложение с сервисами для всех пунктов будет одинаковым, поэтому здесь я презентую его визуальную составляющую. Основное активити практически такое же, как и в 6 лабораторной работе, только вместо `ImageView` по центру экрана теперь находится `TextView`. Для этого задания у нас пока ещё нет Broadcast Receiver'а, чтобы отображать на экране путь до скачанной картинки, поэтому `TextView` нам об этом сигнализирует:
+Приложение с сервисами для всех пунктов будет одинаковым, поэтому здесь я презентую его визуальную составляющую. Основное активити практически такое же, как и в 6 лабораторной работе, только вместо `ImageView` по центру экрана теперь находится `TextView`. В 3 пункте лабораторной работы немного будет изменён интерфейс приложения, да и вообще, конкретно в этом пункте `TextView` нам не нужен, но я его оставлю как заготовку для следующего решения. Для этого задания у нас пока ещё нет Broadcast Receiver'а, чтобы отображать на экране путь до скачанной картинки, поэтому `TextView` нам об этом сигнализирует:
 
 ![](https://raw.githubusercontent.com/alexnevskiy/imagesForLabs/main/PictureDowdloadingWithTextView.png)
 
@@ -46,7 +46,7 @@
 
 Для реализации broadcast receiver написан класс `PictureBroadcastReceiver`, который наследуется от `BroadcastReceiver()`, внутри класса `MainActivity`. Сначала опишу главный класс нашей Activity.
 
-В начале создаются свойства для дальнейшей реализации и создаётся сопутствующий объект - некий аналог статических переменных в Java, в котором находится неопределённый `TextView`. Его мы будем использовать внутри broadcast receiver'а, так как если в конструктор нашего класса `PictureBroadcastReceiver` подать что-то, то манифест приложения будет подсвечивать его красным цветом и писать, что нельзя ничего подавать ему на вход. В методе `onCreate()` определяем наши `View` в соответствующие свойства и делаем проверку на наличие пути в `Extra` нашего `Intent`. Данную проверку я опишу позже, когда дойдём до описания класса `PictureBroadcastReceiver`, где и кладётся путь до файла в `Intent`. Если проверка прошла, то в `TextView` отображаем путь до файла, который мы получаем при помощи broadcast receiver'а далее. Затем создаём экземпляр нашего класса `PictureBroadcastReceiver` и регистрируем его при помощи функции `registerReceiver()`, где на вход подаём сам приёмщик и `IntentFilter`, который выбирает broadcast'ы для получения. Ну и в конце чисто для функционала обрабатываем нажатие кнопки, при котором текст по центру экаран меняется на "Путь сброшен". В методе `onDestroy()` отменяем регистрацию нашего приёмщика.
+В начале создаются свойства для наших `View` и не только, чтобы в дальнейшем их реализовать. В методе `onCreate()` определяем наши `View` в соответствующие свойства и делаем проверку на наличие пути в `Extra` нашего `Intent`. Данную проверку я опишу позже, когда дойдём до описания класса `PictureBroadcastReceiver`, где и кладётся путь до файла в `Intent`. Если проверка прошла, то в `TextView` отображаем путь до файла, который мы получаем при помощи broadcast receiver'а далее. Затем создаём экземпляр нашего класса `PictureBroadcastReceiver` и регистрируем его при помощи функции `registerReceiver()`, где на вход подаём сам приёмщик и `IntentFilter`, который выбирает broadcast'ы для получения. Ну и в конце чисто для функционала обрабатываем нажатие кнопки, при котором текст по центру экаран меняется на "Путь сброшен". В методе `onDestroy()` отменяем регистрацию нашего приёмщика.
 
 Рассмотрим созданный класс `PictureBroadcastReceiver` с его единственным методом `onReceive()`. В данном методе я стартую новую Activity с вложенным внутрь `Intent` путём до файла. Сделано это для того, чтобы не переключаться между приложениями после активации сервиса, приложение с приёмщиком откроется само при получении широковещательного сообщения. Для этого мы создаём новый `Intent`, в котором указываем основной класс приложения - `MainActivity`. В этот `Intent` добавляются флаги, чтобы приложение открывалось само, когда оно не является активным. Для этого я использую комбинацию флагов: `Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK`. `FLAG_ACTIVITY_CLEAR_TASK` означает, что любая существующая задача, которая будет связана с Activity, будет очищена перед её запуском, то есть действие становится новым корнем пустой задачи, а все старые активити завершаются. `FLAG_ACTIVITY_NEW_TASK` используется, если задача уже запущена для активити, которое сейчас запускается, то новое Activity не будет запущено, вместо этого текущая задача будет просто перенесена на передний план экрана в том состоянии, в котором она была. Затем достаётся путь до файла с изображением при помощи знакомого метода `getStringExtra()` и кладётся в созданный до этого `Intent`, чтобы после запуска новой Activity отобразить его на экране. Именно для этого и делалась проверка на наличие пути в `Intent` в методе `onCreate()` класса `MainActivity`. В конце фукнции вызываем метод `startActivity()`, который запустит новую активити уже с отображённым путём до файла на экране.
 
@@ -339,12 +339,9 @@ class PictureDownloadingService : IntentService("PictureDownloading") {
 
 ```kotlin
 class MainActivity : AppCompatActivity() {
-    companion object {
-        lateinit var textView: TextView
-    }
-
     val intentAction = "com.example.pictureurldownloading.PICTURE_DOWNLOAD"
     lateinit var button: Button
+    lateinit var textView: TextView
     private lateinit var broadcastReceiver: PictureBroadcastReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -353,6 +350,7 @@ class MainActivity : AppCompatActivity() {
         textView = findViewById(R.id.textView)
         button = findViewById(R.id.button)
         if (intent.getStringExtra("path") != null) {
+            Log.i("Activity", "Text was switched")
             textView.text = intent?.getStringExtra("path").toString()
         }
 
@@ -366,6 +364,7 @@ class MainActivity : AppCompatActivity() {
 
     class PictureBroadcastReceiver : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
+            Log.i("Broadcast Receiver", "Message was receive")
             val intentMainActivity = Intent(context, MainActivity::class.java)
             intentMainActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
                     or Intent.FLAG_ACTIVITY_NEW_TASK)
