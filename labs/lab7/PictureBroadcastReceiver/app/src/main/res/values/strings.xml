@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PictureBroadcastReceiver</string>
+    <string name="button">Сбросить путь</string>
+    <string name="url_path">Здесь будет отображаться путь к изображению</string>
+</resources>

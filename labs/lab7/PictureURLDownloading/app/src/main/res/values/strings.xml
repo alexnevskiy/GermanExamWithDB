@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PictureURLDownloading</string>
+    <string name="button">Загрузить картинку</string>
+    <string name="url_path">Здесь будет отображаться путь к изображению</string>
+    <string name="started_service">Вызвать Started Service</string>
+    <string name="bound_service">Вызвать Bound Service</string>
+</resources>
