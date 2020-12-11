@@ -25,7 +25,7 @@ class PictureDownloadingService : IntentService("PictureDownloading") {
     private var scope: CoroutineScope = CoroutineScope(Dispatchers.IO)
     private var job: Job? = null
 
-    internal class MessageHandler(private val service: PictureDownloadingService) : Handler() {
+    internal class MessageHandler(private val service: PictureDownloadingService) : Handler(service.mainLooper) {
         override fun handleMessage(msg: Message) {
             when (msg.what) {
                 MSG_TO_MESSENGER -> {
