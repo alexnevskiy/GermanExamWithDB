@@ -16,12 +16,10 @@ private const val MSG_TO_MESSENGER = 1
 private const val MSG_TO_CLIENT = 2
 
 class MainActivity : AppCompatActivity() {
-    companion object {
-        private var isWaiting = false
-    }
 
     var url = "https://picsum.photos/"
     private var isConnected = false
+    private var isWaiting = false
     private var pictureMessenger: Messenger? = null
 
     lateinit var textView: TextView
@@ -38,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         buttonStartedService = findViewById(R.id.button_started_service)
         buttonBoundService = findViewById(R.id.button_bound_service)
 
-        myMessenger = Messenger(ClientHandler(textView, progressBar))
+        myMessenger = Messenger(ClientHandler(this))
 
         buttonStartedService.setOnClickListener {
             val random = Random.nextInt(100, 2000)
@@ -73,6 +71,7 @@ class MainActivity : AppCompatActivity() {
         if (isConnected) {
             unbindService(serviceConnection)
             isConnected = false
+            isWaiting = false
             progressBar.visibility = INVISIBLE
         }
         super.onStop()
@@ -87,18 +86,18 @@ class MainActivity : AppCompatActivity() {
         override fun onServiceDisconnected(name: ComponentName?) {
             pictureMessenger = null
             isConnected = false
+            isWaiting = false
             progressBar.visibility = INVISIBLE
         }
     }
 
-    internal class ClientHandler(private val textView: TextView,
-                                 private val progressBar: ProgressBar) : Handler() {
+    internal class ClientHandler(private val activity: MainActivity) : Handler(activity.mainLooper) {
         override fun handleMessage(msg: Message) {
             when (msg.what) {
                 MSG_TO_CLIENT -> {
-                    textView.text = msg.obj.toString()
-                    progressBar.visibility = INVISIBLE
-                    isWaiting = false
+                    activity.textView.text = msg.obj.toString()
+                    activity.progressBar.visibility = INVISIBLE
+                    activity.isWaiting = false
                 }
             }
         }
