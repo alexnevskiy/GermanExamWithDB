@@ -16,7 +16,7 @@ import java.util.Locale;
 
 public class TaskThree extends AppCompatActivity {
 
-    long timeLeft = 90000;
+    long timeLeft = 5000;
     int counter = 0;
     CountDownTimer countDownTimer;
 

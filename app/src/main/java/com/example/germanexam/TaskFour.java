@@ -14,14 +14,14 @@ import java.util.Locale;
 
 public class TaskFour extends AppCompatActivity {
 
-    long timeLeft = 90000;
+    long timeLeft = 5000;
     int counter = 0;
     CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.task1);
+        setContentView(R.layout.task4);
         final TextView timeRemaining = findViewById(R.id.time_remaining);
         final ProgressBar timeline = findViewById(R.id.timeline);
         countDownTimer = new CountDownTimer(timeLeft, 1000) {

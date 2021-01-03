@@ -33,11 +33,11 @@ public class TaskThreePhoto extends AppCompatActivity {
 
         Intent myIntent = TaskThreePhoto.this.getIntent();
 
-        int photoNumber = myIntent.getIntExtra("photo", 1);
+        final int photoNumber = myIntent.getIntExtra("photo", 1);
         photoTitle.setText("Foto " + photoNumber);
         // TODO photo.setImage...
 
-        timeLeft = myIntent.getLongExtra("timeLeft", 120000);
+        timeLeft = myIntent.getLongExtra("timeLeft", 90000);
         counter = myIntent.getIntExtra("counter", 0);
 
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
@@ -52,6 +52,7 @@ public class TaskThreePhoto extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     intent.putExtra("task", "3");
                     intent.putExtra("answer", "yes");
+                    intent.putExtra("photo", photoNumber);
                     startActivity(intent);
                     countDownTimer.cancel();
                 }

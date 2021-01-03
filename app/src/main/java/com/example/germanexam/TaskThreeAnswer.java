@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -16,17 +17,27 @@ import java.util.Locale;
 
 public class TaskThreeAnswer extends AppCompatActivity {
 
-    long timeLeft = 90000;
+    long timeLeft = 120000;
     int counter = 0;
     CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.task1_answer);
+        setContentView(R.layout.task3_answer);
         final TextView timeRemaining = findViewById(R.id.time_remaining);
         final ProgressBar timeline = findViewById(R.id.timeline);
-        Button buttonEndAnswer = findViewById(R.id.end_answer_task1);
+        Button buttonEndAnswer = findViewById(R.id.end_answer_task3);
+
+        TextView photoTitle = findViewById(R.id.task3_photo_title);
+        ImageView photo = findViewById(R.id.task3_photo);
+
+        Intent myIntent = TaskThreeAnswer.this.getIntent();
+
+        int photoNumber = myIntent.getIntExtra("photo", 1);
+        photoTitle.setText("Foto " + photoNumber);
+        // TODO photo.setImage...
+
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {

@@ -16,17 +16,17 @@ import java.util.Locale;
 
 public class TaskFourAnswer extends AppCompatActivity {
 
-    long timeLeft = 90000;
+    long timeLeft = 120000;
     int counter = 0;
     CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.task1_answer);
+        setContentView(R.layout.task4_answer);
         final TextView timeRemaining = findViewById(R.id.time_remaining);
         final ProgressBar timeline = findViewById(R.id.timeline);
-        Button buttonEndAnswer = findViewById(R.id.end_answer_task1);
+        Button buttonEndAnswer = findViewById(R.id.end_answer_task4);
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -35,11 +35,10 @@ public class TaskFourAnswer extends AppCompatActivity {
                 counter++;
                 timeline.setProgress(counter);
                 if (timeLeft < 1000) {
-                    Intent intent = new Intent(TaskFourAnswer.this, Ready.class);
+                    Intent intent = new Intent(TaskFourAnswer.this, Answers.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    intent.putExtra("task", "2");
-                    intent.putExtra("answer", "no");
                     startActivity(intent);
+                    countDownTimer.cancel();
                 }
             }
 
@@ -61,14 +60,13 @@ public class TaskFourAnswer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(TaskFourAnswer.this);
-                builder.setTitle(R.string.ending_answer_dialog);
+                builder.setTitle(R.string.ending_answer_dialog_exam);
                 builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Intent intent = new Intent(TaskFourAnswer.this, Ready.class);
+                        Intent intent = new Intent(TaskFourAnswer.this, Answers.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                        intent.putExtra("task", "2");
-                        intent.putExtra("answer", "no");
                         startActivity(intent);
+                        countDownTimer.cancel();
                     }
                 });
                 builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
@@ -89,10 +87,12 @@ public class TaskFourAnswer extends AppCompatActivity {
                 Intent intent = new Intent(TaskFourAnswer.this, Menu.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                countDownTimer.cancel();
             }
         });
         builder.setNeutralButton(R.string.desktop, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                countDownTimer.cancel();
                 finishAffinity();
             }
         });
@@ -101,6 +101,7 @@ public class TaskFourAnswer extends AppCompatActivity {
                 Intent intent = new Intent(TaskFourAnswer.this, Variants.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                countDownTimer.cancel();
             }
         });
         AlertDialog dialog = builder.create();

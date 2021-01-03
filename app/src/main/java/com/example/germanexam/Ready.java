@@ -61,6 +61,7 @@ public class Ready extends AppCompatActivity {
                     upperText.setText(R.string.ready_upper_answer_text);
                     intent = new Intent(Ready.this, TaskThreeAnswer.class);
                     int photoNumber = Ready.this.getIntent().getIntExtra("photo", 1);
+                    intent.putExtra("photo", photoNumber);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 } else {
                     upperText.setText(R.string.ready_upper_next_text);

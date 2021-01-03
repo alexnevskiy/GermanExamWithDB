@@ -14,7 +14,7 @@ import java.util.Locale;
 
 public class TaskTwo extends AppCompatActivity {
 
-    long timeLeft = 2000;
+    long timeLeft = 5000;
     int counter = 0;
     CountDownTimer countDownTimer;
 
