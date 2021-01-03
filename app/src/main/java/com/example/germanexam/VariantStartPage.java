@@ -21,8 +21,10 @@ public class VariantStartPage extends AppCompatActivity {
         buttonVariants.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(VariantStartPage.this, TaskOne.class);
+                Intent intent = new Intent(VariantStartPage.this, Ready.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                intent.putExtra("task", "1");
+                intent.putExtra("answer", "no");
                 startActivity(intent);
             }
         });

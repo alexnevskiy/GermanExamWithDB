@@ -4,33 +4,29 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.PersistableBundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
-public class TaskOne extends AppCompatActivity {
+public class TaskThreeAnswer extends AppCompatActivity {
 
-    long timeLeft = 2000;
+    long timeLeft = 90000;
     int counter = 0;
     CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.task1);
+        setContentView(R.layout.task1_answer);
         final TextView timeRemaining = findViewById(R.id.time_remaining);
         final ProgressBar timeline = findViewById(R.id.timeline);
+        Button buttonEndAnswer = findViewById(R.id.end_answer_task1);
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -39,10 +35,10 @@ public class TaskOne extends AppCompatActivity {
                 counter++;
                 timeline.setProgress(counter);
                 if (timeLeft < 1000) {
-                    Intent intent = new Intent(TaskOne.this, Ready.class);
+                    Intent intent = new Intent(TaskThreeAnswer.this, Ready.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    intent.putExtra("task", "1");
-                    intent.putExtra("answer", "yes");
+                    intent.putExtra("task", "4");
+                    intent.putExtra("answer", "no");
                     startActivity(intent);
                     countDownTimer.cancel();
                 }
@@ -61,6 +57,29 @@ public class TaskOne extends AppCompatActivity {
             public void onFinish() {
             }
         }.start();
+
+        buttonEndAnswer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(TaskThreeAnswer.this);
+                builder.setTitle(R.string.ending_answer_dialog);
+                builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(TaskThreeAnswer.this, Ready.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                        intent.putExtra("task", "4");
+                        intent.putExtra("answer", "no");
+                        startActivity(intent);
+                        countDownTimer.cancel();
+                    }
+                });
+                builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) { }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
     }
 
     @Override
@@ -69,7 +88,7 @@ public class TaskOne extends AppCompatActivity {
         builder.setTitle(R.string.dialog_window_title);
         builder.setNegativeButton(R.string.menu, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                Intent intent = new Intent(TaskOne.this, Menu.class);
+                Intent intent = new Intent(TaskThreeAnswer.this, Menu.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 countDownTimer.cancel();
@@ -83,7 +102,7 @@ public class TaskOne extends AppCompatActivity {
         });
         builder.setPositiveButton(R.string.variants_menu, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                Intent intent = new Intent(TaskOne.this, Variants.class);
+                Intent intent = new Intent(TaskThreeAnswer.this, Variants.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 countDownTimer.cancel();

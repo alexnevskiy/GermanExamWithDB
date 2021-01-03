@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greyExam">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4" />
+
+        <TextView
+            android:id="@+id/ready_task"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:lines="1"
+            app:autoSizeMaxTextSize="70sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:text="@string/task_one" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5" />
+
+        <ImageView
+            android:id="@+id/clock"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_recent_history" />
+
+        <TextView
+            android:id="@+id/ready_prep_ans"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:lines="2"
+            app:autoSizeMaxTextSize="70sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            android:fontFamily="@font/calibri"
+            android:text="@string/prep_ans_task1" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/ready_upper"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="@string/ready_upper_start_text"
+            android:layout_weight="0.3"
+            android:lines="1"
+            app:autoSizeMaxTextSize="40sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            android:gravity="center|bottom"
+            android:fontFamily="@font/calibril"/>
+
+        <TextView
+            android:id="@+id/ready_seconds"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="@string/ready_seconds_text"
+            android:layout_weight="0.3"
+            android:lines="1"
+            app:autoSizeMaxTextSize="100sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            android:textColor="@color/blueExam"
+            android:gravity="center"
+            android:fontFamily="@font/calibril"/>
+
+        <TextView
+            android:id="@+id/ready_under"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="@string/ready_under_text"
+            android:layout_weight="0.3"
+            android:lines="1"
+            app:autoSizeMaxTextSize="40sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            android:gravity="center|top"
+            android:fontFamily="@font/calibril"/>
+    </LinearLayout>
+
+</LinearLayout>

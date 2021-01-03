@@ -52,7 +52,7 @@
             app:autoSizeMinTextSize="10sp"
             app:autoSizeTextType="uniform"
             android:fontFamily="@font/calibri"
-            android:text="@string/prep_ans" />
+            android:text="@string/prep_ans_task1" />
 
         <Space
             android:layout_width="wrap_content"

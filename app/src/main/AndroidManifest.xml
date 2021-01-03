@@ -48,7 +48,61 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Ready"
+            android:screenOrientation="sensorLandscape">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".TaskOne"
+            android:screenOrientation="sensorLandscape">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TaskOneAnswer"
+            android:screenOrientation="sensorLandscape">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TaskTwo"
+            android:screenOrientation="sensorLandscape">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TaskTwoAnswer"
+            android:screenOrientation="sensorLandscape">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TaskThree"
+            android:screenOrientation="sensorLandscape">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TaskThreePhoto"
+            android:screenOrientation="sensorLandscape">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TaskThreeAnswer"
+            android:screenOrientation="sensorLandscape">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TaskFour"
+            android:screenOrientation="sensorLandscape">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TaskFourAnswer"
             android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />

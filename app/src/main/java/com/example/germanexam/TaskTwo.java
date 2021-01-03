@@ -4,22 +4,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.PersistableBundle;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
-public class TaskOne extends AppCompatActivity {
+public class TaskTwo extends AppCompatActivity {
 
     long timeLeft = 2000;
     int counter = 0;
@@ -28,7 +21,7 @@ public class TaskOne extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.task1);
+        setContentView(R.layout.task2);
         final TextView timeRemaining = findViewById(R.id.time_remaining);
         final ProgressBar timeline = findViewById(R.id.timeline);
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
@@ -39,9 +32,9 @@ public class TaskOne extends AppCompatActivity {
                 counter++;
                 timeline.setProgress(counter);
                 if (timeLeft < 1000) {
-                    Intent intent = new Intent(TaskOne.this, Ready.class);
+                    Intent intent = new Intent(TaskTwo.this, Ready.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    intent.putExtra("task", "1");
+                    intent.putExtra("task", "2");
                     intent.putExtra("answer", "yes");
                     startActivity(intent);
                     countDownTimer.cancel();
@@ -69,7 +62,7 @@ public class TaskOne extends AppCompatActivity {
         builder.setTitle(R.string.dialog_window_title);
         builder.setNegativeButton(R.string.menu, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                Intent intent = new Intent(TaskOne.this, Menu.class);
+                Intent intent = new Intent(TaskTwo.this, Menu.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 countDownTimer.cancel();
@@ -83,7 +76,7 @@ public class TaskOne extends AppCompatActivity {
         });
         builder.setPositiveButton(R.string.variants_menu, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                Intent intent = new Intent(TaskOne.this, Variants.class);
+                Intent intent = new Intent(TaskTwo.this, Variants.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 countDownTimer.cancel();

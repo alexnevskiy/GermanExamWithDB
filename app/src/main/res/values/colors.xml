@@ -5,4 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="greyExam">#F0F3F0</color>
     <color name="aquaExam">#00CBD9</color>
+    <color name="blueExam">#27A3BE</color>
+    <color name="greyAnswer">#3E413E</color>
+    <color name="greyAnswerText">#5C5F5C</color>
 </resources>

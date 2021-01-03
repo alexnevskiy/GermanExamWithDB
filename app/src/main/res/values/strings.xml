@@ -9,13 +9,23 @@
     <string name="settings">Настройки</string>
     <string name="hello_screen">Введите имя, фамилию и класс, чтобы учитель мог быстро ориентироваться в файлах записи вашего задания.</string>
     <string name="back">Назад</string>
-    <string name="start_test">"Prüfung starten"</string>
+    <string name="start_test">Prüfung starten</string>
     <string name="start_exam">Экзамен начнётся после нажатия кнопки \"Prüfung starten\"</string>
     <string name="task1">Aufgabe 1. Stellen Sie sich vor, dass Sie zusammen mit Ihrem Freund / Ihrer Freundin an einem Projekt arbeiten. Sie haben einen interessanten Beitrag für Ihr Projekt gefunden und wollen ihn Ihrem Freund / Ihrer Freundin vorlesen. Lesen Sie diesen Beitrag zunächst 1,5 Minuten still und danach laut vor. Sie haben zum Vorlesen höchstens 1,5 Minuten Zeit.</string>
-    <string name="text1">"Karate ist ein japanisches Wort und heißt übersetzt \"leere Hand\". Das beschreibt diese Sportart sehr gut. Es geht um Selbstverteidigung und Nahkampf ohne Waffen. \nAngst, beim Karate einen Treffer abzubekommen, brauchst du nicht zu haben. Denn anders als beim Boxen verzichten Karate-Sportler (sie nennen sich übrigens Karatekas) auf Treffer am Gegner. Sie stoppen Fuß- und Fauststöße vor dem Auftreffen ab. Voraussetzung dafür ist Selbstdisziplin, Verantwortungsbewusstsein gegenüber dem Partner und natürlich eine gute Körperbeherrschung. \nDank seiner vielseitigen Anforderungen ist dieser Sport ein idealer Ausgleich zum Alltag. Beim Karate werden Kraft, Ausdauer, Schnelligkeit und Beweglichkeit trainiert. Das macht fit! Mit Entspannungstechniken, Atemübungen und Meditation steigert ein Karatekämpfer seine Konzentrationsfähigkeit und schult die eigene Körperwahrnehmung. "</string>
+    <string name="task2">Aufgabe 2. Sehen Sie sich folgende Anzeige an. \nSie haben beschlossen, an dieser Fahrradreise teilzunehmen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1,5 Minuten fünf direkte Fragen zu folgenden Stichpunkten:</string>
+    <string name="task1_answer">Lesen Sie den Text vor.</string>
+    <string name="task2_answer">Frage 1. \n1) Lage des Fitnessstudios</string>
+    <string name="text1">Karate ist ein japanisches Wort und heißt übersetzt \"leere Hand\". Das beschreibt diese Sportart sehr gut. Es geht um Selbstverteidigung und Nahkampf ohne Waffen. \nAngst, beim Karate einen Treffer abzubekommen, brauchst du nicht zu haben. Denn anders als beim Boxen verzichten Karate-Sportler (sie nennen sich übrigens Karatekas) auf Treffer am Gegner. Sie stoppen Fuß- und Fauststöße vor dem Auftreffen ab. Voraussetzung dafür ist Selbstdisziplin, Verantwortungsbewusstsein gegenüber dem Partner und natürlich eine gute Körperbeherrschung. \nDank seiner vielseitigen Anforderungen ist dieser Sport ein idealer Ausgleich zum Alltag. Beim Karate werden Kraft, Ausdauer, Schnelligkeit und Beweglichkeit trainiert. Das macht fit! Mit Entspannungstechniken, Atemübungen und Meditation steigert ein Karatekämpfer seine Konzentrationsfähigkeit und schult die eigene Körperwahrnehmung.</string>
     <string name="preparation">Vorbereitung</string>
+    <string name="recording">Aufzeichnung</string>
     <string name="task_one">Aufgabe 1</string>
-    <string name="prep_ans">Vorbereitung 01:30\nAntwort 01:30</string>
+    <string name="task_two">Aufgabe 2</string>
+    <string name="task_three">Aufgabe 3</string>
+    <string name="task_four">Aufgabe 4</string>
+    <string name="prep_ans_task1">Vorbereitung 01:30\nAntwort 01:30</string>
+    <string name="prep_ans_task2">Vorbereitung 01:30\nAntwort 01:40</string>
+    <string name="prep_ans_task3">Vorbereitung 01:30\nAntwort 02:00</string>
+    <string name="prep_ans_task4">Vorbereitung 01:30\nAntwort 02:00</string>
     <string name="timer">-01:30</string>
     <string name="student_name">Ученик: Иван Иванов</string>
     <string name="person_class">Класс: 11А</string>
@@ -28,6 +38,24 @@
     <string name="desktop">Рабочий стол</string>
     <string name="menu">Главное меню</string>
     <string name="variants_menu">Выбор варианта</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ready_upper_start_text">Mach dich bereit für den Test</string>
+    <string name="ready_upper_next_text">Mach dich bereit für die nächste Aufgabe</string>
+    <string name="ready_upper_answer_text">Mach dich bereit für die Antwort</string>
+    <string name="ready_under_text">sekunden</string>
+    <string name="ready_seconds_text">05</string>
+    <string name="end_answer">Antwort beenden</string>
+    <string name="ending_answer_dialog">Möchten Sie Ihre Antwort beenden und mit der nächsten Aufgabe fortfahren?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+    <string name="task2_questions">1) Lage des Fitnessstudios \n2) Öffnungszeiten \n3) mit ohne Schwimmbad \n4) Preis für 3 Monate \n5) Ermäßigungen für Studenten></string>
+    <string name="task2_ask">Sie haben für jede Frage je 20 Sekunden Zeit.</string>
+    <string name="task2_title_image">Werden Sie unser Mitglied im August und besuchen Sie uns einen Monat kostenlos.</string>
+    <string name="task3">Aufgabe 3. Stellen Sie sich vor, dass diese Fotos aus Ihrem Fotoalbum stammen. Wählen Sie ein Foto, um es Ihrem Freund/Ihrer Freundin zu zeigen und darüber zu erzählen. Sie haben 1,5 Minuten Zeit zur Vorbereitung und danach höchstens 2 Minuten Zeit zum Sprechen (12–15 Sätze). Halten Sie sich – wenn Sie über das gewählte Foto erzählen – an folgende Stichpunkte:</string>
+    <string name="task3_foto">Aufgabe 3. Sie haben 1,5 Minuten Zeit zur Vorbereitung und danach höchstens 2 Minuten Zeit zum Sprechen (12–15 Sätze). Halten Sie sich – wenn Sie über das gewählte Foto erzählen – an folgende Stichpunkte:</string>
+    <string name="task3_list">· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen
+</string>
+    <string name="task3_photo1">Foto 1</string>
+    <string name="task3_photo2">Foto 2</string>
+    <string name="task3_photo3">Foto 3</string>
 </resources>

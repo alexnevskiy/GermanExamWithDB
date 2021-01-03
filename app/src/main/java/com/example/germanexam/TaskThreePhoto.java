@@ -4,33 +4,42 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.PersistableBundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
-public class TaskOne extends AppCompatActivity {
+public class TaskThreePhoto extends AppCompatActivity {
 
-    long timeLeft = 2000;
+    long timeLeft = 90000;
     int counter = 0;
     CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.task1);
+        setContentView(R.layout.task3_photo);
         final TextView timeRemaining = findViewById(R.id.time_remaining);
         final ProgressBar timeline = findViewById(R.id.timeline);
+        TextView photoTitle = findViewById(R.id.task3_photo_title);
+        ImageView photo = findViewById(R.id.task3_photo);
+
+        Intent myIntent = TaskThreePhoto.this.getIntent();
+
+        int photoNumber = myIntent.getIntExtra("photo", 1);
+        photoTitle.setText("Foto " + photoNumber);
+        // TODO photo.setImage...
+
+        timeLeft = myIntent.getLongExtra("timeLeft", 120000);
+        counter = myIntent.getIntExtra("counter", 0);
+
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -39,9 +48,9 @@ public class TaskOne extends AppCompatActivity {
                 counter++;
                 timeline.setProgress(counter);
                 if (timeLeft < 1000) {
-                    Intent intent = new Intent(TaskOne.this, Ready.class);
+                    Intent intent = new Intent(TaskThreePhoto.this, Ready.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    intent.putExtra("task", "1");
+                    intent.putExtra("task", "3");
                     intent.putExtra("answer", "yes");
                     startActivity(intent);
                     countDownTimer.cancel();
@@ -69,7 +78,7 @@ public class TaskOne extends AppCompatActivity {
         builder.setTitle(R.string.dialog_window_title);
         builder.setNegativeButton(R.string.menu, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                Intent intent = new Intent(TaskOne.this, Menu.class);
+                Intent intent = new Intent(TaskThreePhoto.this, Menu.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 countDownTimer.cancel();
@@ -83,7 +92,7 @@ public class TaskOne extends AppCompatActivity {
         });
         builder.setPositiveButton(R.string.variants_menu, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                Intent intent = new Intent(TaskOne.this, Variants.class);
+                Intent intent = new Intent(TaskThreePhoto.this, Variants.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 countDownTimer.cancel();
