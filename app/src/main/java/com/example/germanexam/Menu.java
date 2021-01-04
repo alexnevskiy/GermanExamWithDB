@@ -14,11 +14,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.Random;
 
 public class Menu extends AppCompatActivity {
 
@@ -28,6 +27,7 @@ public class Menu extends AppCompatActivity {
     final String NAME = "Name";
     final String SURNAME = "Surname";
     final String CLASS = "Class";
+    final String VARIANT = "Variant";
 
     SharedPreferences sharedPreferences;
 
@@ -72,7 +72,12 @@ public class Menu extends AppCompatActivity {
         buttonExam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, VariantStartPage.class);
+                Random random = new Random();
+                sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt(VARIANT, random.nextInt(24) + 1);  //TODO
+                editor.apply();
+                Intent intent = new Intent(Menu.this, Answers.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
             }

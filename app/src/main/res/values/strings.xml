@@ -53,7 +53,7 @@
     <string name="task2_ask">Sie haben für jede Frage je 20 Sekunden Zeit.</string>
     <string name="task2_title_image">Werden Sie unser Mitglied im August und besuchen Sie uns einen Monat kostenlos.</string>
     <string name="task3">Aufgabe 3. Stellen Sie sich vor, dass diese Fotos aus Ihrem Fotoalbum stammen. Wählen Sie ein Foto, um es Ihrem Freund/Ihrer Freundin zu zeigen und darüber zu erzählen. Sie haben 1,5 Minuten Zeit zur Vorbereitung und danach höchstens 2 Minuten Zeit zum Sprechen (12–15 Sätze). Halten Sie sich – wenn Sie über das gewählte Foto erzählen – an folgende Stichpunkte:</string>
-    <string name="task3_foto">Aufgabe 3. Sie haben 1,5 Minuten Zeit zur Vorbereitung und danach höchstens 2 Minuten Zeit zum Sprechen (12–15 Sätze). Halten Sie sich – wenn Sie über das gewählte Foto erzählen – an folgende Stichpunkte:</string>
+    <string name="task3_foto">Aufgabe 3. Sie haben 1.5 Minuten Zeit zur Vorbereitung und danach höchstens 2 Minuten Zeit zum Sprechen (12–15 Sätze). Halten Sie sich – wenn Sie über das gewählte Foto erzählen – an folgende Stichpunkte:</string>
     <string name="task3_answer_text">Beginnen Sie zu sprechen.</string>
     <string name="task3_list">· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen.</string>
     <string name="task3_photo1">Foto 1</string>
@@ -61,7 +61,7 @@
     <string name="task3_photo3">Foto 3</string>
     <string name="task4">Aufgabe 4. Sehen Sie sich zwei Fotos an. Sie sollen die zwei Fotos vergleichen und anschließend darüber berichten, was beide Fotos unterscheidet und verbindet. Halten Sie sich dabei an folgenden Plan:</string>
     <string name="task4_list">· beschreiben Sie kurz beide Fotos \n· sagen Sie, was beide Fotos gemeinsam haben \n· sprechen Sie darüber, was beide Fotos unterscheidet \n· sagen Sie, welches Leben Sie wilden Tieren wünschen \n· erklären Sie, warum</string>
-    <string name="task4_text">Sie haben 1,5 Minuten Zeit zur Vorbereitung und danach höchstens 2 Minuten Zeit zum Sprechen. Sprechen Sie zusammenhängend.</string>
+    <string name="task4_text">Sie haben 1.5 Minuten Zeit zur Vorbereitung und danach höchstens 2 Minuten Zeit zum Sprechen. Sprechen Sie zusammenhängend.</string>
     <string name="task4_answer_text">Beginnen Sie zu sprechen.</string>
     <string name="answers">Прослушивание ответов</string>
     <string name="congratulations">Поздравляем! Экзамен закончен.</string>

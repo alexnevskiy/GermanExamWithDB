@@ -87,7 +87,7 @@
                     app:autoSizeTextType="uniform"
                     android:text="@string/answer_task1" />
 
-                <TextView
+                <Button
                     android:id="@+id/answer_play1"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -154,7 +154,7 @@
                     app:autoSizeTextType="uniform"
                     android:text="@string/answer_task2" />
 
-                <TextView
+                <Button
                     android:id="@+id/answer_play2"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -221,7 +221,7 @@
                     app:autoSizeTextType="uniform"
                     android:text="@string/answer_task3" />
 
-                <TextView
+                <Button
                     android:id="@+id/answer_play3"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -288,7 +288,7 @@
                     app:autoSizeTextType="uniform"
                     android:text="@string/answer_task4" />
 
-                <TextView
+                <Button
                     android:id="@+id/answer_play4"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
