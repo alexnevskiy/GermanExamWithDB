@@ -59,7 +59,7 @@ public class Variants extends AppCompatActivity {
                     public void onClick(View v) {
                         sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString(VARIANT, button.getText().toString());
+                        editor.putInt(VARIANT, Integer.parseInt(button.getText().toString()));
                         editor.apply();
                         Intent intent = new Intent(Variants.this, VariantStartPage.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);

@@ -30,6 +30,10 @@ public class TaskThreeAnswer extends AppCompatActivity {
     final String NAME = "Name";
     final String SURNAME = "Surname";
     final String CLASS = "Class";
+    final String TASK3QUESTIONS = "Task3Questions";
+    final String TASK3PICTURE1 = "Task3Picture1";
+    final String TASK3PICTURE2 = "Task3Picture2";
+    final String TASK3PICTURE3 = "Task3Picture3";
 
     private final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private String fileName = null;
@@ -71,12 +75,33 @@ public class TaskThreeAnswer extends AppCompatActivity {
 
         TextView photoTitle = findViewById(R.id.task3_photo_title);
         ImageView photo = findViewById(R.id.task3_photo);
+        TextView task3QuestionsView = findViewById(R.id.task3_questions);
+
+        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+        String task3Questions = sharedPreferences.getString(TASK3QUESTIONS, "");
+        task3QuestionsView.setText(task3Questions);
 
         Intent myIntent = TaskThreeAnswer.this.getIntent();
 
         int photoNumber = myIntent.getIntExtra("photo", 1);
         photoTitle.setText("Foto " + photoNumber);
-        // TODO photo.setImage...
+        switch (photoNumber) {
+            case 1:
+                String task3Image1 = sharedPreferences.getString(TASK3PICTURE1, "");
+                int picture1Id = getResources().getIdentifier(task3Image1, "drawable", getPackageName());
+                photo.setImageDrawable(getResources().getDrawable(picture1Id));
+                break;
+            case 2:
+                String task3Image2 = sharedPreferences.getString(TASK3PICTURE2, "");
+                int picture2Id = getResources().getIdentifier(task3Image2, "drawable", getPackageName());
+                photo.setImageDrawable(getResources().getDrawable(picture2Id));
+                break;
+            case 3:
+                String task3Image3 = sharedPreferences.getString(TASK3PICTURE3, "");
+                int picture3Id = getResources().getIdentifier(task3Image3, "drawable", getPackageName());
+                photo.setImageDrawable(getResources().getDrawable(picture3Id));
+                break;
+        }
 
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override

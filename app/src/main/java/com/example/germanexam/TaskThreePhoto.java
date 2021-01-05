@@ -2,6 +2,7 @@ package com.example.germanexam;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -22,6 +23,13 @@ public class TaskThreePhoto extends AppCompatActivity {
     int counter = 0;
     CountDownTimer countDownTimer;
 
+    final String TASK3QUESTIONS = "Task3Questions";
+    final String TASK3PICTURE1 = "Task3Picture1";
+    final String TASK3PICTURE2 = "Task3Picture2";
+    final String TASK3PICTURE3 = "Task3Picture3";
+
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,12 +38,33 @@ public class TaskThreePhoto extends AppCompatActivity {
         final ProgressBar timeline = findViewById(R.id.timeline);
         TextView photoTitle = findViewById(R.id.task3_photo_title);
         ImageView photo = findViewById(R.id.task3_photo);
+        TextView task3QuestionsView = findViewById(R.id.task3_questions);
+
+        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+        String task3Questions = sharedPreferences.getString(TASK3QUESTIONS, "");
+        task3QuestionsView.setText(task3Questions);
 
         Intent myIntent = TaskThreePhoto.this.getIntent();
 
         final int photoNumber = myIntent.getIntExtra("photo", 1);
         photoTitle.setText("Foto " + photoNumber);
-        // TODO photo.setImage...
+        switch (photoNumber) {
+            case 1:
+                String task3Image1 = sharedPreferences.getString(TASK3PICTURE1, "");
+                int picture1Id = getResources().getIdentifier(task3Image1, "drawable", getPackageName());
+                photo.setImageDrawable(getResources().getDrawable(picture1Id));
+                break;
+            case 2:
+                String task3Image2 = sharedPreferences.getString(TASK3PICTURE2, "");
+                int picture2Id = getResources().getIdentifier(task3Image2, "drawable", getPackageName());
+                photo.setImageDrawable(getResources().getDrawable(picture2Id));
+                break;
+            case 3:
+                String task3Image3 = sharedPreferences.getString(TASK3PICTURE3, "");
+                int picture3Id = getResources().getIdentifier(task3Image3, "drawable", getPackageName());
+                photo.setImageDrawable(getResources().getDrawable(picture3Id));
+                break;
+        }
 
         timeLeft = myIntent.getLongExtra("timeLeft", 90000);
         counter = myIntent.getIntExtra("counter", 0);

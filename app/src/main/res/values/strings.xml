@@ -70,4 +70,10 @@
     <string name="answer_task3">ОТВЕТ НА ЗАДАНИЕ 3</string>
     <string name="answer_task4">ОТВЕТ НА ЗАДАНИЕ 4</string>
     <string name="complete">Завершить</string>
+    <string name="task2_title">Aufgabe 2. Sehen Sie sich folgende Anzeige an.\n</string>
+    <string name="task2_question1">Frage 1.\n</string>
+    <string name="task2_question2">Frage 2.\n</string>
+    <string name="task2_question3">Frage 3.\n</string>
+    <string name="task2_question4">Frage 4.\n</string>
+    <string name="task2_question5">Frage 5.\n</string>
 </resources>

@@ -30,6 +30,7 @@ public class TaskOneAnswer extends AppCompatActivity {
     final String NAME = "Name";
     final String SURNAME = "Surname";
     final String CLASS = "Class";
+    final String TASK1TEXT = "Task1Text";
 
     private final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private String fileName = null;
@@ -68,6 +69,12 @@ public class TaskOneAnswer extends AppCompatActivity {
         final TextView timeRemaining = findViewById(R.id.time_remaining);
         final ProgressBar timeline = findViewById(R.id.timeline);
         Button buttonEndAnswer = findViewById(R.id.end_answer_task1);
+
+        TextView textView = findViewById(R.id.text1);
+        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+        String text = sharedPreferences.getString(TASK1TEXT, "");
+        textView.setText(text);
+
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {

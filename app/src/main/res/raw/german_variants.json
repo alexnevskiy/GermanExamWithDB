@@ -3,28 +3,29 @@
         {
             "variantNumber" : "1",
             "task1" : {
-                "task1Text" : "Karate ist ein japanisches Wort und heißt übersetzt \"leere Hand\". Das beschreibt diese Sportart sehr gut. Es geht um Selbstverteidigung und Nahkampf ohne Waffen.\nAngst, beim Karate einen Treffer abzubekommen, brauchst du nicht zu haben. Denn anders als beim Boxen verzichten Karate-Sportler (sie nennen sich übrigens Karatekas) auf Treffer am Gegner. Sie stoppen Fuß- und Fauststöße vor dem Auftreffen ab. Voraussetzung dafür ist Selbstdisziplin, Verantwortungsbewusstsein gegenüber dem Partner und natürlich eine gute Körperbeherrschung.\nDank seiner vielseitigen Anforderungen ist dieser Sport ein idealer Ausgleich zum Alltag. Beim Karate werden Kraft, Ausdauer, Schnelligkeit und Beweglichkeit trainiert. Das macht fit! Mit Entspannungstechniken, Atemübungen und Meditation steigert ein Karatekämpfer seine Konzentrationsfähigkeit und schult die eigene Körperwahrnehmung."
+                "text" : "Karate ist ein japanisches Wort und heißt übersetzt \"leere Hand\". Das beschreibt diese Sportart sehr gut. Es geht um Selbstverteidigung und Nahkampf ohne Waffen.\nAngst, beim Karate einen Treffer abzubekommen, brauchst du nicht zu haben. Denn anders als beim Boxen verzichten Karate-Sportler (sie nennen sich übrigens Karatekas) auf Treffer am Gegner. Sie stoppen Fuß- und Fauststöße vor dem Auftreffen ab. Voraussetzung dafür ist Selbstdisziplin, Verantwortungsbewusstsein gegenüber dem Partner und natürlich eine gute Körperbeherrschung.\nDank seiner vielseitigen Anforderungen ist dieser Sport ein idealer Ausgleich zum Alltag. Beim Karate werden Kraft, Ausdauer, Schnelligkeit und Beweglichkeit trainiert. Das macht fit! Mit Entspannungstechniken, Atemübungen und Meditation steigert ein Karatekämpfer seine Konzentrationsfähigkeit und schult die eigene Körperwahrnehmung."
             },
             "task2" : {
                 "title" : "Sie wollen für drei Monate zum Studium ins Ausland gehen und suchen nach einem Fitnessstudio, das Sie besuchen könnten. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
                 "questions" : "1) Lage des  Fitnessstudios \n2) Öffnungszeiten \n3) mit / ohne Schwimmbad \n4) Preis für 3 Monate \n5) Ermäßigungen für Studenten",
-                "picture" : "variant1_2.png",
+                "picture" : "variant1_2",
                 "question1" : "1) Lage des  Fitnessstudios",
                 "question2" : "2) Öffnungszeiten",
                 "question3" : "3) mit / ohne Schwimmbad",
                 "question4" : "4) Preis für 3 Monate",
-                "question5" : "5) Ermäßigungen für Studenten"
+                "question5" : "5) Ermäßigungen für Studenten",
+                "pictureText" : "Werden Sie unser Mitglied im August und besuchen Sie uns einen Monat kostenlos."
             },
             "task3" : {
                 "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
-                "picture1" : "variant1_3_1.png",
-                "picture2" : "variant1_3_2.png",
-                "picture3" : "variant1_3_3.png"
+                "picture1" : "variant1_3_1",
+                "picture2" : "variant1_3_2",
+                "picture3" : "variant1_3_3"
             },
             "task4" : {
                 "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welches Leben Sie wilden Tieren wünschen\n· erklären Sie, warum",
-                "picture1" : "variant1_4_1.png",
-                "picture2" : "variant1_4_2.png"
+                "picture1" : "variant1_4_1",
+                "picture2" : "variant1_4_2"
             }
         }
     ]

@@ -2,8 +2,10 @@ package com.example.germanexam;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -14,7 +16,13 @@ import java.util.Locale;
 
 public class TaskTwo extends AppCompatActivity {
 
-    long timeLeft = 5000;
+    final String TASK2TITLE = "Task2Title";
+    final String TASK2QUESTIONS = "Task2Questions";
+    final String TASK2PICTURE = "Task2Picture";
+
+    SharedPreferences sharedPreferences;
+
+    long timeLeft = 90000;
     int counter = 0;
     CountDownTimer countDownTimer;
 
@@ -24,6 +32,19 @@ public class TaskTwo extends AppCompatActivity {
         setContentView(R.layout.task2);
         final TextView timeRemaining = findViewById(R.id.time_remaining);
         final ProgressBar timeline = findViewById(R.id.timeline);
+
+        TextView task2TextView = findViewById(R.id.task2_text);
+        TextView task2QuestionsView = findViewById(R.id.task2_questions);
+        ImageView task2ImageView = findViewById(R.id.task2_image);
+        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+        String task2Text = sharedPreferences.getString(TASK2TITLE, "");
+        String task2Questions = sharedPreferences.getString(TASK2QUESTIONS, "");
+        String task2Image = sharedPreferences.getString(TASK2PICTURE, "");
+        int pictureId = getResources().getIdentifier(task2Image, "drawable", getPackageName());
+        task2TextView.setText("Aufgabe 2. Sehen Sie sich folgende Anzeige an.\n" + task2Text);
+        task2QuestionsView.setText(task2Questions);
+        task2ImageView.setImageDrawable(getResources().getDrawable(pictureId));
+
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {

@@ -11,6 +11,7 @@ import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -28,6 +29,9 @@ public class TaskFourAnswer extends AppCompatActivity {
     final String NAME = "Name";
     final String SURNAME = "Surname";
     final String CLASS = "Class";
+    final String TASK4QUESTIONS = "Task4Questions";
+    final String TASK4PICTURE1 = "Task4Picture1";
+    final String TASK4PICTURE2 = "Task4Picture2";
 
     private final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private String fileName = null;
@@ -66,6 +70,20 @@ public class TaskFourAnswer extends AppCompatActivity {
         final TextView timeRemaining = findViewById(R.id.time_remaining);
         final ProgressBar timeline = findViewById(R.id.timeline);
         Button buttonEndAnswer = findViewById(R.id.end_answer_task4);
+
+        TextView task4CompareView = findViewById(R.id.task4_compare);
+        ImageView task4ImageView1 = findViewById(R.id.task4_photo1);
+        ImageView task4ImageView2 = findViewById(R.id.task4_photo2);
+        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+        String task4Questions = sharedPreferences.getString(TASK4QUESTIONS, "");
+        String task4Image1 = sharedPreferences.getString(TASK4PICTURE1, "");
+        String task4Image2 = sharedPreferences.getString(TASK4PICTURE2, "");
+        int picture1Id = getResources().getIdentifier(task4Image1, "drawable", getPackageName());
+        int picture2Id = getResources().getIdentifier(task4Image2, "drawable", getPackageName());
+        task4CompareView.setText(task4Questions);
+        task4ImageView1.setImageDrawable(getResources().getDrawable(picture1Id));
+        task4ImageView2.setImageDrawable(getResources().getDrawable(picture2Id));
+
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {

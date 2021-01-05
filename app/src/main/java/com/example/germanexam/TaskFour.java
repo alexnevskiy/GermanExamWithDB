@@ -2,8 +2,10 @@ package com.example.germanexam;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -14,9 +16,15 @@ import java.util.Locale;
 
 public class TaskFour extends AppCompatActivity {
 
-    long timeLeft = 5000;
+    long timeLeft = 90000;
     int counter = 0;
     CountDownTimer countDownTimer;
+
+    final String TASK4QUESTIONS = "Task4Questions";
+    final String TASK4PICTURE1 = "Task4Picture1";
+    final String TASK4PICTURE2 = "Task4Picture2";
+
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +32,20 @@ public class TaskFour extends AppCompatActivity {
         setContentView(R.layout.task4);
         final TextView timeRemaining = findViewById(R.id.time_remaining);
         final ProgressBar timeline = findViewById(R.id.timeline);
+
+        TextView task4CompareView = findViewById(R.id.task4_compare);
+        ImageView task4ImageView1 = findViewById(R.id.task4_photo1);
+        ImageView task4ImageView2 = findViewById(R.id.task4_photo2);
+        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+        String task4Questions = sharedPreferences.getString(TASK4QUESTIONS, "");
+        String task4Image1 = sharedPreferences.getString(TASK4PICTURE1, "");
+        String task4Image2 = sharedPreferences.getString(TASK4PICTURE2, "");
+        int picture1Id = getResources().getIdentifier(task4Image1, "drawable", getPackageName());
+        int picture2Id = getResources().getIdentifier(task4Image2, "drawable", getPackageName());
+        task4CompareView.setText(task4Questions);
+        task4ImageView1.setImageDrawable(getResources().getDrawable(picture1Id));
+        task4ImageView2.setImageDrawable(getResources().getDrawable(picture2Id));
+
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {

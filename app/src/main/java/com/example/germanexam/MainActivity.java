@@ -52,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String readJSONFromRaw() {
-        String json = null;
+        String json;
         try {
-            InputStream is = getResources().openRawResource(R.raw.GermanVariants);
+            InputStream is = getResources().openRawResource(R.raw.german_variants);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);

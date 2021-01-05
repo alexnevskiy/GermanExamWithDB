@@ -2,6 +2,7 @@ package com.example.germanexam;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.PersistableBundle;
@@ -21,9 +22,13 @@ import java.util.Locale;
 
 public class TaskOne extends AppCompatActivity {
 
-    long timeLeft = 5000;
+    long timeLeft = 90000;
     int counter = 0;
     CountDownTimer countDownTimer;
+
+    final String TASK1TEXT = "Task1Text";
+
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,12 @@ public class TaskOne extends AppCompatActivity {
         setContentView(R.layout.task1);
         final TextView timeRemaining = findViewById(R.id.time_remaining);
         final ProgressBar timeline = findViewById(R.id.timeline);
+
+        TextView textView = findViewById(R.id.text1);
+        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+        String text = sharedPreferences.getString(TASK1TEXT, "");
+        textView.setText(text);
+
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {

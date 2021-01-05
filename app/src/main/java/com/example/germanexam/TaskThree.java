@@ -2,10 +2,12 @@ package com.example.germanexam;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -16,9 +18,16 @@ import java.util.Locale;
 
 public class TaskThree extends AppCompatActivity {
 
-    long timeLeft = 5000;
+    long timeLeft = 90000;
     int counter = 0;
     CountDownTimer countDownTimer;
+
+    final String TASK3QUESTIONS = "Task3Questions";
+    final String TASK3PICTURE1 = "Task3Picture1";
+    final String TASK3PICTURE2 = "Task3Picture2";
+    final String TASK3PICTURE3 = "Task3Picture3";
+
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +38,24 @@ public class TaskThree extends AppCompatActivity {
         Button photoButton1 = findViewById(R.id.task3_photo1_button);
         Button photoButton2 = findViewById(R.id.task3_photo2_button);
         Button photoButton3 = findViewById(R.id.task3_photo3_button);
+
+        TextView task3QuestionsView = findViewById(R.id.task3_questions);
+        ImageView task3ImageView1 = findViewById(R.id.task3_photo1);
+        ImageView task3ImageView2 = findViewById(R.id.task3_photo2);
+        ImageView task3ImageView3 = findViewById(R.id.task3_photo3);
+        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+        String task3Questions = sharedPreferences.getString(TASK3QUESTIONS, "");
+        String task3Image1 = sharedPreferences.getString(TASK3PICTURE1, "");
+        String task3Image2 = sharedPreferences.getString(TASK3PICTURE2, "");
+        String task3Image3 = sharedPreferences.getString(TASK3PICTURE3, "");
+        int picture1Id = getResources().getIdentifier(task3Image1, "drawable", getPackageName());
+        int picture2Id = getResources().getIdentifier(task3Image2, "drawable", getPackageName());
+        int picture3Id = getResources().getIdentifier(task3Image3, "drawable", getPackageName());
+        task3QuestionsView.setText(task3Questions);
+        task3ImageView1.setImageDrawable(getResources().getDrawable(picture1Id));
+        task3ImageView2.setImageDrawable(getResources().getDrawable(picture2Id));
+        task3ImageView3.setImageDrawable(getResources().getDrawable(picture3Id));
+
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
