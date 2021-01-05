@@ -27,6 +27,678 @@
                 "picture1" : "variant1_4_1",
                 "picture2" : "variant1_4_2"
             }
+        },
+        {
+            "variantNumber" : "2",
+            "task1" : {
+                "text" : "Ist Tanzen gesund? Ja! Zum einen macht es Spaß, weil du dich zu deiner Lieblingsmusik bewegst und so richtig austoben kannst. Dabei lockerst du deine Muskeln, ohne dass du wirklich das Gefühl hast, Sport zu treiben. Tanzen fördert deine Beweglichkeit, und du lernst, deinen Körper besser zu kontrollieren. Aufpassen musst du höchstens, dass du auf glattem Untergrund und rutschigen Sohlen nicht hinfällst.\nFazit: Tanzen ist toll, macht gute Laune und ist supergesund! Klar, dass die Menschen deshalb schon immer und überall gerne getanzt haben. Überleg doch mal, wie viele verschiedene Arten von Tänzen es gibt: Volkstänze wie der südamerikanische Salsa zählen ebenso dazu wie Walzer, Breakdance, Discofox, Hip Hop, Rock'n'Roll. Sicherlich fallen dir noch ganz viele andere Tänze ein.\nOb zu Hause oder mit anderen in der Tanzschule – probier‘s doch einfach mal aus!"
+            },
+            "task2" : {
+                "title" : "Sie wollen für drei Monate zum Studium ins Ausland gehen und suchen nach einem Schwimmbad, das Sie besuchen könnten. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Lage des Schwimmbads\n2) Öffnungszeiten\n3) mit / ohne Saune\n4) Preis für 3 Monate\n5) Ermäßigungen für Studenten",
+                "picture" : "variant2_2",
+                "question1" : "1) Lage des Schwimmbads",
+                "question2" : "2) Öffnungszeiten",
+                "question3" : "3) mit / ohne Saune",
+                "question4" : "4) Preis für 3 Monate",
+                "question5" : "5) Ermäßigungen für Studenten",
+                "pictureText" : "Werden Sie unser Mitglied im August und besuchen Sie uns einen Monat kostenlos."
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant2_3_1",
+                "picture2" : "variant2_3_2",
+                "picture3" : "variant2_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welche Geburtstagsparty sie vorziehen würden\n· erklären Sie, warum",
+                "picture1" : "variant2_4_1",
+                "picture2" : "variant2_4_2"
+            }
+        },
+        {
+            "variantNumber" : "3",
+            "task1" : {
+                "text" : "Der Tiergarten ist das grüne Herz Berlins. Zwischen Brandenburger Tor und Zoo bietet der Park mit seinen großen Wiesen viel Raum für Erholung, Sport und Freizeit. Dort wird gejoggt, Fußball gespielt, ein Spaziergang gemacht oder in der Sonne gelegen. Es sind aber nicht nur Bäume und Grünflächen, die das Gesicht des großen Tiergartens bestimmen. Viele Sehenswürdigkeiten wie Denkmäler, Brücken, die Siegessäule, das Haus der Kulturen der Welt oder der Englische Garten laden dazu ein, einen Spaziergang durch den Park zu machen.\nDer Park ist auch für den Radverkehr geöffnet und wird gerne von Radfahrern genutzt. Die schmaleren Wege sind für die Fußgänger bestimmt. Viele Bänke auf den Wegen und große Liegewiesen laden bei schönem Wetter geradezu ein, sich hinzulegen und zu entspannen."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, diese Breakdance-Schule zu besuchen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Preis eines Breakdance-Kurses\n2) Lage der Schule\n3) Dauer eines Breakdance-Kurses\n4) Kleidung für den Kurs\n5) Unterricht am Abend\n",
+                "picture" : "variant3_2",
+                "question1" : "1) Preis eines Breakdance-Kurses",
+                "question2" : "2) Lage der Schule",
+                "question3" : "3) Dauer eines Breakdance-Kurses",
+                "question4" : "4) Kleidung für den Kurs",
+                "question5" : "5) Unterricht am Abend",
+                "pictureText" : "Die beste Breakdance Schule der Stadt!"
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant3_3_1",
+                "picture2" : "variant3_3_2",
+                "picture3" : "variant3_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welches Fest sie vorziehen\n· erklären Sie, warum",
+                "picture1" : "variant3_4_1",
+                "picture2" : "variant3_4_2"
+            }
+        },
+        {
+            "variantNumber" : "4",
+            "task1" : {
+                "text" : "In keinem anderen Zoo sind die Tiere so nah wie im Kinderzoo in München. Je nach Tierart dürfen die Tiere angefasst, gestreichelt, gefüttert oder geritten werden. So wird der Kinderzoo zum idealen Ausflugsziel für Familien mit Kindern und Schulen.\nIm Kinderzoo legt man besonders großen Wert darauf, dass Mensch und Tier sich einander begegnen können. Die Affen darf man füttern, die Pferde streicheln, die Kamele reiten, dem Giraffen auf der Terrasse in die Augen blicken, die Elefanten duschen und mit den Seelöwen kann man sich fotografieren lassen. Das darf man natürlich, wenn sie nicht gerade in einer Vorführung auftreten. Rund 300 Tiere und 58 Arten sind im Zoo in München untergebracht. Einige davon, wie z.B. der asiatische Elefant, sind vom Aussterben bedroht."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, an dieser Stadtführung „Londoner Brücken“ teilzunehmen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Dauer der Führung\n2) Anfangspunkt der Führung\n3) Zahl der Brücken\n4) Preis für eine 10 Mann starke Gruppe\n5) Ermäßigungen für Studenten",
+                "picture" : "variant4_2",
+                "question1" : "1) Dauer der Führung",
+                "question2" : "2) Anfangspunkt der Führung",
+                "question3" : "3) Zahl der Brücken",
+                "question4" : "4) Preis für eine 10 Mann starke Gruppe",
+                "question5" : "5) Ermäßigungen für Studenten",
+                "pictureText" : "Nehmen Sie an unserer Stadtführung „Londoner Brücken“ teil!"
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant4_3_1",
+                "picture2" : "variant4_3_2",
+                "picture3" : "variant4_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welche von beiden Aktivitäten sie wählen würden, wenn sie Freizeit hätten\n· erklären Sie, warum",
+                "picture1" : "variant4_4_1",
+                "picture2" : "variant4_4_2"
+            }
+        },
+        {
+            "variantNumber" : "5",
+            "task1" : {
+                "text" : "Der Tiergarten ist das grüne Herz Berlins. Zwischen Brandenburger Tor und Zoo bietet der Park mit seinen großen Wiesen viel Raum für Erholung, Sport und Freizeit. Dort wird gejoggt, Fußball gespielt, ein Spaziergang gemacht oder in der Sonne gelegen. Es sind aber nicht nur Bäume und Grünflächen, die das Gesicht des großen Tiergartens bestimmen. Viele Sehenswürdigkeiten wie Denkmäler, Brücken, die Siegessäule, das Haus der Kulturen der Welt oder der Englische Garten laden dazu ein, einen Spaziergang durch den Park zu machen.\nDer Park ist auch für den Radverkehr geöffnet und wird gerne von Radfahrern genutzt. Die schmaleren Wege sind für die Fußgänger bestimmt. Viele Bänke auf den Wegen und große Liegewiesen laden bei schönem Wetter geradezu ein, sich hinzulegen und zu entspannen."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, diese Küchenmaschine zu kaufen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Preis\n2) Bestellung im Internet\n3) Zahl der Programme\n4) Dauer der Garantie\n5) Kochbuch für die Küchenmaschine – ja / nein",
+                "picture" : "variant5_2",
+                "question1" : "1) Preis",
+                "question2" : "2) Bestellung im Internet",
+                "question3" : "3) Zahl der Programme",
+                "question4" : "4) Dauer der Garantie",
+                "question5" : "5) Kochbuch für die Küchenmaschine – ja / nein",
+                "pictureText" : "Dies ist einfach eine wunderbare Küchenmaschine!"
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant5_3_1",
+                "picture2" : "variant5_3_2",
+                "picture3" : "variant5_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welche Freizeitaktivität sie vorziehen\n· erklären Sie, warum",
+                "picture1" : "variant5_4_1",
+                "picture2" : "variant5_4_2"
+            }
+        },
+        {
+            "variantNumber" : "6",
+            "task1" : {
+                "text" : "Was die Menschen erfinden, gibt es in der Natur oft schon Millionen von Jahren.\nWissenschaftler wollen sich die Tricks der Antarktisbewohner abschauen und in die Technik übertragen. Die Blätter der Lotuspflanze sind von einer sich selbst reinigenden Schicht umhüllt, die Schmutz abstößt. Prima Idee, dachten sich Forscher. Könnte man diese Technik nicht nachmachen und in unserem Alltag anwenden? Kann man! Heutzutage gibt es selbstreinigende Autolacke und Fassadenfarben, die genau auf diesem Prinzip beruhen – dem „Lotus-Effekt“. „Bionik heißt: Von der Natur für die Technik lernen“, erklärt Professor Werner Nachtigall, einer der Gründerväter und Vorreiter der Bionik-Forschung in Deutschland. Der Begriff „Bionik“ ist zusammengesetzt aus „Bio-logie“ und „Tech-nik“. Forscher beobachten Natur- Phänomene ganz genau und versuchen, ihre Grundprinzipien zu verstehen, damit sie später in die Technik übertragen werden können. Doch nicht nur von Pflanzen, sondern auch von Tieren kann man sich jede Menge abgucken. Pinguine gelten zum Beispiel als großes Vorbild, was ihren niedrigen Energieverbrauch und ihre schnelle Fortbewegung unter Wasser angeht."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, diesen Ort zu besuchen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Anreise- und Abfahrtstag\n2) die Lage des Hotels\n3) der Weg vom Flughafen\n4) Kosten ohne Frühstück\n5) Sonderangebote",
+                "picture" : "variant6_2",
+                "question1" : "1) Anreise- und Abfahrtstag",
+                "question2" : "2) die Lage des Hotels",
+                "question3" : "3) der Weg vom Flughafen",
+                "question4" : "4) Kosten ohne Frühstück",
+                "question5" : "5) Sonderangebote",
+                "pictureText" : "Ein attraktives Angebot für eine Traumreise!"
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant6_3_1",
+                "picture2" : "variant6_3_2",
+                "picture3" : "variant6_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, in welchem von beiden Orten Sie ein Buch lieber lesen würden\n· erklären Sie, warum",
+                "picture1" : "variant6_4_1",
+                "picture2" : "variant6_4_2"
+            }
+        },
+        {
+            "variantNumber" : "7",
+            "task1" : {
+                "text" : "Sie springen von Autobahnbrücken, surfen durch Flüsse oder hüpfen von Gebäude zu Gebäude. Dass manche den Nervenkitzel suchen, ist kein Zufall. Es ist ein Persönlichkeitsmerkmal, erklären Sportpsychologen. 20 % der Menschen tragen Gene in sich, die das Bedürfnis steigern, sich gefährliche Aktivitäten zu suchen. Das bedeutet aber nicht, dass die Extremsportler lebensmüde sind. Man muss überlegt vorgehen, sehr lange planen und trainieren, um einen bestimmten Sprung durchführen zu können. Dabei bleibt das Thema Angst immer dabei. Täglich testet der Extremsportler seine Grenzen aus, um Stück für Stück besser zu werden. Nimmt man sich zu viel vor, kann es passieren, dass der Sportler die Kontrolle verliert und in Panik gerät. Ein erfahrener Sportler kann sich aber auch in brenzligen Situationen beruhigen."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, dieses Blumengeschäft zu besuchen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Lage\n2) Öffnungszeiten\n3) Blumenarten im Angebot\n4) Topfblumen – ja / nein\n5) Ermäßigung bei einer großen Bestellung",
+                "picture" : "variant7_2",
+                "question1" : "1) Lage",
+                "question2" : "2) Öffnungszeiten",
+                "question3" : "3) Blumenarten im Angebot",
+                "question4" : "4) Topfblumen – ja / nein",
+                "question5" : "5) Ermäßigung bei einer großen Bestellung",
+                "pictureText" : "Dieses Blumengeschäft hat die frischesten Blumen!"
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant7_3_1",
+                "picture2" : "variant7_3_2",
+                "picture3" : "variant7_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welches Essen Sie vorziehen würden\n· erklären Sie, warum",
+                "picture1" : "variant7_4_1",
+                "picture2" : "variant7_4_2"
+            }
+        },
+        {
+            "variantNumber" : "8",
+            "task1" : {
+                "text" : "Sie springen von Autobahnbrücken, surfen durch Flüsse oder hüpfen von Gebäude zu Gebäude. Dass manche den Nervenkitzel suchen, ist kein Zufall. Es ist ein Persönlichkeitsmerkmal, erklären Sportpsychologen. 20 % der Menschen tragen Gene in sich, die das Bedürfnis steigern, sich gefährliche Aktivitäten zu suchen. Das bedeutet aber nicht, dass die Extremsportler lebensmüde sind. Man muss überlegt vorgehen, sehr lange planen und trainieren, um einen bestimmten Sprung durchführen zu können. Dabei bleibt das Thema Angst immer dabei. Täglich testet der Extremsportler seine Grenzen aus, um Stück für Stück besser zu werden. Nimmt man sich zu viel vor, kann es passieren, dass der Sportler die Kontrolle verliert und in Panik gerät. Ein erfahrener Sportler kann sich aber auch in brenzligen Situationen beruhigen."
+            },
+            "task2" : {
+                "title" : "Sie wollen für ein Semester zum Studium ins Ausland gehen und suchen nach einer Wohnung. Sie rufen das Immobilienbüro an, um einige Details zu klären. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Lage des Hauses\n2) Lage der Wohnung (Etage)\n3) Zahl der Zimmer\n4) Preis für 6 Monate\n5) mit / ohne Balkon",
+                "picture" : "variant8_2",
+                "question1" : "1) Lage des Hauses",
+                "question2" : "2) Lage der Wohnung (Etage)",
+                "question3" : "3) Zahl der Zimmer",
+                "question4" : "4) Preis für 6 Monate",
+                "question5" : "5) mit / ohne Balkon",
+                "pictureText" : "Unser Firmenmotto: Menschen-Häuser-Lebensraum."
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant8_3_1",
+                "picture2" : "variant8_3_2",
+                "picture3" : "variant8_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welches Essen Sie vorziehen würden\n· erklären Sie, warum",
+                "picture1" : "variant8_4_1",
+                "picture2" : "variant8_4_2"
+            }
+        },
+        {
+            "variantNumber" : "9",
+            "task1" : {
+                "text" : "Immer mehr Menschen weltweit verzichten auf Fleisch. Seit 2007 hat sich die Zahl der Vegetarier verdoppelt. Einige gehen noch einen Schritt weiter und entscheiden sich für die vegane Ernährung. Das heißt, neben Fleisch und Fisch auch alle anderen Lebensmittel wegzulassen, die von Tieren stammen — zum Beispiel, Eier, Milch und Honig. Aber solche Produkte enthalten Stoff e, die für den Körper wichtig sind und die man nicht immer durch pflanzliche Produkte ersetzen kann. Wer nicht darauf achtet, was er isst, kann unter Mangelerscheinungen leiden. Darauf weisen die Lebensmittelwissenschaftler hin. Ihr Fazit: Überwiegend Obst und Gemüse zu essen, ist gut. Sich nur von Pflanzenkost zu ernähren, ist allerdings nicht für jeden richtig. Kindern, Jugendlichen, Alten und Schwangeren rät man sogar davon ab, sich vegan zu ernähren."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, ein Museum im Ausland zu besuchen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Öffnungszeiten\n2) Führungen — ja / nein\n3) Sprachangebot\n4) Eintrittspreise\n5) Ermäßigungen für Schüler / Studenten",
+                "picture" : "variant9_2",
+                "question1" : "1) Öffnungszeiten",
+                "question2" : "2) Führungen — ja / nein",
+                "question3" : "3) Sprachangebot",
+                "question4" : "4) Eintrittspreise",
+                "question5" : "5) Ermäßigungen für Schüler / Studenten",
+                "pictureText" : "Ein interessantes Museum für Kunst und Kultur."
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant9_3_1",
+                "picture2" : "variant9_3_2",
+                "picture3" : "variant9_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welche Schulkleidung Sie vorziehen würden\n· erklären Sie, warum",
+                "picture1" : "variant9_4_1",
+                "picture2" : "variant9_4_2"
+            }
+        },
+        {
+            "variantNumber" : "10",
+            "task1" : {
+                "text" : "Schaut man bei klarem Wetter in den Nachthimmel, dann sind viele helle Punkte zu sehen. Das sind Sterne, also Sonnen, die sehr weit weg sind. Je entfernter ein Objekt ist, desto kleiner erscheint es uns. Viele Sterne sind jedoch so weit von uns entfernt, dass wir sie eigentlich gar nicht mehr sehen können. Nur weil sie so hell leuchten, nehmen wir sie gerade noch wahr. Das Funkeln entsteht, weil das Sternenlicht unsere Erdatmosphäre passieren muss, bevor es auf unser Auge trifft  . In den unruhigen Luft schichten werden die Lichtstrahlen leicht abgelenkt. Sterne am Horizont funkeln stärker, als die Sterne direkt über uns, denn ihr Licht legt einen längeren Weg durch die Atmosphäre zurück. Für die Astronauten hingegen gibt es kein Funkeln, sondern nur leuchtende Punkte im Weltraum."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, eine Sommersprachreise zu unternehmen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Reisetermin\n2) Altersgruppen der Sprachschüler\n3) Zahl der Unterrichtsstunden pro Woche\n4) Zusätzliche Aktivitäten\n5) Zertifikat — ja / nein",
+                "picture" : "variant10_2",
+                "question1" : "1) Reisetermin",
+                "question2" : "2) Altersgruppen der Sprachschüler",
+                "question3" : "3) Zahl der Unterrichtsstunden pro Woche",
+                "question4" : "4) Zusätzliche Aktivitäten",
+                "question5" : "5) Zertifikat — ja / nein",
+                "pictureText" : "Bereiten Sie sich auf den Sommer vor!"
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant10_3_1",
+                "picture2" : "variant10_3_2",
+                "picture3" : "variant10_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welches Verkehrsmittel Sie vorziehen würden\n· erklären Sie, warum",
+                "picture1" : "variant10_4_1",
+                "picture2" : "variant10_4_2"
+            }
+        },
+        {
+            "variantNumber" : "11",
+            "task1" : {
+                "text" : "Rein statistisch gesehen sind vier Stunden pro Tag viel Zeit, um sich sportlich zu betätigen. Dank neuer Trendsportarten und der entsprechenden Angebote können sich die Deutschen sportlich in jeder Hinsicht betätigen. Klettern zum Beispiel ist „in“. Der Fachverband für künstliche Kletteranlagen informiert, dass in Deutschland jährlich rund zehn neue Kletterhallen eröffnen. Vor allem in den größeren deutschen Städten gibt es etwa 370 solcher Hallen.\nWandern, Radfahren und Joggen sind Dauerbrenner, was die sportlichen Aktivitäten angeht. Seit einigen Jahren setzt sich  das Paddeln im Stehen auf einem Surfboard durch. Oder Trekraft: Wandern und Paddeln mit einen leichten Faltboot werden miteinander kombiniert.\nStatt Muskeltraining an Maschinen gibt es neu das „Schlingentraining“: Das ist eine Trainingsmethode für alle Muskeln mit Hilfe eines Seil- und Schlingensystems."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, das Restaurant Sphere zu besuchen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Öffnungszeiten\n2) Gerichte für Vegetarier\n3) Wartezeit\n4) Zahlungsmittel\n5) Tischreservierung online",
+                "picture" : "variant11_2",
+                "question1" : "1) Öffnungszeiten",
+                "question2" : "2) Gerichte für Vegetarier",
+                "question3" : "3) Wartezeit",
+                "question4" : "4) Zahlungsmittel",
+                "question5" : "5) Tischreservierung online",
+                "pictureText" : "Wir laden Sie ein, unser Restaurant Sphere zu besuchen."
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant11_3_1",
+                "picture2" : "variant11_3_2",
+                "picture3" : "variant11_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, wo und wie Sie vorziehen, Feste zu feiern\n· erklären Sie, warum",
+                "picture1" : "variant11_4_1",
+                "picture2" : "variant11_4_2"
+            }
+        },
+        {
+            "variantNumber" : "12",
+            "task1" : {
+                "text" : "Der Rückgang der Schülerinnen und Schüler um 4 Prozent im aktuellen Schuljahr ist schnell erklärt: Die Deutschen bekommen heute weniger Kinder - im Durchschnitt 1,47 Kinder pro Frau, 1960 waren es noch 2,5 Kinder. Doch mit der verstärkten Zuwanderung können sich diese Zahlen bald ändern.\nJeder 11. Schüler in Deutschland sucht eine Alternative zum staatlichen Schulwesen. Wie das Statistische Bundesamt berichtet, gibt es heute 79 Prozent mehr private Schulen in Deutschland als noch 1992. \nWoher kommt dieses Wachstum? Neben dem Argument, dass die Kinder auf Privatschulen individueller gefördert werden beklagen Eltern die enorm hohen Unterrichtsausfälle an deutschen staatlichen Schulen: Pro Woche fallen im Schnitt eine Million Stunden durch Krankheit, Fortbildung oder Schwangerschaften von Lehrpersonal aus."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, die Münchener Pinakothek zu besuchen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Aktuelle Ausstellungen\n2) Öffnungszeiten an Feiertagen\n3) Eintrittspreis\n4) Führungen online buchen\n5) Ermäßigter Eintritt",
+                "picture" : "variant12_2",
+                "question1" : "1) Aktuelle Ausstellungen",
+                "question2" : "2) Öffnungszeiten an Feiertagen",
+                "question3" : "3) Eintrittspreis",
+                "question4" : "4) Führungen online buchen",
+                "question5" : "5) Ermäßigter Eintritt",
+                "pictureText" : "Eine neue Pinakothek hat in München eröffnet!"
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant12_3_1",
+                "picture2" : "variant12_3_2",
+                "picture3" : "variant12_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, wo Sie zu wohnen vorziehen\n· erklären Sie, warum",
+                "picture1" : "variant12_4_1",
+                "picture2" : "variant12_4_2"
+            }
+        },
+        {
+            "variantNumber" : "13",
+            "task1" : {
+                "text" : "Das zweitkleinste deutsche Bundesland ist gleichzeitig mit über 1,7 Millionen Einwohnern Deutschlands zweitgrößte Stadt. Berühmt ist aber vor allem der Hafen. Um eine Hafenrundfahrt kommt man nicht herum, will man die Stadterkunden.\n10.000 Seeschiffe kommen hier jährlich an. Die meisten sind Containerschiffe mit Waren aus aller Welt. Hamburg ist gleichzeitig der größte Eisenbahnhafen Europas und der zweitgrößte der Welt. Hamburg ist Europas größter Importhafen für Kaffee und gehört zu den größten Papierumschlagplätzen weltweit.\nBesonders beeindruckend ist die Speicherstadt innerhalb des Hamburger Hafens. Sie ist ab 1883 als Teil des Hamburger Freihafens errichtet worden. Fast 600.000 Quadratmeter beträgt die Fläche. Seit jeher lagern hier Waren aus aller Welt wie Kaffee, Kakao, Tee, Gewürze, Tabak und das weltweit größte Lager für Orientteppiche."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, ins Cafe Central zu gehen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Konzertprogramm\n2) Anfahrt\n3) Speisekarte\n4) Lage\n5) Öffnungszeiten",
+                "picture" : "variant13_2",
+                "question1" : "1) Konzertprogramm",
+                "question2" : "2) Anfahrt",
+                "question3" : "3) Speisekarte",
+                "question4" : "4) Lage",
+                "question5" : "5) Öffnungszeiten",
+                "pictureText" : "Leckeres Wiener Essen!"
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant13_3_1",
+                "picture2" : "variant13_3_2",
+                "picture3" : "variant13_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, womit Sie zu reisen vorziehen\n· erklären Sie, warum",
+                "picture1" : "variant13_4_1",
+                "picture2" : "variant13_4_2"
+            }
+        },
+        {
+            "variantNumber" : "14",
+            "task1" : {
+                "text" : "Gegründet wurde Köln im Jahr 38 vor Christus von den Römern. „Colonia Claudia Ara Agrippinensium“ ist der lateinische Name. Hier wurde eine Stadt nach römischem Recht auf Initiative Agrippinas gegründet. Sie war die Gattin des Kaisers Claudius und hat einen gewaltigen Aufschwung in Gang gebracht. Denn als Kolonie stand die Stadt in der Städte-Hierarchie im Römischen Imperium ganz oben. Unter anderem waren die Bürger den Römern gleichgestellt.\nKöln entwickelte sich im 2. und 3. Jahrhundert nach Christus zu einer der bedeutendsten Städte des römischen Reiches und lockte Händler und Handwerker von weit her an. Typisch heute für Köln: Sobald eine Baustelle entsteht, finden sich in den Tiefen der Erde Reste von Römerbauwerken. Bevor dann weitergebaut wird, müssen erst die Archäologen ran! Die Spuren der Römer lassen sich übrigens am besten im Römisch-Germanischen Museum erkunden."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, in ein Fitness Zentrum zu gehen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Spektrum an Fitnesskursen\n2) Persönliche Trainings\n3) Mitgliedschaft\n4) Gebühren\n5) Probetraining",
+                "picture" : "variant14_2",
+                "question1" : "1) Spektrum an Fitnesskursen",
+                "question2" : "2) Persönliche Trainings",
+                "question3" : "3) Mitgliedschaft",
+                "question4" : "4) Gebühren",
+                "question5" : "5) Probetraining",
+                "pictureText" : "FitnessFirst wartet auf alle!"
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant14_3_1",
+                "picture2" : "variant14_3_2",
+                "picture3" : "variant14_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welche Jahreszeit Sie vorziehen\n· erklären Sie, warum",
+                "picture1" : "variant14_4_1",
+                "picture2" : "variant14_4_2"
+            }
+        },
+        {
+            "variantNumber" : "15",
+            "task1" : {
+                "text" : "Jeder deutsche Erwachsene sitzt durchschnittlich sieben Stunden am Tag. Und der Anteil der Sportmuffel ist seit 2007 bis heute von 45 auf 52 Prozent gestiegen. 18 Prozent treiben gar keinen Sport. Die Sportler sind in Deutschland inzwischen in einer  Minderheit. Die zeigt eine aktuelle Studie der Techniker Krankenkasse.\nZwei Drittel der Befragten bewegen sich noch nicht einmal eine Stunde am Tag, den Gang zu Kopierer und Toilette mit eingerechnet. Gerade die „Dauersitzer“ mit einem Bürojob weisen einen hohen Bewegungsmangel auf. Sie sitzen im Schnitt rund neun Stunden täglich.\nMittlerweile trainieren die Deutschen am liebsten im Fitnessstudio - 36 Prozent haben das in der TK-Umfrage bestätigt. Es folgen Fahrradfahren inklusive Radrennfahren, Joggen, Wandern, Schwimmen und schließlich Fußball. Fitnessstudios bieten sehr schnell neue Trendsportarten an."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, ins KaDeWe zu gehen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Anfahrt\n2) Fläche\n3) Kundenkarte\n4) Parkmöglichkeiten\n5) Öffnungszeiten",
+                "picture" : "variant15_2",
+                "question1" : "1) Anfahrt",
+                "question2" : "2) Fläche",
+                "question3" : "3) Kundenkarte",
+                "question4" : "4) Parkmöglichkeiten",
+                "question5" : "5) Öffnungszeiten",
+                "pictureText" : "KaDeWe wartet immer auf seine Besucher!"
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant15_3_1",
+                "picture2" : "variant15_3_2",
+                "picture3" : "variant15_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welche Freizeitaktivitäten Sie vorziehen\n· erklären Sie, warum",
+                "picture1" : "variant15_4_1",
+                "picture2" : "variant15_4_2"
+            }
+        },
+        {
+            "variantNumber" : "16",
+            "task1" : {
+                "text" : "Albert Einstein hat genau heute vor 100 Jahren im Fachblatt Annalen der Physik  seine Allgemeine Relativitätstheorie veröffentlicht. Einsteins Manuskript erreichte den Verlag bereits am 20. März 1916. Die Ausgabe mit dem Beitrag erschien 1916. Mit der Veröffentlichung revolutionierte der Wissenschaftler das Weltbild der Physik  - auch wenn das nicht sofort klar war.\nDen Kern seiner Theorie hatte Einstein bereits ein paar Monate vor der Veröffentlichung in den Annalen an der Preußischen Akademie der Wissenschaften in Berlin vorgestellt.\nDie Messung von Gravitationswellen ist für Physiker eine Jahrhundertsensation. \nBereits zehn Jahre zuvor hatte Einstein seine Spezielle Relativitätstheorie veröffentlicht. Sie besagt, dass sich Raum und Zeit nicht getrennt voneinander messen lassen. In seine Allgemeine Relativitätstheorie bezog Einstein die Schwerkraft mit ein."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, bei der Bäckerei Junge einzukaufen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Inhaltsstoffe\n2) Produkte\n3) Brot ohne Mehl\n4) Online-Vorbestellung\n5) Lage",
+                "picture" : "variant16_2",
+                "question1" : "1) Inhaltsstoffe",
+                "question2" : "2) Produkte",
+                "question3" : "3) Brot ohne Mehl",
+                "question4" : "4) Online-Vorbestellung",
+                "question5" : "5) Lage",
+                "pictureText" : "Hier werden die leckersten Brötchen gebacken!"
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant16_3_1",
+                "picture2" : "variant16_3_2",
+                "picture3" : "variant16_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, was Sie vorziehen nach der Schule zu machen\n· erklären Sie, warum",
+                "picture1" : "variant16_4_1",
+                "picture2" : "variant16_4_2"
+            }
+        },
+        {
+            "variantNumber" : "17",
+            "task1" : {
+                "text" : "Zu den Salomonen gehören knapp 1000 Inseln. Anhand von Satellitenaufnahmen aus den Jahren 1947 bis 2014 untersuchten die Wissenschaftler die Entwicklung von 33 Inseln. Drei von ihnen waren schon im Jahr 2002 verschwunden, eine weitere war 2011 weg, und die letzte ging offenbar erst zwischen 2011 und 2014 unter - auf dem Satellitenbild des Kartendienstes Google Maps ist sie noch zu sehen.\nSechs weitere Inseln verloren seit 1947 mehr als ein Fünftel ihrer Fläche. Eine Gruppe geschützt gelegener Inseln dagegen blieb unversehrt. Küstenerosion von Pazifikinseln ist kein neues Phänomen. Aber der Meeresspiegel, der in der Region auch durch veränderte Windmuster seit 1994 um bis zu 15 Zentimeter anstieg, hat die Lage offenbar verschärft: Aus Überresten alter Bäume schließen die Forscher, dass die Küstenlinie der betroffenen Inseln in den Jahrhunderten zuvor nahezu stabil war."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, sich ein Auto zu kaufen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) aktuelle Angebote\n2) Probefahrt\n3) Individuelle Beratung\n4) Sonderfahrzeuge für Fahrschulen\n5) Dienstleistungen",
+                "picture" : "variant17_2",
+                "question1" : "1) aktuelle Angebote",
+                "question2" : "2) Probefahrt",
+                "question3" : "3) Individuelle Beratung",
+                "question4" : "4) Sonderfahrzeuge für Fahrschulen",
+                "question5" : "5) Dienstleistungen",
+                "pictureText" : "Am besten kaufen Sie ein Auto in diesem Showroom."
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant17_3_1",
+                "picture2" : "variant17_3_2",
+                "picture3" : "variant17_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welche Verkehrsmittel Sie vorziehen\n· erklären Sie, warum",
+                "picture1" : "variant17_4_1",
+                "picture2" : "variant17_4_2"
+            }
+        },
+        {
+            "variantNumber" : "18",
+            "task1" : {
+                "text" : "Bioprodukte liegen im Trend: Allein in Deutschland stiegt der Umsatz mit Bioprodukten 2011 um neun Prozent. In Europa ist Deutschland so mit einem Umsatz von rund 6,6 Milliarden Euro im Jahr 2011 weiterhin der wichtigste Biomarkt. Auch wenn ein Teil dieser Umsatzerhöhung allgemeinen Preissteigerungen bei Bioprodukten  zuzuordnen ist, wird eines deutlich: Die Lust auf  Bio wächst und wächst.\nAktuelle Zahlen belegen, dass bei Bioprodukten vor allem die Nachfrage nach Biofleisch immer größer wird. 2011 stieg sie in Deutschland um fast 40 Prozent. Grund dafür dürften nicht nur Lebensmittelskandale, sondern auch eine Veränderung im Konsumentenbewusstsein sein: Regionalität ist Trumpf, die Herkunft der Waren und vor allem eine artgerechte Tierhaltung werden Verbrauchern immer wichtiger. Denn die konventionelle Tierhaltung gerät immer wieder in der Kritik."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, an einer Fahrschule den Führerschein zu machen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Lage\n2) Fahrschulportal\n3) Unterrichtsstechniken\n4) Begleitung von Fahranfängern\n5) Fuhrpark",
+                "picture" : "variant18_2",
+                "question1" : "1) Lage",
+                "question2" : "2) Fahrschulportal",
+                "question3" : "3) Unterrichtsstechniken",
+                "question4" : "4) Begleitung von Fahranfängern",
+                "question5" : "5) Fuhrpark",
+                "pictureText" : "Diese Fahrschule hat nur die besten Lehrer!"
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant18_3_1",
+                "picture2" : "variant18_3_2",
+                "picture3" : "variant18_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, wo Sie vorziehen zu arbeiten\n· erklären Sie, warum",
+                "picture1" : "variant18_4_1",
+                "picture2" : "variant18_4_2"
+            }
+        },
+        {
+            "variantNumber" : "19",
+            "task1" : {
+                "text" : "Rund 11.000 Studenten hat das Deutsche Zentrum für Hochschul- und Wissenschaftsforschung nach ihrer Wohnsituation befragt. Fast 30 Prozent von ihnen gaben an, in einer Wohngemeinschaft zu wohnen. Knapp 20 Prozent leben alleine in einer eigenen Wohnung, etwas weniger bleiben im Elternhaus oder kommen bei Verwandten unter. Nur etwas mehr als ein Zehntel der Studenten lebt im Wohnheim.\nEine Studie zeigt, wie sich die Wohnsituation der Studenten im Laufe des Studiums ändert. Zu Beginn des Studiums wohnt immerhin noch ein Drittel der Studenten bei Verwandten oder Eltern, ihr Anteil sinkt im Verlauf des Studiums. \nDie Wissenschaftler fragten die Studenten auch, wie leicht ihnen die Wohnungssuche fiel. Drei Fünftel der Befragten antworteten, das Finden einer Wohnung zu einem angemessenen Preis sei schwierig oder sehr schwierig."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, Ihren Bruder an die Waldorfschule München Südwest zu schicken. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Anmeldeunterlagen\n2) Aufnahmetermine\n3) Zahl der Lehrer\n4) Lage\n5) Abholzeiten im Kindergarten",
+                "picture" : "variant19_2",
+                "question1" : "1) Anmeldeunterlagen",
+                "question2" : "2) Aufnahmetermine",
+                "question3" : "3) Zahl der Lehrer",
+                "question4" : "4) Lage",
+                "question5" : "5) Abholzeiten im Kindergarten",
+                "pictureText" : "Ihre Kinder werden es lieben, mit uns zu lernen!"
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant19_3_1",
+                "picture2" : "variant19_3_2",
+                "picture3" : "variant19_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welche Schulfächer Sie vorziehen\n· erklären Sie, warum",
+                "picture1" : "variant19_4_1",
+                "picture2" : "variant19_4_2"
+            }
+        },
+        {
+            "variantNumber" : "20",
+            "task1" : {
+                "text" : "28.500 Euro - so viel kostet ein dreijähriges Bachelor-Studium im Schnitt. Denn laut Studentenwerk betragen die durchschnittlichen Lebenshaltungskosten eines Vollzeitstudenten monatlich etwa 794 Euro.\nDiese Berechnung enthält die Miete, die Fahrtkosten, Kosten für Ernährung, Kleidung, Lernmittel, Krankenversicherung, Telefon, Internet und Fernsehgebühren sowie Ausgaben für die Freizeitgestaltung. Nicht darin enthalten sind jedoch Studiengebühren, Semesterbeiträge und Verwaltungskosten.\nDie Front der Befürworter von Studiengebühren kippte in den vergangenen Jahren Land für Land. Als letztes Bundesland schaffte Niedersachsen sie zu Beginn des Wintersemesters 2014/2015 ab. Nun gibt es deutschlandweit keine Studiengebühren mehr für Studenten.\nDennoch werden noch immer Stimmen laut, die für eine Wiedereinführung plädieren und dabei auf das amerikanische System verweisen."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, einen  Friseursalon zu besuchen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Leistungen\n2) Individuelle Beratung\n3) Termin online buchen\n4) Farben-Föhnen: Preis\n5) Sonderangebote",
+                "picture" : "variant20_2",
+                "question1" : "1) Leistungen",
+                "question2" : "2) Individuelle Beratung",
+                "question3" : "3) Termin online buchen",
+                "question4" : "4) Farben-Föhnen: Preis",
+                "question5" : "5) Sonderangebote",
+                "pictureText" : "Die komplexesten Haarschnitte zu günstigen Preisen!"
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant20_3_1",
+                "picture2" : "variant20_3_2",
+                "picture3" : "variant20_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welche Bücher Sie vorziehen würden zu lesen\n· erklären Sie, warum",
+                "picture1" : "variant20_4_1",
+                "picture2" : "variant20_4_2"
+            }
+        },
+        {
+            "variantNumber" : "21",
+            "task1" : {
+                "text" : "Integration ist das Wort, das im Zusammenhang mit dem Thema Flüchtlinge die wichtigste Bedeutung hat. Wie kommt man in einem fremden Land an einer fremden Universität zurecht? Denn ohne Deutschkenntnisse und Wissen, wie was warum funktioniert, wird es mit der Integration schwierig. Das trifft natürlich auf alle ausländischen Studierenden zu, in besonderem Maße aber auf Flüchtlinge. Daher haben sich verschiedene Universitäten praktische Lösungen überlegt.\nBis zu 50.000 studierwillige Flüchtlinge kommen an die deutschen Universitäten. An der Universität zu Köln unterstützen internationale Medizinstudierende  andere internationale Studierende. Und das bedeutet vor allem: Sie unterstützen im Alltag, begleiten sie beim Studium. Am Uniklinikum Köln gibt es einen Notfallbereitschaftsplan, um für Flüchtlinge zu übersetzen."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, das Bode-Museum zu besuchen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) öffentliche Führungen\n2) Highlights der Sammlungen\n3) Führungsdauer\n4) Öffnungszeiten / Wochenende\n5) Ermäßigungen",
+                "picture" : "variant21_2",
+                "question1" : "1) öffentliche Führungen",
+                "question2" : "2) Highlights der Sammlungen",
+                "question3" : "3) Führungsdauer",
+                "question4" : "4) Öffnungszeiten / Wochenende",
+                "question5" : "5) Ermäßigungen",
+                "pictureText" : "Das Bode-Museum ist immer für seine Besucher geöffnet."
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant21_3_1",
+                "picture2" : "variant21_3_2",
+                "picture3" : "variant21_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welches Hobby Sie vorziehen würden\n· erklären Sie, warum",
+                "picture1" : "variant21_4_1",
+                "picture2" : "variant21_4_2"
+            }
+        },
+        {
+            "variantNumber" : "22",
+            "task1" : {
+                "text" : "213 Kilo Verpackungsmüll kommen auf jeden einzelnen Deutschen. Das sind Zahlen aus dem Jahr 2013 - kleiner ist der Müllberg seither sicher nicht geworden. So viel Müll entsteht, weil die Deutschen sehr gerne ihre Waren im Internet bestellen. Ohne Verpackung lassen sich Waren nicht  transportieren. Verpackungen aus Papier, Pappe oder Karton haben dabei den größten Anteil - über 7 Millionen Tonnen. Hinzu kommen die Verpackungen aus Kunststoffen, Glas und Holz.\nOhne Wiederverwertung  würde man diese Mengen an Abfall nicht bewältigen. Jeder kennt die typischen gelben Tonnen oder Säcke: Hier werden Leichtverpackungen von privaten Verbrauchern gesammelt, sortiert und wiederverwertet. Weißblech, Aluminium, verschiedene Kunststoffarten werden wieder verwendet. Auch Papier und Pappe werden gesammelt und wieder zu Papier verarbeitet."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, den Sommersprachkurs Deutsch intensiv zu machen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Dauer\n2) Begleitprogramm\n3) Zahl der Unterrichtsstunden pro Woche\n4) Zertifikat\n5) Konversation mit Muttersprachlern - ja/nein",
+                "picture" : "variant22_2",
+                "question1" : "1) Dauer",
+                "question2" : "2) Begleitprogramm",
+                "question3" : "3) Zahl der Unterrichtsstunden pro Woche",
+                "question4" : "4) Zertifikat",
+                "question5" : "5) Konversation mit Muttersprachlern - ja/nein",
+                "pictureText" : "Jetzt sprechen alle diese Leute perfekt Deutsch."
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant22_3_1",
+                "picture2" : "variant22_3_2",
+                "picture3" : "variant22_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welchen Sport Sie vorziehen\n· erklären Sie, warum",
+                "picture1" : "variant22_4_1",
+                "picture2" : "variant22_4_2"
+            }
+        },
+        {
+            "variantNumber" : "23",
+            "task1" : {
+                "text" : "Yoga, Rhetorik, Acrylmalerei, Computerprogramme, Spanisch, Kochen, Naturheilkunde, Existenzgründung … die Liste der Kurse lässt sich fast endlos lange fortsetzen - beinahe alles, was sich zur Weiterbildung eignet, bieten die Volkshochschulen an. Ganz oben auf der Liste: Deutschkurse.\nBeispiel Berlin: Ein allgemeiner Integrationskurs besteht hier aus 660 Unterrichtsstunden. Davon sind 600 Stunden Sprachunterricht und 60 Stunden Orientierungskurs. Am Ende erfolgt eine kostenlose Abschlussprüfung. Der Orientierungskurs vermittelt Wissen über das deutsche Rechtssystem, die Kultur und die jüngere Geschichte Deutschlands. Hinzu kommen spezielle Integrationskurse, zum Beispiel für Frauen, Jugendliche, Migrantinnen und Migranten mit „Alphabetisierungsbedarf“, wie es offiziell heißt. Das sind Kurse, in denen man überhaupt erst lesen und schreiben lernt."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, eine Radreise zu unternehmen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Reisetermine\n2) Preis\n3) Unterkunft\n4) Streckencharakter\n5) Verlängerung",
+                "picture" : "variant23_2",
+                "question1" : "1) Reisetermine",
+                "question2" : "2) Preis",
+                "question3" : "3) Unterkunft",
+                "question4" : "4) Streckencharakter",
+                "question5" : "5) Verlängerung",
+                "pictureText" : "Eine Radreise wie diese haben Sie sicher noch nie erlebt!"
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant23_3_1",
+                "picture2" : "variant23_3_2",
+                "picture3" : "variant23_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, welchen Ballsport Sie vorziehen würden\n· erklären Sie, warum",
+                "picture1" : "variant23_4_1",
+                "picture2" : "variant23_4_2"
+            }
+        },
+        {
+            "variantNumber" : "24",
+            "task1" : {
+                "text" : "2014 feierte es seinen 100. Geburtstag: Das bekannteste und vielleicht deutscheste aller Gesellschaftsspiele namens „Mensch ärgere Dich nicht“ fehlt in wohl keinem deutschen Haushalt. 90 Millionen Exemplare sind seit den Anfängen verkauft worden. Der Münchner Händler Joseph Friedrich Schmidt hat es selber aus Karton gebastelt und gemalt, um seine beiden lebhaften Kinder zu beschäftigen.\nDas Ziel des Spieles ist, als erster seine vier Spielfiguren ins Ziel zu bringen. Man darf andere Spieler aus ihrer Position „herausschmeißen“, wenn sie im Weg stehen. Diese müssen dann wieder von vorne beginnen und ärgern sich natürlich maßlos. Das Spiel ist deshalb so bekannt geworden, weil Herr Schmidt eine geniale Idee hatte: 3.000 Exemplare von „Mensch ärgere Dich nicht“ schickte er 1914, als gerade der Erste Weltkrieg tobte, als Sachspende an die Lazarette."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, sich ein Auto zu mieten. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Lage\n2) Angebot von Mietwagen\n3) Preis\n4) Buchung online\n5) Ort der Rückgabe",
+                "picture" : "variant24_2",
+                "question1" : "1) Lage",
+                "question2" : "2) Angebot von Mietwagen",
+                "question3" : "3) Preis",
+                "question4" : "4) Buchung online",
+                "question5" : "5) Ort der Rückgabe",
+                "pictureText" : "Sie haben noch nie so tolle Autos zu einem erschwinglichen Preis gesehen."
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant24_3_1",
+                "picture2" : "variant24_3_2",
+                "picture3" : "variant24_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, wo Sie vorziehen zu essen\n· erklären Sie, warum",
+                "picture1" : "variant24_4_1",
+                "picture2" : "variant24_4_2"
+            }
+        },
+        {
+            "variantNumber" : "25",
+            "task1" : {
+                "text" : "Das Sturmtief namens Niklas hat Ende März 2015 alle Rekorde gebrochen, als es über Deutschland fegte: Die Windkraftanlagen produzierten Strom in dieser Zeit mit über 30 Gigawatt (30.000 Megawatt - MW) Leistung. Zum Vergleich: Deutschland braucht insgesamt eine elektrische Leistung von rund 60 bis 80 Gigawatt täglich. \nDoch auch wenn Niklas für Rekorde sorgte, speichern lässt sich die gewonnene Energie (noch) nicht auf Dauer. Allerdings arbeiten Forscher und Ingenieure mit Hochdruck daran. Im Norden Deutschlands, im Bundesland Brandenburg, gibt es zum Beispiel eine Versuchsanlage, in der überschüssiger Strom aus dem Windpark dazu genutzt wird, Wasser in Wasser- und Sauerstoff aufzuspalten. Wasserstoff lässt sich speichern und kann dann nach Bedarf verbrannt und wieder zur Strom- und Wärmeerzeugung verwendet werden."
+            },
+            "task2" : {
+                "title" : "Sie haben beschlossen, eine Europareise zu unternehmen. Sie möchten aber gern mehr darüber wissen. Überlegen Sie innerhalb von 1.5 Minuten 5 direkte Fragen zu den folgenden Stichpunkten:",
+                "questions" : "1) Öffnungszeiten\n2) Zahlungsmittel\n3) Touren\n4) Ermäßigungen für Studenten\n5) Newsletter abonnieren",
+                "picture" : "variant25_2",
+                "question1" : "1) Öffnungszeiten",
+                "question2" : "2) Zahlungsmittel",
+                "question3" : "3) Touren",
+                "question4" : "4) Ermäßigungen für Studenten",
+                "question5" : "5) Newsletter abonnieren",
+                "pictureText" : "Europareise? Dann sind Sie bei uns genau richtig!"
+            },
+            "task3" : {
+                "questions" : "· wann und wo wurde das Foto gemacht \n· was oder wen zeigt das Foto \n· was passiert da gerade \n· warum bewahren Sie das Foto in Ihrem Fotoalbum auf \n· warum haben Sie beschlossen, das Foto Ihrem Freund/Ihrer Freundin zu zeigen",
+                "picture1" : "variant25_3_1",
+                "picture2" : "variant25_3_2",
+                "picture3" : "variant25_3_3"
+            },
+            "task4" : {
+                "questions" : "· beschreiben Sie kurz beide Fotos\n· sagen Sie, was beide Fotos gemeinsam haben\n· sprechen Sie darüber, was beide Fotos unterscheidet\n· sagen Sie, wie Sie vorziehen, den Urlaub zu verbringen\n· erklären Sie, warum",
+                "picture1" : "variant25_4_1",
+                "picture2" : "variant25_4_2"
+            }
         }
     ]
 }
