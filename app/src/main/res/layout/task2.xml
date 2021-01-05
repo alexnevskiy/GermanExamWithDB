@@ -168,7 +168,8 @@
                     app:autoSizeMaxTextSize="20sp"
                     app:autoSizeMinTextSize="10sp"
                     app:autoSizeTextType="uniform"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@android:color/black"
+                    android:gravity="center"/>
 
                 <ImageView
                     android:id="@+id/task2_image"

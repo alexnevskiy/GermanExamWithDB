@@ -19,6 +19,7 @@ public class TaskTwo extends AppCompatActivity {
     final String TASK2TITLE = "Task2Title";
     final String TASK2QUESTIONS = "Task2Questions";
     final String TASK2PICTURE = "Task2Picture";
+    final String TASK2PICTURETEXT = "Task2PictureText";
 
     SharedPreferences sharedPreferences;
 
@@ -35,14 +36,17 @@ public class TaskTwo extends AppCompatActivity {
 
         TextView task2TextView = findViewById(R.id.task2_text);
         TextView task2QuestionsView = findViewById(R.id.task2_questions);
+        TextView task2PictureTextView = findViewById(R.id.task2_title_image);
         ImageView task2ImageView = findViewById(R.id.task2_image);
         sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+        String task2PictureText = sharedPreferences.getString(TASK2PICTURETEXT, "");
         String task2Text = sharedPreferences.getString(TASK2TITLE, "");
         String task2Questions = sharedPreferences.getString(TASK2QUESTIONS, "");
         String task2Image = sharedPreferences.getString(TASK2PICTURE, "");
         int pictureId = getResources().getIdentifier(task2Image, "drawable", getPackageName());
         task2TextView.setText("Aufgabe 2. Sehen Sie sich folgende Anzeige an.\n" + task2Text);
         task2QuestionsView.setText(task2Questions);
+        task2PictureTextView.setText(task2PictureText);
         task2ImageView.setImageDrawable(getResources().getDrawable(pictureId));
 
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
