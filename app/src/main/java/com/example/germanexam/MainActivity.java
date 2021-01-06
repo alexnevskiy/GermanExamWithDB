@@ -74,10 +74,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
-        setContentView(R.layout.activity_main);
-        Button buttonStart = findViewById(R.id.buttonStart);
+
+        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+        String name = sharedPreferences.getString(NAME, "");
+        String surname = sharedPreferences.getString(SURNAME, "");
+        String classPerson = sharedPreferences.getString(CLASS, "");
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(JSON, readJSONFromRaw());
+        editor.apply();
+
         File file = new File(getFilesDir(), "/audio");
         if (file.exists()) {
             Log.d("File", "exists");
@@ -86,6 +92,15 @@ public class MainActivity extends AppCompatActivity {
             file.mkdir();
         }
 
+        if (!name.equals("") && !surname.equals("") && !classPerson.equals("")) {
+            Intent intent = new Intent(MainActivity.this, Menu.class);
+            startActivity(intent);
+            finish();
+        }
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Button buttonStart = findViewById(R.id.buttonStart);
+
         personName = findViewById(R.id.editTextTextPersonName);
         personSurname = findViewById(R.id.editTextTextPersonSurname);
         personClass = findViewById(R.id.editTextTextPersonClass);
@@ -93,10 +108,24 @@ public class MainActivity extends AppCompatActivity {
         buttonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveData();
-                Intent intent = new Intent(MainActivity.this, Menu.class);
-                startActivity(intent);
-                finish();
+                if (personName.getText().toString().equals("")
+                        || personSurname.getText().toString().equals("")
+                        || personClass.getText().toString().equals("")) {
+                    if (personName.getText().toString().equals("")) {
+                        personName.setError("Введите имя");
+                    }
+                    if (personSurname.getText().toString().equals("")) {
+                        personSurname.setError("Введите фамилию");
+                    }
+                    if (personClass.getText().toString().equals("")) {
+                        personClass.setError("Введите класс");
+                    }
+                } else {
+                    saveData();
+                    Intent intent = new Intent(MainActivity.this, Menu.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
     }

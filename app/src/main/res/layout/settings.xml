@@ -60,7 +60,7 @@
     <Button
         android:id="@+id/microphone_test"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="75dp"
         android:background="@drawable/button_blue"
         android:lines="2"
         android:paddingLeft="10dp"
@@ -78,7 +78,7 @@
     <Button
         android:id="@+id/change_interface"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="75dp"
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
         android:layout_marginEnd="64dp"
@@ -100,7 +100,7 @@
     <Button
         android:id="@+id/about_application"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="75dp"
         android:background="@drawable/button_blue"
         android:lines="2"
         android:paddingLeft="10dp"

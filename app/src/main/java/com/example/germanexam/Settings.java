@@ -18,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Random;
+
 public class Settings extends AppCompatActivity {
 
     TextView studentName;
@@ -60,14 +62,50 @@ public class Settings extends AppCompatActivity {
                         builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                                saveData();
-                                loadData();
                             }
                         });
-                        AlertDialog dialog = builder.create();
+                        final AlertDialog dialog = builder.create();
                         dialog.show();
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                boolean close = false;
+                                if (personName.getText().toString().equals("")
+                                        || personSurname.getText().toString().equals("")
+                                        || personClass.getText().toString().equals("")) {
+                                    if (personName.getText().toString().equals("")) {
+                                        personName.setError("Введите имя");
+                                    }
+                                    if (personSurname.getText().toString().equals("")) {
+                                        personSurname.setError("Введите фамилию");
+                                    }
+                                    if (personClass.getText().toString().equals("")) {
+                                        personClass.setError("Введите класс");
+                                    }
+                                } else {
+                                    saveData();
+                                    loadData();
+                                    close = true;
+                                }
+                                if (close) {
+                                    dialog.dismiss();
+                                }
+                            }
+                        });
                 }
                 return true;
+            }
+        });
+
+        final Button microphoneTest = findViewById(R.id.microphone_test);
+
+        microphoneTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Settings.this, MicrophoneTest.class);
+                startActivity(intent);
             }
         });
     }
@@ -85,8 +123,8 @@ public class Settings extends AppCompatActivity {
     private void loadData() {
         sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
         String personNameString = "Ученик: ";
-        personNameString += sharedPreferences.getString(NAME, "") + " ";
-        personNameString += sharedPreferences.getString(SURNAME, "");
+        personNameString += sharedPreferences.getString(SURNAME, "") + " ";
+        personNameString += sharedPreferences.getString(NAME, "");
         studentName.setText(personNameString);
         String personClassString = "Класс: ";
         personClassString += sharedPreferences.getString(CLASS, "");

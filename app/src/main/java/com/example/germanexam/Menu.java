@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.Random;
 
 public class Menu extends AppCompatActivity {
+
+    TextView studentName;
+    TextView studentClass;
 
     private long backPressedTime;
     private Toast backToast;
@@ -40,6 +44,11 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
+        studentName = findViewById(R.id.student_name);
+        studentClass = findViewById(R.id.person_class);
+
+        loadData();
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -57,11 +66,38 @@ public class Menu extends AppCompatActivity {
                         builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                                saveData();
                             }
                         });
-                        AlertDialog dialog = builder.create();
+                        final AlertDialog dialog = builder.create();
                         dialog.show();
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                boolean close = false;
+                                if (personName.getText().toString().equals("")
+                                        || personSurname.getText().toString().equals("")
+                                        || personClass.getText().toString().equals("")) {
+                                    if (personName.getText().toString().equals("")) {
+                                        personName.setError("Введите имя");
+                                    }
+                                    if (personSurname.getText().toString().equals("")) {
+                                        personSurname.setError("Введите фамилию");
+                                    }
+                                    if (personClass.getText().toString().equals("")) {
+                                        personClass.setError("Введите класс");
+                                    }
+                                } else {
+                                    saveData();
+                                    loadData();
+                                    close = true;
+                                }
+                                if (close) {
+                                    dialog.dismiss();
+                                }
+                            }
+                        });
                 }
                 return true;
             }
@@ -77,7 +113,7 @@ public class Menu extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt(VARIANT, random.nextInt(24) + 1);  //TODO
                 editor.apply();
-                Intent intent = new Intent(Menu.this, Answers.class);
+                Intent intent = new Intent(Menu.this, VariantStartPage.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
             }
@@ -125,5 +161,16 @@ public class Menu extends AppCompatActivity {
         editor.putString(CLASS, personClass.getText().toString());
         editor.apply();
         Toast.makeText(Menu.this, "Данные сохранены", Toast.LENGTH_SHORT).show();
+    }
+
+    private void loadData() {
+        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+        String personNameString = "Ученик: ";
+        personNameString += sharedPreferences.getString(SURNAME, "") + " ";
+        personNameString += sharedPreferences.getString(NAME, "");
+        studentName.setText(personNameString);
+        String personClassString = "Класс: ";
+        personClassString += sharedPreferences.getString(CLASS, "");
+        studentClass.setText(personClassString);
     }
 }

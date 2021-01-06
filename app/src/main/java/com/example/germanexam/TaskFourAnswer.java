@@ -210,7 +210,7 @@ public class TaskFourAnswer extends AppCompatActivity {
         fileName += "/audio/" + sharedPreferences.getString(SURNAME, "") + "_";
         fileName += sharedPreferences.getString(NAME, "") + "_";
         fileName += sharedPreferences.getString(CLASS, "") + "_Aufgabe4_Variant_";
-        fileName += sharedPreferences.getInt(VARIANT, 0) + ".mp4";
+        fileName += sharedPreferences.getInt(VARIANT, 0) + ".mp3";
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(TASK4, fileName);
         editor.apply();

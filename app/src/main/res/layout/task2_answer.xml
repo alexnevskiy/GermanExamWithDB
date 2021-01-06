@@ -53,7 +53,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_margin="10dp">
 
@@ -73,7 +73,7 @@
             <ImageView
                 android:id="@+id/task2_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 tools:srcCompat="@tools:sample/avatars" />
         </LinearLayout>
 

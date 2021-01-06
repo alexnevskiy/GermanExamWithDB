@@ -7,21 +7,53 @@
     android:layout_height="match_parent"
     android:background="@color/greyExam">
 
+    <TextView
+        android:id="@+id/student_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lines="2"
+        android:text="@string/student_name"
+        app:autoSizeMaxTextSize="35sp"
+        app:autoSizeMinTextSize="15sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.050000012" />
+
+    <TextView
+        android:id="@+id/person_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lines="2"
+        android:text="@string/person_class"
+        app:autoSizeMaxTextSize="35sp"
+        app:autoSizeMinTextSize="15sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/student_name"
+        app:layout_constraintVertical_bias="0.02" />
+
     <Button
         android:id="@+id/button_exam"
         android:layout_width="0dp"
         android:layout_height="150dp"
         android:background="@drawable/button_blue"
+        android:lines="1"
         android:text="@string/Exam"
         android:textColor="#FFFFFF"
-        android:lines="1"
         app:autoSizeMaxTextSize="45sp"
         app:autoSizeMinTextSize="10sp"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/button_variants"
         app:layout_constraintEnd_toEndOf="@+id/button_variants"
         app:layout_constraintStart_toStartOf="@+id/button_variants"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/person_class" />
 
     <Button
         android:id="@+id/button_variants"
@@ -41,11 +73,9 @@
         app:autoSizeMinTextSize="10sp"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintDimensionRatio=""
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/person_class" />
 
     <Button
         android:id="@+id/button_settings"

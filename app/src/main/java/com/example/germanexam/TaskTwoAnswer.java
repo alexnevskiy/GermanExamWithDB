@@ -48,7 +48,7 @@ public class TaskTwoAnswer extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    long timeLeft = 100000;
+    long timeLeft = 5000;
     int counter = 0;
     CountDownTimer countDownTimer;
 
@@ -213,7 +213,7 @@ public class TaskTwoAnswer extends AppCompatActivity {
         fileName += "/audio/" + sharedPreferences.getString(SURNAME, "") + "_";
         fileName += sharedPreferences.getString(NAME, "") + "_";
         fileName += sharedPreferences.getString(CLASS, "") + "_Aufgabe2_Variant_";
-        fileName += sharedPreferences.getInt(VARIANT, 0) + ".mp4";
+        fileName += sharedPreferences.getInt(VARIANT, 0) + ".mp3";
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(TASK2, fileName);
         editor.apply();

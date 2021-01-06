@@ -78,4 +78,8 @@
     <string name="task2_question5">Frage 5.\n</string>
     <string name="share">Поделиться</string>
     <string name="main_menu">Главное меню</string>
+    <string name="recording_microphone">Запись</string>
+    <string name="recording_microphone_stop">Остановить запись</string>
+    <string name="play_recording">Воспроизвести</string>
+    <string name="play_recording_stop">Остановить</string>
 </resources>
