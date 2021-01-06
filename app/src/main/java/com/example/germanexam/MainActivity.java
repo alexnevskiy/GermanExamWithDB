@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -19,8 +20,12 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -73,6 +78,13 @@ public class MainActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
         setContentView(R.layout.activity_main);
         Button buttonStart = findViewById(R.id.buttonStart);
+        File file = new File(getFilesDir(), "/audio");
+        if (file.exists()) {
+            Log.d("File", "exists");
+        } else {
+            Log.d("File", "not exists");
+            file.mkdir();
+        }
 
         personName = findViewById(R.id.editTextTextPersonName);
         personSurname = findViewById(R.id.editTextTextPersonSurname);

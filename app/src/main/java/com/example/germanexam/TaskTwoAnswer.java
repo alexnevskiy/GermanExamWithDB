@@ -210,7 +210,7 @@ public class TaskTwoAnswer extends AppCompatActivity {
     private void saveFilename() {
         fileName = getFilesDir().getAbsolutePath();
         sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
-        fileName += "/" + sharedPreferences.getString(SURNAME, "") + "_";
+        fileName += "/audio/" + sharedPreferences.getString(SURNAME, "") + "_";
         fileName += sharedPreferences.getString(NAME, "") + "_";
         fileName += sharedPreferences.getString(CLASS, "") + "_Aufgabe2_Variant_";
         fileName += sharedPreferences.getInt(VARIANT, 0) + ".mp4";

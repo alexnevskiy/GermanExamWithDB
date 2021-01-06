@@ -275,6 +275,16 @@ public class Answers extends AppCompatActivity {
                 changeButtons();
             }
         });
+
+        Button endButton = findViewById(R.id.end_answers);
+
+        endButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Answers.this, Share.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void changeButtons() {
