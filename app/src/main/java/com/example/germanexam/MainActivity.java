@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     final String NAME = "Name";
     final String SURNAME = "Surname";
     final String CLASS = "Class";
-    final String JSON = "Json";
 
     SharedPreferences sharedPreferences;
 
@@ -56,22 +55,6 @@ public class MainActivity extends AppCompatActivity {
         if (!permissionToRecordAccepted ) finish();
     }
 
-    public String readJSONFromRaw() {
-        String json;
-        try {
-            InputStream is = getResources().openRawResource(R.raw.german_variants);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
@@ -80,9 +63,6 @@ public class MainActivity extends AppCompatActivity {
         String name = sharedPreferences.getString(NAME, "");
         String surname = sharedPreferences.getString(SURNAME, "");
         String classPerson = sharedPreferences.getString(CLASS, "");
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(JSON, readJSONFromRaw());
-        editor.apply();
 
         File file = new File(getFilesDir(), "/audio");
         if (file.exists()) {
@@ -136,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
         editor.putString(NAME, personName.getText().toString());
         editor.putString(SURNAME, personSurname.getText().toString());
         editor.putString(CLASS, personClass.getText().toString());
-        editor.putString(JSON, readJSONFromRaw());
         editor.apply();
         Toast.makeText(MainActivity.this, "Данные сохранены", Toast.LENGTH_SHORT).show();
     }

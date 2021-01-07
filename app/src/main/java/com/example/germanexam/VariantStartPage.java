@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,7 +36,7 @@ public class VariantStartPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.variant_one_start);
+        setContentView(R.layout.variant_start);
         Button buttonVariants = findViewById(R.id.button_start_test);
 
         buttonVariants.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +53,7 @@ public class VariantStartPage extends AppCompatActivity {
                 intent.putExtra("task", "1");
                 intent.putExtra("answer", "no");
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -67,6 +67,7 @@ public class VariantStartPage extends AppCompatActivity {
                 Intent intent = new Intent(VariantStartPage.this, Menu.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
             }
         });
         builder.setNeutralButton(R.string.desktop, new DialogInterface.OnClickListener() {
@@ -79,6 +80,7 @@ public class VariantStartPage extends AppCompatActivity {
                 Intent intent = new Intent(VariantStartPage.this, Variants.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
             }
         });
         AlertDialog dialog = builder.create();

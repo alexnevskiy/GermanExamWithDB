@@ -70,13 +70,13 @@
         app:autoSizeMaxTextSize="45sp"
         app:autoSizeMinTextSize="10sp"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/change_interface"
-        app:layout_constraintEnd_toEndOf="@+id/change_interface"
-        app:layout_constraintStart_toStartOf="@+id/change_interface"
+        app:layout_constraintBottom_toTopOf="@+id/file_manager"
+        app:layout_constraintEnd_toEndOf="@+id/file_manager"
+        app:layout_constraintStart_toStartOf="@+id/file_manager"
         app:layout_constraintTop_toBottomOf="@+id/person_class" />
 
     <Button
-        android:id="@+id/change_interface"
+        android:id="@+id/file_manager"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:layout_marginStart="64dp"
@@ -87,7 +87,7 @@
         android:lines="2"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="@string/change_interface"
+        android:text="@string/file_manager"
         android:textColor="#FFFFFF"
         app:autoSizeMaxTextSize="45sp"
         app:autoSizeMinTextSize="10sp"
@@ -111,9 +111,9 @@
         app:autoSizeMinTextSize="10sp"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintEnd_toEndOf="@+id/change_interface"
-        app:layout_constraintStart_toStartOf="@+id/change_interface"
-        app:layout_constraintTop_toBottomOf="@+id/change_interface" />
+        app:layout_constraintEnd_toEndOf="@+id/file_manager"
+        app:layout_constraintStart_toStartOf="@+id/file_manager"
+        app:layout_constraintTop_toBottomOf="@+id/file_manager" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

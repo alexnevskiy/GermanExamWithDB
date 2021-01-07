@@ -30,7 +30,7 @@
     <string name="student_name">Ученик: Иван Иванов</string>
     <string name="person_class">Класс: 11А</string>
     <string name="microphone_test">Проверка микрофона</string>
-    <string name="change_interface">Размер интерфейса</string>
+    <string name="file_manager">Записанные файлы</string>
     <string name="about_application">О приложении</string>
     <string name="change_data">Изменить данные</string>
     <string name="save">Сохранить</string>
@@ -82,4 +82,9 @@
     <string name="recording_microphone_stop">Остановить запись</string>
     <string name="play_recording">Воспроизвести</string>
     <string name="play_recording_stop">Остановить</string>
+    <string name="restart_exam">Ваш экзамен закончился, потому что Вы вышли из приложения. Вы можете начать его заново или выйти в главное меню.</string>
+    <string name="restart">Начать заново</string>
+    <string name="file_manager_title">Иванов Иван 11Б 18 вариант</string>
+    <string name="delete">Удалить</string>
+    <string name="files_not_found">Записанные файлы отсутствуют.\nЗакончите полностью один из вариантов,\nчтобы просматривать записи.</string>
 </resources>

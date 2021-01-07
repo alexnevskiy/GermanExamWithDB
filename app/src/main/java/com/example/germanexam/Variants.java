@@ -8,13 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Variants extends AppCompatActivity {
 
     final String VARIANT = "Variant";
+    final String JSON = "Json";
 
     SharedPreferences sharedPreferences;
 
@@ -27,8 +27,14 @@ public class Variants extends AppCompatActivity {
     }
 
     public void defineButtons() {
+        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+        String json = sharedPreferences.getString(JSON, "");
+
+        JsonParser jsonParser = new JsonParser(json);
+        final int variantsNumber = jsonParser.getVariantsNumber();
+
         int rows = 5;
-        int columns = 5;
+        int columns = variantsNumber / 5;
 
         TableLayout tableLayout = findViewById(R.id.variants_layout);
 
@@ -49,21 +55,26 @@ public class Variants extends AppCompatActivity {
                 paramsButton.bottomMargin = 20;
                 final Button button = new Button(this);
                 button.setLayoutParams(paramsButton);
-                button.setText("" + (j + 1 + (i * rows)));
-                button.setId(j + 1 + (i * rows));
-                button.setBackground(getResources().getDrawable(R.drawable.button_blue));
+                int number = j + 1 + (i * rows);
+                button.setText("" + number);
+                button.setId(number);
+                boolean isFinished = sharedPreferences.getBoolean(VARIANT + number, false);
+                if (isFinished) {
+                    button.setBackground(getResources().getDrawable(R.drawable.button_green_fade));
+                } else {
+                    button.setBackground(getResources().getDrawable(R.drawable.button_blue));
+                }
                 button.setTextSize(30);
                 button.setTextColor(Color.parseColor("#FFFFFF"));
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(VARIANT, Integer.parseInt(button.getText().toString()));
                         editor.apply();
                         Intent intent = new Intent(Variants.this, VariantStartPage.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                         startActivity(intent);
+                        finish();
                     }
                 });
 

@@ -23,6 +23,7 @@ public class Answers extends AppCompatActivity {
     final String TASK2 = "Task2";
     final String TASK3 = "Task3";
     final String TASK4 = "Task4";
+    final String VARIANT = "Variant";
 
     SharedPreferences sharedPreferences;
 
@@ -59,10 +60,12 @@ public class Answers extends AppCompatActivity {
     int counter4 = 0;
     CountDownTimer countDownTimer;
 
+    boolean isPlaying = false;
+
     String[] times = new String[4];
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.answers);
         playButton1 = findViewById(R.id.answer_play1);
@@ -99,6 +102,12 @@ public class Answers extends AppCompatActivity {
                     countDownTimer = new CountDownTimer(timeLeft1, 1000) {
                         @Override
                         public void onTick(long millisUntilFinished) {
+                            if (!isPlaying) {
+                                countDownTimer.cancel();
+                                resetAllButtons();
+                                stopPlaying();
+                                return;
+                            }
                             timeLeft1 = millisUntilFinished;
                             updateTimer(timeLeft1, timeRemaining1);
                             counter1++;
@@ -148,6 +157,12 @@ public class Answers extends AppCompatActivity {
                     countDownTimer = new CountDownTimer(timeLeft2, 1000) {
                         @Override
                         public void onTick(long millisUntilFinished) {
+                            if (!isPlaying) {
+                                countDownTimer.cancel();
+                                resetAllButtons();
+                                stopPlaying();
+                                return;
+                            }
                             timeLeft2 = millisUntilFinished;
                             updateTimer(timeLeft2, timeRemaining2);
                             counter2++;
@@ -197,6 +212,12 @@ public class Answers extends AppCompatActivity {
                     countDownTimer = new CountDownTimer(timeLeft3, 1000) {
                         @Override
                         public void onTick(long millisUntilFinished) {
+                            if (!isPlaying) {
+                                countDownTimer.cancel();
+                                resetAllButtons();
+                                stopPlaying();
+                                return;
+                            }
                             timeLeft3 = millisUntilFinished;
                             updateTimer(timeLeft3, timeRemaining3);
                             counter3++;
@@ -246,6 +267,12 @@ public class Answers extends AppCompatActivity {
                     countDownTimer = new CountDownTimer(timeLeft4, 1000) {
                         @Override
                         public void onTick(long millisUntilFinished) {
+                            if (!isPlaying) {
+                                countDownTimer.cancel();
+                                resetAllButtons();
+                                stopPlaying();
+                                return;
+                            }
                             timeLeft4 = millisUntilFinished;
                             updateTimer(timeLeft4, timeRemaining4);
                             counter4++;
@@ -281,10 +308,36 @@ public class Answers extends AppCompatActivity {
         endButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+                int variantNumber = sharedPreferences.getInt(VARIANT, 0);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean(VARIANT + variantNumber, true);
+                editor.apply();
                 Intent intent = new Intent(Answers.this, Share.class);
                 startActivity(intent);
+                finish();
             }
         });
+    }
+
+    void resetAllButtons() {
+        playButton1Pressed = false;
+        playButton2Pressed = false;
+        playButton3Pressed = false;
+        playButton4Pressed = false;
+        progressBar1.setProgress(0);
+        progressBar2.setProgress(0);
+        progressBar3.setProgress(0);
+        progressBar4.setProgress(0);
+        timeRemaining1.setText(times[0]);
+        timeRemaining2.setText(times[1]);
+        timeRemaining3.setText(times[2]);
+        timeRemaining4.setText(times[3]);
+        counter1 = 0;
+        counter2 = 0;
+        counter3 = 0;
+        counter4 = 0;
+        changeButtons();
     }
 
     private void changeButtons() {
@@ -333,9 +386,12 @@ public class Answers extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
-        if (player != null) {
-            stopPlaying();
+        if (isPlaying) {
+            isPlaying = false;
         }
+//        if (player != null) {
+//            stopPlaying();
+//        }
     }
 
     @Override
@@ -374,11 +430,13 @@ public class Answers extends AppCompatActivity {
         } catch (IOException e) {
             Log.e("startPlaying()", "prepare() failed");
         }
+        isPlaying = true;
     }
 
     private void stopPlaying() {
         player.release();
         player = null;
+        isPlaying = false;
     }
 
     private void loadData(String task) {

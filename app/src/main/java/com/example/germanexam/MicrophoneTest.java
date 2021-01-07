@@ -1,13 +1,9 @@
 package com.example.germanexam;
 
 import android.Manifest;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,13 +12,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import static androidx.core.content.FileProvider.getUriForFile;
 
 public class MicrophoneTest extends AppCompatActivity {
     private final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
@@ -56,8 +49,9 @@ public class MicrophoneTest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.microphone_test);
 
-        fileName = getFilesDir().getAbsolutePath();
-        fileName += "/audio/" + "microphone_test.mp3";
+        fileName = getFilesDir().getAbsolutePath() + "microphone_test.mp3";
+
+        ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
         buttonRecording = findViewById(R.id.microphone_test_button);
 
@@ -128,6 +122,12 @@ public class MicrophoneTest extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        if (player != null) {
+            stopPlaying();
+        }
+        if (recorder != null) {
+            stopRecording();
+        }
         File file = new File(fileName);
         boolean deleted = file.delete();
         Log.i("MicrophoneTest", "File is deleting:" + deleted);

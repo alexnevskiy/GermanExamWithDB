@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.File;
 import java.util.Random;
 
 public class Settings extends AppCompatActivity {
@@ -106,6 +107,25 @@ public class Settings extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Settings.this, MicrophoneTest.class);
                 startActivity(intent);
+            }
+        });
+
+        final Button fileManager = findViewById(R.id.file_manager);
+
+        fileManager.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String path = getFilesDir().toString() + "/audio";
+                File directory = new File(path);
+                File[] files = directory.listFiles();
+                if (files.length < 4) {
+                    Intent intent = new Intent(Settings.this, FilesNotFound.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(Settings.this, FileManager.class);
+                    startActivity(intent);
+                }
+
             }
         });
     }

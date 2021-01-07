@@ -18,10 +18,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Random;
 
 public class Menu extends AppCompatActivity {
-
     TextView studentName;
     TextView studentClass;
 
@@ -32,12 +34,16 @@ public class Menu extends AppCompatActivity {
     final String SURNAME = "Surname";
     final String CLASS = "Class";
     final String VARIANT = "Variant";
+    final String RESTART = "Restart";
+    final String JSON = "Json";
 
     SharedPreferences sharedPreferences;
 
     EditText personName;
     EditText personSurname;
     EditText personClass;
+
+    String json;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -47,7 +53,16 @@ public class Menu extends AppCompatActivity {
         studentName = findViewById(R.id.student_name);
         studentClass = findViewById(R.id.person_class);
 
+        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        json = readJSONFromRaw();
+        editor.putString(JSON, json);
+        editor.apply();
+
         loadData();
+
+        JsonParser jsonParser = new JsonParser(json);
+        final int variantsNumber = jsonParser.getVariantsNumber();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -111,10 +126,9 @@ public class Menu extends AppCompatActivity {
                 Random random = new Random();
                 sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putInt(VARIANT, random.nextInt(24) + 1);  //TODO
+                editor.putInt(VARIANT, random.nextInt(variantsNumber - 1) + 1);
                 editor.apply();
                 Intent intent = new Intent(Menu.this, VariantStartPage.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
             }
         });
@@ -138,6 +152,21 @@ public class Menu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+        boolean restart = sharedPreferences.getBoolean(RESTART, false);
+        if (restart) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean(RESTART, false);
+            editor.apply();
+
+            Intent intent = new Intent(Menu.this, Restart.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -172,5 +201,21 @@ public class Menu extends AppCompatActivity {
         String personClassString = "Класс: ";
         personClassString += sharedPreferences.getString(CLASS, "");
         studentClass.setText(personClassString);
+    }
+
+    public String readJSONFromRaw() {
+        String json;
+        try {
+            InputStream is = getResources().openRawResource(R.raw.german_variants);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
     }
 }

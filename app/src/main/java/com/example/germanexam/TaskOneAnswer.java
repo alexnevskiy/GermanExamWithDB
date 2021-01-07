@@ -20,20 +20,25 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
 public class TaskOneAnswer extends AppCompatActivity {
-
     final String TASK1 = "Task1";
+    final String TASK2 = "Task2";
+    final String TASK3 = "Task3";
+    final String TASK4 = "Task4";
     final String VARIANT = "Variant";
     final String NAME = "Name";
     final String SURNAME = "Surname";
     final String CLASS = "Class";
     final String TASK1TEXT = "Task1Text";
+    final String RESTART = "Restart";
 
     private final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private String fileName = null;
+    private boolean isWorking = false;
 
     private boolean permissionToRecordAccepted = false;
     private String [] permissions = {Manifest.permission.RECORD_AUDIO};
@@ -89,6 +94,7 @@ public class TaskOneAnswer extends AppCompatActivity {
                     intent.putExtra("task", "2");
                     intent.putExtra("answer", "no");
                     startActivity(intent);
+                    isWorking = false;
                     countDownTimer.cancel();
                 }
             }
@@ -107,6 +113,8 @@ public class TaskOneAnswer extends AppCompatActivity {
             }
         }.start();
 
+        isWorking = true;
+
         buttonEndAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,6 +128,7 @@ public class TaskOneAnswer extends AppCompatActivity {
                         intent.putExtra("task", "2");
                         intent.putExtra("answer", "no");
                         startActivity(intent);
+                        isWorking = false;
                         countDownTimer.cancel();
                     }
                 });
@@ -134,11 +143,45 @@ public class TaskOneAnswer extends AppCompatActivity {
 
     @Override
     public void onStop() {
-        super.onStop();
-        if (recorder != null) {
-            recorder.release();
-            recorder = null;
+        if (isWorking) {
+            countDownTimer.cancel();
+            stopRecording();
+
+            deleteFiles();
+
+            sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean(RESTART, true);
+            editor.apply();
         }
+        super.onStop();
+    }
+
+    private void loadData(String task) {
+        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+        fileName = sharedPreferences.getString(task, "");
+    }
+
+    private  void deleteFiles() {
+        loadData(TASK1);
+        File file1 = new File(fileName);
+        boolean deleted1 = file1.delete();
+        Log.i("TaskFourAnswer", "Audio1 is deleting:" + deleted1);
+
+        loadData(TASK2);
+        File file2 = new File(fileName);
+        boolean deleted2 = file2.delete();
+        Log.i("TaskFourAnswer", "Audio2 is deleting:" + deleted2);
+
+        loadData(TASK3);
+        File file3 = new File(fileName);
+        boolean deleted3 = file3.delete();
+        Log.i("TaskFourAnswer", "Audio3 is deleting:" + deleted3);
+
+        loadData(TASK4);
+        File file4 = new File(fileName);
+        boolean deleted4 = file4.delete();
+        Log.i("TaskFourAnswer", "Audio4 is deleting:" + deleted4);
     }
 
     @Override
@@ -152,12 +195,14 @@ public class TaskOneAnswer extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 countDownTimer.cancel();
+                deleteFiles();
             }
         });
         builder.setNeutralButton(R.string.desktop, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 stopRecording();
                 countDownTimer.cancel();
+                deleteFiles();
                 finishAffinity();
             }
         });
@@ -168,6 +213,7 @@ public class TaskOneAnswer extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 countDownTimer.cancel();
+                deleteFiles();
             }
         });
         AlertDialog dialog = builder.create();

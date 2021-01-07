@@ -11,11 +11,14 @@ public class JsonParser {
     JSONObject task3;
     JSONObject task4;
 
+    int variantsNumber;
+
     JsonParser(String jsonString, int variantNumber) {
         try {
             JSONObject jsonObject = new JSONObject(jsonString);
             JSONArray jsonArray = jsonObject.getJSONArray("variants");
             variant = jsonArray.getJSONObject(variantNumber - 1);
+            variantsNumber = jsonArray.length();
             task1 = variant.getJSONObject("task1");
             task2 = variant.getJSONObject("task2");
             task3 = variant.getJSONObject("task3");
@@ -23,6 +26,20 @@ public class JsonParser {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    JsonParser(String jsonString) {
+        try {
+            JSONObject jsonObject = new JSONObject(jsonString);
+            JSONArray jsonArray = jsonObject.getJSONArray("variants");
+            variantsNumber = jsonArray.length();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int getVariantsNumber() {
+        return variantsNumber;
     }
 
     public String getTask1Text() {
