@@ -73,17 +73,27 @@ public class Settings extends AppCompatActivity {
                             public void onClick(View v)
                             {
                                 boolean close = false;
-                                if (personName.getText().toString().equals("")
-                                        || personSurname.getText().toString().equals("")
-                                        || personClass.getText().toString().equals("")) {
-                                    if (personName.getText().toString().equals("")) {
+                                String nameText = personName.getText().toString();
+                                String surnameText = personSurname.getText().toString();
+                                String classText = personClass.getText().toString();
+                                if (nameText.equals("") || surnameText.equals("") || classText.equals("")
+                                        || !nameText.matches("[A-Za-zА-Яа-я]+")
+                                        || !surnameText.matches("[A-Za-zА-Яа-я]+")
+                                        || !classText.matches("(\\d*[A-Za-zА-Яа-я]*)+")) {
+                                    if (nameText.equals("")) {
                                         personName.setError("Введите имя");
+                                    } else if (!nameText.matches("[A-Za-zА-Яа-я]+")) {
+                                        personName.setError("Введите корректное имя");
                                     }
-                                    if (personSurname.getText().toString().equals("")) {
+                                    if (surnameText.equals("")) {
                                         personSurname.setError("Введите фамилию");
+                                    } else if (!surnameText.matches("[A-Za-zА-Яа-я]+")) {
+                                        personSurname.setError("Введите корректную фамилию");
                                     }
-                                    if (personClass.getText().toString().equals("")) {
+                                    if (classText.equals("")) {
                                         personClass.setError("Введите класс");
+                                    } else if (!classText.matches("(\\d*[A-Za-zА-Яа-я]*)+")) {
+                                        personClass.setError("Введите корректный класс");
                                     }
                                 } else {
                                     saveData();
@@ -125,7 +135,16 @@ public class Settings extends AppCompatActivity {
                     Intent intent = new Intent(Settings.this, FileManager.class);
                     startActivity(intent);
                 }
+            }
+        });
 
+        Button aboutApp = findViewById(R.id.about_application);
+
+        aboutApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Settings.this, AboutApp.class);
+                startActivity(intent);
             }
         });
     }

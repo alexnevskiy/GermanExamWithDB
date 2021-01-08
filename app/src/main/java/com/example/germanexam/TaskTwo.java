@@ -33,7 +33,7 @@ public class TaskTwo extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    long timeLeft = 2000;
+    long timeLeft = 90000;
     int counter = 0;
     CountDownTimer countDownTimer;
 

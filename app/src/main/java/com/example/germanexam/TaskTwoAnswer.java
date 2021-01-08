@@ -53,7 +53,7 @@ public class TaskTwoAnswer extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    long timeLeft = 5000;
+    long timeLeft = 100000;
     int counter = 0;
     CountDownTimer countDownTimer;
 
