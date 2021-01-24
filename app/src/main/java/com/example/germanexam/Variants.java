@@ -1,5 +1,6 @@
 package com.example.germanexam;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -9,7 +10,11 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Variants extends AppCompatActivity {
 
@@ -18,12 +23,41 @@ public class Variants extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
+    List<Button> buttonList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.variants);
 
         defineButtons();
+
+        Button buttonReset = findViewById(R.id.reset_button);
+
+        buttonReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Variants.this);
+                builder.setTitle(R.string.reset_title);
+                sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+                builder.setPositiveButton(R.string.yes_rus, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        for (Button button : buttonList) {
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean(VARIANT + button.getText(), false);
+                            editor.apply();
+                            button.setBackground(getResources().getDrawable(R.drawable.button_blue));
+                        }
+                    }
+                });
+                builder.setNegativeButton(R.string.no_rus, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
     }
 
     public void defineButtons() {
@@ -39,7 +73,6 @@ public class Variants extends AppCompatActivity {
         TableLayout tableLayout = findViewById(R.id.variants_layout);
 
         for (int i = 0; i < rows; i++) {
-
             TableRow tableRow = new TableRow(this);
             TableRow.LayoutParams paramsTable = new TableRow.LayoutParams(
                     TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
@@ -78,6 +111,7 @@ public class Variants extends AppCompatActivity {
                     }
                 });
 
+                buttonList.add(button);
                 tableRow.addView(button, j);
             }
 

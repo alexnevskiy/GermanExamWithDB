@@ -30,12 +30,12 @@ import static androidx.core.content.FileProvider.getUriForFile;
 
 public class FileManagerAdapter extends RecyclerView.Adapter<FileManagerAdapter.FileManagerViewHolder> {
 
-    ArrayList<String[]> database;
+    List<String[]> database;
     Context context;
     int whoPlayed = -1;
     MediaPlayer player = null;
 
-    FileManagerAdapter(ArrayList<String[]> files, Context context) {
+    FileManagerAdapter(List<String[]> files, Context context) {
         database = files;
         this.context = context;
     }

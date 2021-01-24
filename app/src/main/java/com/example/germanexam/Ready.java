@@ -143,25 +143,28 @@ public class Ready extends AppCompatActivity {
     }
 
     private  void deleteFiles() {
-        loadData(TASK1);
-        File file1 = new File(fileName);
-        boolean deleted1 = file1.delete();
-        Log.i("TaskFourAnswer", "Audio1 is deleting:" + deleted1);
+        Intent myIntent = getIntent();
+        switch (myIntent.getStringExtra("task")) {
+            case "2":
+                deleteTask(TASK1);
+                break;
+            case "3":
+                deleteTask(TASK1);
+                deleteTask(TASK2);
+                break;
+            case "4":
+                deleteTask(TASK1);
+                deleteTask(TASK2);
+                deleteTask(TASK3);
+                break;
+        }
+    }
 
-        loadData(TASK2);
-        File file2 = new File(fileName);
-        boolean deleted2 = file2.delete();
-        Log.i("TaskFourAnswer", "Audio2 is deleting:" + deleted2);
-
-        loadData(TASK3);
-        File file3 = new File(fileName);
-        boolean deleted3 = file3.delete();
-        Log.i("TaskFourAnswer", "Audio3 is deleting:" + deleted3);
-
-        loadData(TASK4);
-        File file4 = new File(fileName);
-        boolean deleted4 = file4.delete();
-        Log.i("TaskFourAnswer", "Audio4 is deleting:" + deleted4);
+    private void deleteTask(String task) {
+        loadData(task);
+        File file = new File(fileName);
+        boolean deleted = file.delete();
+        Log.i("TaskFourAnswer", "Audio " + task + " is deleting: " + deleted);
     }
 
     @Override

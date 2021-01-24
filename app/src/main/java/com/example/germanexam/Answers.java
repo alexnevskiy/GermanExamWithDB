@@ -389,9 +389,6 @@ public class Answers extends AppCompatActivity {
         if (isPlaying) {
             isPlaying = false;
         }
-//        if (player != null) {
-//            stopPlaying();
-//        }
     }
 
     @Override

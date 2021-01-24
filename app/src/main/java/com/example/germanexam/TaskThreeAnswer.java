@@ -28,7 +28,6 @@ public class TaskThreeAnswer extends AppCompatActivity {
     final String TASK1 = "Task1";
     final String TASK2 = "Task2";
     final String TASK3 = "Task3";
-    final String TASK4 = "Task4";
     final String VARIANT = "Variant";
     final String NAME = "Name";
     final String SURNAME = "Surname";
@@ -205,11 +204,6 @@ public class TaskThreeAnswer extends AppCompatActivity {
         File file3 = new File(fileName);
         boolean deleted3 = file3.delete();
         Log.i("TaskFourAnswer", "Audio3 is deleting:" + deleted3);
-
-        loadData(TASK4);
-        File file4 = new File(fileName);
-        boolean deleted4 = file4.delete();
-        Log.i("TaskFourAnswer", "Audio4 is deleting:" + deleted4);
     }
 
     @Override

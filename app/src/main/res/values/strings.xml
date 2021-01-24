@@ -93,4 +93,8 @@
     <string name="about_app_questions">По всем вопросам обращайтесь по адресу:</string>
     <string name="about_app_email">a.kobyzhev@gmail.com</string>
     <string name="about_app_developer">© Кобыжев Александр</string>
+    <string name="reset">Сбросить варианты</string>
+    <string name="reset_title">Вы уверены, что хотите сбросить все варианты?</string>
+    <string name="yes_rus">Да</string>
+    <string name="no_rus">Нет</string>
 </resources>

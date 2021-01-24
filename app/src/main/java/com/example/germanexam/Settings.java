@@ -19,7 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.File;
-import java.util.Random;
 
 public class Settings extends AppCompatActivity {
 
@@ -128,13 +127,13 @@ public class Settings extends AppCompatActivity {
                 String path = getFilesDir().toString() + "/audio";
                 File directory = new File(path);
                 File[] files = directory.listFiles();
+                Intent intent;
                 if (files.length < 4) {
-                    Intent intent = new Intent(Settings.this, FilesNotFound.class);
-                    startActivity(intent);
+                    intent = new Intent(Settings.this, FilesNotFound.class);
                 } else {
-                    Intent intent = new Intent(Settings.this, FileManager.class);
-                    startActivity(intent);
+                    intent = new Intent(Settings.this, FileManager.class);
                 }
+                startActivity(intent);
             }
         });
 

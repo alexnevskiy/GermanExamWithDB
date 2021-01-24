@@ -23,9 +23,6 @@ public class TaskTwo extends AppCompatActivity {
     final String TASK2PICTURE = "Task2Picture";
     final String TASK2PICTURETEXT = "Task2PictureText";
     final String TASK1 = "Task1";
-    final String TASK2 = "Task2";
-    final String TASK3 = "Task3";
-    final String TASK4 = "Task4";
     final String RESTART = "Restart";
 
     private String fileName = null;
@@ -119,21 +116,6 @@ public class TaskTwo extends AppCompatActivity {
         File file1 = new File(fileName);
         boolean deleted1 = file1.delete();
         Log.i("TaskFourAnswer", "Audio1 is deleting:" + deleted1);
-
-        loadData(TASK2);
-        File file2 = new File(fileName);
-        boolean deleted2 = file2.delete();
-        Log.i("TaskFourAnswer", "Audio2 is deleting:" + deleted2);
-
-        loadData(TASK3);
-        File file3 = new File(fileName);
-        boolean deleted3 = file3.delete();
-        Log.i("TaskFourAnswer", "Audio3 is deleting:" + deleted3);
-
-        loadData(TASK4);
-        File file4 = new File(fileName);
-        boolean deleted4 = file4.delete();
-        Log.i("TaskFourAnswer", "Audio4 is deleting:" + deleted4);
     }
 
     @Override

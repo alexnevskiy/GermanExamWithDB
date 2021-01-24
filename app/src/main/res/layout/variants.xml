@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
     android:orientation="vertical"
     android:background="@color/greyExam">
+
+    <Button
+        android:id="@+id/reset_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_red_fade"
+        android:textColor="#FFFFFF"
+        android:layout_margin="10dp"
+        android:layout_gravity="end"
+        android:textSize="30sp"
+        android:padding="10dp"
+        android:text="@string/reset"
+        android:textAllCaps="false" />
 
     <ScrollView
         android:id="@+id/scrollView2"
