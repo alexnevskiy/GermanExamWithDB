@@ -201,6 +201,7 @@ public class TaskFourAnswer extends AppCompatActivity {
                 startActivity(intent);
                 countDownTimer.cancel();
                 deleteFiles();
+                isWorking = false;
             }
         });
         builder.setNeutralButton(R.string.desktop, new DialogInterface.OnClickListener() {
@@ -208,6 +209,7 @@ public class TaskFourAnswer extends AppCompatActivity {
                 stopRecording();
                 countDownTimer.cancel();
                 deleteFiles();
+                isWorking = false;
                 finishAffinity();
             }
         });
@@ -219,6 +221,7 @@ public class TaskFourAnswer extends AppCompatActivity {
                 startActivity(intent);
                 countDownTimer.cancel();
                 deleteFiles();
+                isWorking = false;
             }
         });
         AlertDialog dialog = builder.create();

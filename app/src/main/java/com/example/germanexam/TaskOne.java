@@ -95,11 +95,13 @@ public class TaskOne extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 countDownTimer.cancel();
+                isWorking = false;
             }
         });
         builder.setNeutralButton(R.string.desktop, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 countDownTimer.cancel();
+                isWorking = false;
                 finishAffinity();
             }
         });
@@ -109,6 +111,7 @@ public class TaskOne extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 countDownTimer.cancel();
+                isWorking = false;
             }
         });
         AlertDialog dialog = builder.create();

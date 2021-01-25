@@ -189,6 +189,7 @@ public class TaskTwoAnswer extends AppCompatActivity {
                 startActivity(intent);
                 countDownTimer.cancel();
                 deleteFiles();
+                isWorking = false;
             }
         });
         builder.setNeutralButton(R.string.desktop, new DialogInterface.OnClickListener() {
@@ -196,6 +197,7 @@ public class TaskTwoAnswer extends AppCompatActivity {
                 stopRecording();
                 countDownTimer.cancel();
                 deleteFiles();
+                isWorking = false;
                 finishAffinity();
             }
         });
@@ -207,6 +209,7 @@ public class TaskTwoAnswer extends AppCompatActivity {
                 startActivity(intent);
                 countDownTimer.cancel();
                 deleteFiles();
+                isWorking = false;
             }
         });
         AlertDialog dialog = builder.create();

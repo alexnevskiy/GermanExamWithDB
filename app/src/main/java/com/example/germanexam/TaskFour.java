@@ -137,12 +137,14 @@ public class TaskFour extends AppCompatActivity {
                 startActivity(intent);
                 countDownTimer.cancel();
                 deleteFiles();
+                isWorking = false;
             }
         });
         builder.setNeutralButton(R.string.desktop, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 countDownTimer.cancel();
                 deleteFiles();
+                isWorking = false;
                 finishAffinity();
             }
         });
@@ -153,6 +155,7 @@ public class TaskFour extends AppCompatActivity {
                 startActivity(intent);
                 countDownTimer.cancel();
                 deleteFiles();
+                isWorking = false;
             }
         });
         AlertDialog dialog = builder.create();
