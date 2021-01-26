@@ -70,9 +70,13 @@ public class Ready extends AppCompatActivity {
                 preparationText.setText(R.string.prep_ans_task3);
                 if (myIntent.getStringExtra("answer").equals("yes")) {
                     upperText.setText(R.string.ready_upper_answer_text);
-                    intent = new Intent(Ready.this, TaskThreeAnswer.class);
-                    int photoNumber = Ready.this.getIntent().getIntExtra("photo", 1);
-                    intent.putExtra("photo", photoNumber);
+                    if (myIntent.getStringExtra("photos").equals("all")) {
+                        intent = new Intent(Ready.this, TaskThreeAnswerAllPhotos.class);
+                    } else {
+                        intent = new Intent(Ready.this, TaskThreeAnswer.class);
+                        int photoNumber = myIntent.getIntExtra("photo", 1);
+                        intent.putExtra("photo", photoNumber);
+                    }
                 } else {
                     upperText.setText(R.string.ready_upper_next_text);
                     intent = new Intent(Ready.this, TaskThree.class);
@@ -99,11 +103,6 @@ public class Ready extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 timeLeft = millisUntilFinished;
                 updateTimer();
-                if (timeLeft < 1000) {
-                    isWorking = false;
-                    startActivity(finalIntent);
-                    countDownTimer.cancel();
-                }
             }
 
             private void updateTimer() {
@@ -116,6 +115,9 @@ public class Ready extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                isWorking = false;
+                startActivity(finalIntent);
+                countDownTimer.cancel();
             }
         }.start();
 

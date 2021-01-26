@@ -81,16 +81,6 @@ public class TaskThreePhoto extends AppCompatActivity {
                 updateTimer();
                 counter++;
                 timeline.setProgress(counter);
-                if (timeLeft < 1000) {
-                    Intent intent = new Intent(TaskThreePhoto.this, Ready.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    intent.putExtra("task", "3");
-                    intent.putExtra("answer", "yes");
-                    intent.putExtra("photo", photoNumber);
-                    startActivity(intent);
-                    isWorking = false;
-                    countDownTimer.cancel();
-                }
             }
 
             private void updateTimer() {
@@ -104,6 +94,15 @@ public class TaskThreePhoto extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                Intent intent = new Intent(TaskThreePhoto.this, Ready.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                intent.putExtra("task", "3");
+                intent.putExtra("answer", "yes");
+                intent.putExtra("photo", photoNumber);
+                intent.putExtra("photos", "alone");
+                startActivity(intent);
+                isWorking = false;
+                countDownTimer.cancel();
             }
         }.start();
 

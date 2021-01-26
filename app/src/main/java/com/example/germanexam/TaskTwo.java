@@ -63,15 +63,6 @@ public class TaskTwo extends AppCompatActivity {
                 updateTimer();
                 counter++;
                 timeline.setProgress(counter);
-                if (timeLeft < 1000) {
-                    Intent intent = new Intent(TaskTwo.this, Ready.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    intent.putExtra("task", "2");
-                    intent.putExtra("answer", "yes");
-                    startActivity(intent);
-                    isWorking = false;
-                    countDownTimer.cancel();
-                }
             }
 
             private void updateTimer() {
@@ -85,6 +76,13 @@ public class TaskTwo extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                Intent intent = new Intent(TaskTwo.this, Ready.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                intent.putExtra("task", "2");
+                intent.putExtra("answer", "yes");
+                startActivity(intent);
+                isWorking = false;
+                countDownTimer.cancel();
             }
         }.start();
 

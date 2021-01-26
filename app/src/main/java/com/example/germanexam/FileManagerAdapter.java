@@ -93,20 +93,18 @@ public class FileManagerAdapter extends RecyclerView.Adapter<FileManagerAdapter.
                                 updateTimer(holder.timeLeft1, holder.timeRemaining1);
                                 holder.counter1++;
                                 holder.progressBar1.setProgress(holder.counter1);
-                                if (holder.timeLeft1 < 1000) {
-                                    holder.countDownTimer.cancel();
-                                    whoPlayed = -1;
-                                    holder.playButton1Pressed = false;
-                                    holder.progressBar1.setProgress(0);
-                                    holder.timeRemaining1.setText(holder.times[0]);
-                                    holder.counter1 = 0;
-                                    stopPlaying();
-                                    changeButtons(holder);
-                                }
                             }
 
                             @Override
                             public void onFinish() {
+                                holder.countDownTimer.cancel();
+                                whoPlayed = -1;
+                                holder.playButton1Pressed = false;
+                                holder.progressBar1.setProgress(0);
+                                holder.timeRemaining1.setText(holder.times[0]);
+                                holder.counter1 = 0;
+                                stopPlaying();
+                                changeButtons(holder);
                             }
                         }.start();
                     } else {
@@ -155,20 +153,18 @@ public class FileManagerAdapter extends RecyclerView.Adapter<FileManagerAdapter.
                                 updateTimer(holder.timeLeft2, holder.timeRemaining2);
                                 holder.counter2++;
                                 holder.progressBar2.setProgress(holder.counter2);
-                                if (holder.timeLeft2 < 1000) {
-                                    holder.countDownTimer.cancel();
-                                    whoPlayed = -1;
-                                    holder.playButton2Pressed = false;
-                                    holder.progressBar2.setProgress(0);
-                                    holder.timeRemaining2.setText(holder.times[1]);
-                                    holder.counter2 = 0;
-                                    stopPlaying();
-                                    changeButtons(holder);
-                                }
                             }
 
                             @Override
                             public void onFinish() {
+                                holder.countDownTimer.cancel();
+                                whoPlayed = -1;
+                                holder.playButton2Pressed = false;
+                                holder.progressBar2.setProgress(0);
+                                holder.timeRemaining2.setText(holder.times[1]);
+                                holder.counter2 = 0;
+                                stopPlaying();
+                                changeButtons(holder);
                             }
                         }.start();
                     } else {
@@ -217,20 +213,18 @@ public class FileManagerAdapter extends RecyclerView.Adapter<FileManagerAdapter.
                                 updateTimer(holder.timeLeft3, holder.timeRemaining3);
                                 holder.counter3++;
                                 holder.progressBar3.setProgress(holder.counter3);
-                                if (holder.timeLeft3 < 1000) {
-                                    holder.countDownTimer.cancel();
-                                    whoPlayed = -1;
-                                    holder.playButton3Pressed = false;
-                                    holder.progressBar3.setProgress(0);
-                                    holder.timeRemaining3.setText(holder.times[2]);
-                                    holder.counter3 = 0;
-                                    stopPlaying();
-                                    changeButtons(holder);
-                                }
                             }
 
                             @Override
                             public void onFinish() {
+                                holder.countDownTimer.cancel();
+                                whoPlayed = -1;
+                                holder.playButton3Pressed = false;
+                                holder.progressBar3.setProgress(0);
+                                holder.timeRemaining3.setText(holder.times[2]);
+                                holder.counter3 = 0;
+                                stopPlaying();
+                                changeButtons(holder);
                             }
                         }.start();
                     } else {
@@ -279,20 +273,18 @@ public class FileManagerAdapter extends RecyclerView.Adapter<FileManagerAdapter.
                                 updateTimer(holder.timeLeft4, holder.timeRemaining4);
                                 holder.counter4++;
                                 holder.progressBar4.setProgress(holder.counter4);
-                                if (holder.timeLeft4 < 1000) {
-                                    holder.countDownTimer.cancel();
-                                    whoPlayed = -1;
-                                    holder.playButton4Pressed = false;
-                                    holder.progressBar4.setProgress(0);
-                                    holder.timeRemaining4.setText(holder.times[3]);
-                                    holder.counter4 = 0;
-                                    stopPlaying();
-                                    changeButtons(holder);
-                                }
                             }
 
                             @Override
                             public void onFinish() {
+                                holder.countDownTimer.cancel();
+                                whoPlayed = -1;
+                                holder.playButton4Pressed = false;
+                                holder.progressBar4.setProgress(0);
+                                holder.timeRemaining4.setText(holder.times[3]);
+                                holder.counter4 = 0;
+                                stopPlaying();
+                                changeButtons(holder);
                             }
                         }.start();
                     } else {

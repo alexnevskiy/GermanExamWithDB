@@ -112,19 +112,17 @@ public class Answers extends AppCompatActivity {
                             updateTimer(timeLeft1, timeRemaining1);
                             counter1++;
                             progressBar1.setProgress(counter1);
-                            if (timeLeft1 < 1000) {
-                                countDownTimer.cancel();
-                                playButton1Pressed = false;
-                                progressBar1.setProgress(0);
-                                timeRemaining1.setText(times[0]);
-                                counter1 = 0;
-                                stopPlaying();
-                                changeButtons();
-                            }
                         }
 
                         @Override
                         public void onFinish() {
+                            countDownTimer.cancel();
+                            playButton1Pressed = false;
+                            progressBar1.setProgress(0);
+                            timeRemaining1.setText(times[0]);
+                            counter1 = 0;
+                            stopPlaying();
+                            changeButtons();
                         }
                     }.start();
                 } else {
@@ -167,19 +165,17 @@ public class Answers extends AppCompatActivity {
                             updateTimer(timeLeft2, timeRemaining2);
                             counter2++;
                             progressBar2.setProgress(counter2);
-                            if (timeLeft2 < 1000) {
-                                countDownTimer.cancel();
-                                playButton2Pressed = false;
-                                progressBar2.setProgress(0);
-                                timeRemaining2.setText(times[1]);
-                                counter2 = 0;
-                                stopPlaying();
-                                changeButtons();
-                            }
                         }
 
                         @Override
                         public void onFinish() {
+                            countDownTimer.cancel();
+                            playButton2Pressed = false;
+                            progressBar2.setProgress(0);
+                            timeRemaining2.setText(times[1]);
+                            counter2 = 0;
+                            stopPlaying();
+                            changeButtons();
                         }
                     }.start();
                 } else {
@@ -222,19 +218,17 @@ public class Answers extends AppCompatActivity {
                             updateTimer(timeLeft3, timeRemaining3);
                             counter3++;
                             progressBar3.setProgress(counter3);
-                            if (timeLeft3 < 1000) {
-                                countDownTimer.cancel();
-                                playButton3Pressed = false;
-                                progressBar3.setProgress(0);
-                                timeRemaining3.setText(times[2]);
-                                counter3 = 0;
-                                stopPlaying();
-                                changeButtons();
-                            }
                         }
 
                         @Override
                         public void onFinish() {
+                            countDownTimer.cancel();
+                            playButton3Pressed = false;
+                            progressBar3.setProgress(0);
+                            timeRemaining3.setText(times[2]);
+                            counter3 = 0;
+                            stopPlaying();
+                            changeButtons();
                         }
                     }.start();
                 } else {
@@ -277,19 +271,17 @@ public class Answers extends AppCompatActivity {
                             updateTimer(timeLeft4, timeRemaining4);
                             counter4++;
                             progressBar4.setProgress(counter4);
-                            if (timeLeft4 < 1000) {
-                                countDownTimer.cancel();
-                                playButton4Pressed = false;
-                                progressBar4.setProgress(0);
-                                timeRemaining4.setText(times[3]);
-                                counter4 = 0;
-                                stopPlaying();
-                                changeButtons();
-                            }
                         }
 
                         @Override
                         public void onFinish() {
+                            countDownTimer.cancel();
+                            playButton4Pressed = false;
+                            progressBar4.setProgress(0);
+                            timeRemaining4.setText(times[3]);
+                            counter4 = 0;
+                            stopPlaying();
+                            changeButtons();
                         }
                     }.start();
                 } else {

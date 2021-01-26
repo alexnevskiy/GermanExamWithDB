@@ -82,22 +82,22 @@ public class MainActivity extends AppCompatActivity {
                 String surnameText = personSurname.getText().toString();
                 String classText = personClass.getText().toString();
                 if (nameText.equals("") || surnameText.equals("") || classText.equals("")
-                        || !nameText.matches("[A-Za-zА-Яа-я]+")
-                        || !surnameText.matches("[A-Za-zА-Яа-я]+")
-                        || !classText.matches("(\\d*[A-Za-zА-Яа-я]*)+")) {
+                        || !nameText.matches("[A-Za-zА-Яа-яЁё]+")
+                        || !surnameText.matches("[A-Za-zА-Яа-яЁё]+")
+                        || !classText.matches("(\\d*[A-Za-zА-Яа-яЁё]*)+")) {
                     if (nameText.equals("")) {
                         personName.setError("Введите имя");
-                    } else if (!nameText.matches("[A-Za-zА-Яа-я]+")) {
+                    } else if (!nameText.matches("[A-Za-zА-Яа-яЁё]+")) {
                         personName.setError("Введите корректное имя");
                     }
                     if (surnameText.equals("")) {
                         personSurname.setError("Введите фамилию");
-                    } else if (!surnameText.matches("[A-Za-zА-Яа-я]+")) {
+                    } else if (!surnameText.matches("[A-Za-zА-Яа-яЁё]+")) {
                         personSurname.setError("Введите корректную фамилию");
                     }
                     if (classText.equals("")) {
                         personClass.setError("Введите класс");
-                    } else if (!classText.matches("(\\d*[A-Za-zА-Яа-я]*)+")) {
+                    } else if (!classText.matches("(\\d*[A-Za-zА-Яа-яЁё]*)+")) {
                         personClass.setError("Введите корректный класс");
                     }
                 } else {

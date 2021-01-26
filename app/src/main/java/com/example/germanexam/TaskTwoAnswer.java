@@ -115,16 +115,6 @@ public class TaskTwoAnswer extends AppCompatActivity {
                 }
                 counter++;
                 timeline.setProgress(counter);
-                if (timeLeft < 1000) {
-                    stopRecording();
-                    Intent intent = new Intent(TaskTwoAnswer.this, Ready.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    intent.putExtra("task", "3");
-                    intent.putExtra("answer", "no");
-                    startActivity(intent);
-                    isWorking = false;
-                    countDownTimer.cancel();
-                }
             }
 
             private void updateTimer() {
@@ -138,6 +128,14 @@ public class TaskTwoAnswer extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                stopRecording();
+                Intent intent = new Intent(TaskTwoAnswer.this, Ready.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                intent.putExtra("task", "3");
+                intent.putExtra("answer", "no");
+                startActivity(intent);
+                isWorking = false;
+                countDownTimer.cancel();
             }
         }.start();
 

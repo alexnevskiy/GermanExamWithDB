@@ -71,15 +71,6 @@ public class TaskThree extends AppCompatActivity {
                 updateTimer();
                 counter++;
                 timeline.setProgress(counter);
-                if (timeLeft < 1000) {
-                    Intent intent = new Intent(TaskThree.this, Ready.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    intent.putExtra("task", "3");
-                    intent.putExtra("answer", "yes");
-                    startActivity(intent);
-                    isWorking = false;
-                    countDownTimer.cancel();
-                }
             }
 
             private void updateTimer() {
@@ -93,6 +84,14 @@ public class TaskThree extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                Intent intent = new Intent(TaskThree.this, Ready.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                intent.putExtra("task", "3");
+                intent.putExtra("answer", "yes");
+                intent.putExtra("photos", "all");
+                startActivity(intent);
+                isWorking = false;
+                countDownTimer.cancel();
             }
         }.start();
 

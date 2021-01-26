@@ -97,14 +97,6 @@ public class TaskFourAnswer extends AppCompatActivity {
                 updateTimer();
                 counter++;
                 timeline.setProgress(counter);
-                if (timeLeft < 1000) {
-                    stopRecording();
-                    Intent intent = new Intent(TaskFourAnswer.this, Answers.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    startActivity(intent);
-                    isWorking = false;
-                    countDownTimer.cancel();
-                }
             }
 
             private void updateTimer() {
@@ -118,6 +110,12 @@ public class TaskFourAnswer extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                stopRecording();
+                Intent intent = new Intent(TaskFourAnswer.this, Answers.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+                isWorking = false;
+                countDownTimer.cancel();
             }
         }.start();
 
