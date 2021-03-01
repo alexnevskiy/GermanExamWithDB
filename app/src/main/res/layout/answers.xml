@@ -46,7 +46,7 @@
         <TextView
             android:id="@+id/congratulations"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
             android:fontFamily="@font/calibri"
@@ -69,35 +69,32 @@
                 android:layout_weight="1">
 
                 <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/answer_task1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
                     android:gravity="center"
-                    android:layout_gravity="center"
-                    android:paddingRight="10dp"
                     android:fontFamily="@font/calibrib"
                     android:lines="1"
-                    app:autoSizeMaxTextSize="30sp"
+                    app:autoSizeMaxTextSize="50sp"
                     app:autoSizeMinTextSize="10sp"
                     app:autoSizeTextType="uniform"
                     android:text="@string/answer_task1" />
 
-                <Button
+                <ImageView
                     android:id="@+id/answer_play1"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/button_blue_circle"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:text="▶"
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    android:fontFamily="@font/calibrib"/>
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleX="0.75"
+                    android:scaleY="0.75"
+                    tools:srcCompat="@drawable/button_play"
+                    android:gravity="center" />
 
                 <ProgressBar
                     android:id="@+id/timeline1"
@@ -107,7 +104,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="5"
-                    android:paddingLeft="10dp"
                     android:paddingRight="10dp"/>
 
                 <TextView
@@ -124,8 +120,8 @@
                     android:fontFamily="@font/calibril"/>
 
                 <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1" />
             </LinearLayout>
 
@@ -136,35 +132,32 @@
                 android:layout_weight="1">
 
                 <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/answer_task2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
                     android:gravity="center"
-                    android:layout_gravity="center"
-                    android:paddingRight="10dp"
                     android:fontFamily="@font/calibrib"
                     android:lines="1"
-                    app:autoSizeMaxTextSize="30sp"
+                    app:autoSizeMaxTextSize="50sp"
                     app:autoSizeMinTextSize="10sp"
                     app:autoSizeTextType="uniform"
                     android:text="@string/answer_task2" />
 
-                <Button
+                <ImageView
                     android:id="@+id/answer_play2"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/button_blue_circle"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:text="▶"
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    android:fontFamily="@font/calibrib"/>
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleX="0.75"
+                    android:scaleY="0.75"
+                    tools:srcCompat="@drawable/button_play"
+                    android:gravity="center" />
 
                 <ProgressBar
                     android:id="@+id/timeline2"
@@ -174,7 +167,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="5"
-                    android:paddingLeft="10dp"
                     android:paddingRight="10dp"/>
 
                 <TextView
@@ -191,8 +183,8 @@
                     android:fontFamily="@font/calibril"/>
 
                 <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1" />
             </LinearLayout>
 
@@ -203,35 +195,32 @@
                 android:layout_weight="1">
 
                 <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/answer_task3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
                     android:gravity="center"
-                    android:layout_gravity="center"
-                    android:paddingRight="10dp"
                     android:fontFamily="@font/calibrib"
                     android:lines="1"
-                    app:autoSizeMaxTextSize="30sp"
+                    app:autoSizeMaxTextSize="50sp"
                     app:autoSizeMinTextSize="10sp"
                     app:autoSizeTextType="uniform"
                     android:text="@string/answer_task3" />
 
-                <Button
+                <ImageView
                     android:id="@+id/answer_play3"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/button_blue_circle"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:text="▶"
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    android:fontFamily="@font/calibrib"/>
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleX="0.75"
+                    android:scaleY="0.75"
+                    tools:srcCompat="@drawable/button_play"
+                    android:gravity="center" />
 
                 <ProgressBar
                     android:id="@+id/timeline3"
@@ -241,7 +230,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="5"
-                    android:paddingLeft="10dp"
                     android:paddingRight="10dp"/>
 
                 <TextView
@@ -258,8 +246,8 @@
                     android:fontFamily="@font/calibril"/>
 
                 <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1" />
             </LinearLayout>
 
@@ -270,35 +258,32 @@
                 android:layout_weight="1">
 
                 <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/answer_task4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
                     android:gravity="center"
-                    android:layout_gravity="center"
-                    android:paddingRight="10dp"
                     android:fontFamily="@font/calibrib"
                     android:lines="1"
-                    app:autoSizeMaxTextSize="30sp"
+                    app:autoSizeMaxTextSize="50sp"
                     app:autoSizeMinTextSize="10sp"
                     app:autoSizeTextType="uniform"
                     android:text="@string/answer_task4" />
 
-                <Button
+                <ImageView
                     android:id="@+id/answer_play4"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/button_blue_circle"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:text="▶"
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    android:fontFamily="@font/calibrib"/>
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleX="0.75"
+                    android:scaleY="0.75"
+                    tools:srcCompat="@drawable/button_play"
+                    android:gravity="center" />
 
                 <ProgressBar
                     android:id="@+id/timeline4"
@@ -308,7 +293,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="5"
-                    android:paddingLeft="10dp"
                     android:paddingRight="10dp"/>
 
                 <TextView
@@ -325,8 +309,8 @@
                     android:fontFamily="@font/calibril"/>
 
                 <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1" />
             </LinearLayout>
         </LinearLayout>
@@ -346,9 +330,9 @@
 
         <Button
             android:id="@+id/end_answers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
             android:text="@string/complete"
             android:background="@drawable/button_blue"
             android:textColor="#FFFFFF"

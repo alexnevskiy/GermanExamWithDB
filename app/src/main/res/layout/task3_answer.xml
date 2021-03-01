@@ -16,8 +16,9 @@
         android:layout_margin="20dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:layout_margin="10dp">
 
@@ -26,29 +27,35 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <TextView
-                android:id="@+id/task3_logo"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_weight="0"
-                android:background="@drawable/button_blue_circle"
-                android:gravity="center"
-                android:layout_gravity="top"
-                android:text="3"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:fontFamily="@font/calibril"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/task3" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/task3_text"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="23"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
                 android:fontFamily="@font/calibrib"
                 android:lines="1"
-                app:autoSizeMaxTextSize="70sp"
+                app:autoSizeMaxTextSize="20sp"
                 app:autoSizeMinTextSize="10sp"
                 app:autoSizeTextType="uniform"
                 android:text="@string/task3_answer_text"
@@ -62,7 +69,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
             android:orientation="horizontal"
             android:layout_margin="10dp">
 
@@ -97,7 +105,7 @@
                             android:text="@string/task3_photo1"
                             android:fontFamily="@font/calibri"
                             android:lines="1"
-                            app:autoSizeMaxTextSize="20sp"
+                            app:autoSizeMaxTextSize="50sp"
                             app:autoSizeMinTextSize="10sp"
                             app:autoSizeTextType="uniform"
                             android:textColor="@android:color/black"
@@ -107,7 +115,7 @@
                             android:id="@+id/task3_photo"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="6"
+                            android:layout_weight="7"
                             tools:srcCompat="@tools:sample/avatars" />
 
                     </LinearLayout>
@@ -121,12 +129,10 @@
                         <TextView
                             android:id="@+id/task3_questions"
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
+                            android:layout_height="match_parent"
                             android:text="@string/task3_list"
                             android:fontFamily="@font/calibri"
-                            android:lines="7"
-                            app:autoSizeMaxTextSize="30sp"
+                            app:autoSizeMaxTextSize="50sp"
                             app:autoSizeMinTextSize="10sp"
                             app:autoSizeTextType="uniform"
                             android:textColor="@android:color/black"
@@ -196,9 +202,9 @@
 
         <Button
             android:id="@+id/end_answer_task3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
             android:text="@string/end_answer"
             android:background="@drawable/button_blue"
             android:textColor="#FFFFFF"

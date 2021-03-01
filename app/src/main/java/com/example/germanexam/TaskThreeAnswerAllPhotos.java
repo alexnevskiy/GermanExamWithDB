@@ -249,7 +249,11 @@ public class TaskThreeAnswerAllPhotos extends AppCompatActivity {
     }
 
     private void stopRecording() {
-        recorder.stop();
+        try {
+            recorder.stop();
+        } catch (RuntimeException stopException) {
+            stopException.printStackTrace();
+        }
         recorder.release();
         recorder = null;
         Log.i("Recording", "Recording stopped, file path: " + fileName);

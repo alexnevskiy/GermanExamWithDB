@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -54,6 +55,9 @@ public class TaskTwo extends AppCompatActivity {
         task2TextView.setText("Aufgabe 2. Sehen Sie sich folgende Anzeige an.\n" + task2Text);
         task2QuestionsView.setText(task2Questions);
         task2PictureTextView.setText(task2PictureText);
+
+        task2PictureTextView.setVisibility(View.INVISIBLE);  //  Временно
+
         task2ImageView.setImageDrawable(getResources().getDrawable(pictureId));
 
         countDownTimer = new CountDownTimer(timeLeft, 1000) {

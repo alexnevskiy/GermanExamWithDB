@@ -9,6 +9,7 @@ import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -89,6 +90,9 @@ public class TaskTwoAnswer extends AppCompatActivity {
         String task2Image = sharedPreferences.getString(TASK2PICTURE, "");
         int pictureId = getResources().getIdentifier(task2Image, "drawable", getPackageName());
         task2PictureTextView.setText(task2Text);
+
+        task2PictureTextView.setVisibility(View.INVISIBLE);  //  Временно
+
         task2ImageView.setImageDrawable(getResources().getDrawable(pictureId));
 
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
@@ -233,7 +237,11 @@ public class TaskTwoAnswer extends AppCompatActivity {
     }
 
     private void stopRecording() {
-        recorder.stop();
+        try {
+            recorder.stop();
+        } catch (RuntimeException stopException) {
+            stopException.printStackTrace();
+        }
         recorder.release();
         recorder = null;
         Log.i("Recording", "Recording stopped, file path: " + fileName);

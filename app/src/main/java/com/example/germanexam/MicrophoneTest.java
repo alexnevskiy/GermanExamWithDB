@@ -63,10 +63,12 @@ public class MicrophoneTest extends AppCompatActivity {
                     startRecording();
                     buttonRecording.setBackground(getResources().getDrawable(R.drawable.button_green));
                     buttonRecording.setText(R.string.recording_microphone_stop);
+                    buttonRecording.setLines(2);
                 } else {
                     stopRecording();
                     buttonRecording.setBackground(getResources().getDrawable(R.drawable.button_blue));
                     buttonRecording.setText(R.string.recording_microphone);
+                    buttonRecording.setLines(1);
                 }
             }
         });

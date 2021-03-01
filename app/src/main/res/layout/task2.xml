@@ -68,8 +68,9 @@
         android:orientation="vertical" >
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <Space
@@ -77,28 +78,33 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <TextView
-                android:id="@+id/task2_logo"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_weight="0"
-                android:background="@drawable/button_blue_circle"
-                android:gravity="center"
-                android:layout_gravity="top"
-                android:text="2"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:fontFamily="@font/calibril"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/task2" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/task2_text"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="23"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
                 android:fontFamily="@font/calibrib"
-                android:lines="3"
                 app:autoSizeMaxTextSize="70sp"
                 app:autoSizeMinTextSize="10sp"
                 app:autoSizeTextType="uniform"
@@ -113,7 +119,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
             android:orientation="horizontal">
 
             <Space
@@ -130,11 +137,11 @@
                 <TextView
                     android:id="@+id/task2_questions"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:text="@string/task2_questions"
                     android:fontFamily="@font/calibri"
-                    android:lines="5"
-                    app:autoSizeMaxTextSize="20sp"
+                    app:autoSizeMaxTextSize="25sp"
                     app:autoSizeMinTextSize="10sp"
                     app:autoSizeTextType="uniform"
                     android:textColor="@android:color/black"/>
@@ -142,10 +149,10 @@
                 <TextView
                     android:id="@+id/task2_ask"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:text="@string/task2_ask"
                     android:fontFamily="@font/calibrib"
-                    android:lines="2"
                     app:autoSizeMaxTextSize="20sp"
                     app:autoSizeMinTextSize="10sp"
                     app:autoSizeTextType="uniform"
@@ -161,10 +168,11 @@
                 <TextView
                     android:id="@+id/task2_title_image"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:lines="1"
                     android:text="@string/task2_title_image"
                     android:fontFamily="@font/calibrib"
-                    android:lines="1"
                     app:autoSizeMaxTextSize="30sp"
                     app:autoSizeMinTextSize="10sp"
                     app:autoSizeTextType="uniform"
@@ -174,7 +182,8 @@
                 <ImageView
                     android:id="@+id/task2_image"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="7"
                     tools:srcCompat="@tools:sample/avatars" />
             </LinearLayout>
 

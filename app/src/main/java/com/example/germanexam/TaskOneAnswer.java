@@ -160,7 +160,7 @@ public class TaskOneAnswer extends AppCompatActivity {
         loadData(TASK1);
         File file1 = new File(fileName);
         boolean deleted1 = file1.delete();
-        Log.i("TaskFourAnswer", "Audio1 is deleting:" + deleted1);
+        Log.i("TaskOneAnswer", "Audio1 is deleting:" + deleted1);
     }
 
     @Override
@@ -221,7 +221,11 @@ public class TaskOneAnswer extends AppCompatActivity {
     }
 
     private void stopRecording() {
-        recorder.stop();
+        try {
+            recorder.stop();
+        } catch (RuntimeException stopException) {
+            stopException.printStackTrace();
+        }
         recorder.release();
         recorder = null;
         Log.i("Recording", "Recording stopped, file path: " + fileName);

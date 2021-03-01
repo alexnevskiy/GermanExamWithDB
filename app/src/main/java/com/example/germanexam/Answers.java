@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -27,10 +28,10 @@ public class Answers extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    Button playButton1 = null;
-    Button playButton2 = null;
-    Button playButton3 = null;
-    Button playButton4 = null;
+    ImageView playButton1 = null;
+    ImageView playButton2 = null;
+    ImageView playButton3 = null;
+    ImageView playButton4 = null;
 
     ProgressBar progressBar1 = null;
     ProgressBar progressBar2 = null;
@@ -80,6 +81,11 @@ public class Answers extends AppCompatActivity {
         timeRemaining2 = findViewById(R.id.time_remaining2);
         timeRemaining3 = findViewById(R.id.time_remaining3);
         timeRemaining4 = findViewById(R.id.time_remaining4);
+
+        playButton1.setImageDrawable(getResources().getDrawable(R.drawable.button_play));
+        playButton2.setImageDrawable(getResources().getDrawable(R.drawable.button_play));
+        playButton3.setImageDrawable(getResources().getDrawable(R.drawable.button_play));
+        playButton4.setImageDrawable(getResources().getDrawable(R.drawable.button_play));
 
         changeAllTimeRemaining();
 
@@ -334,41 +340,33 @@ public class Answers extends AppCompatActivity {
 
     private void changeButtons() {
         if (playButton1Pressed) {
-            playButton1.setBackground(getResources().getDrawable(R.drawable.button_red_circle));
-            playButton1.setText("\u25A0");
+            playButton1.setImageDrawable(getResources().getDrawable(R.drawable.button_stop));
         } else {
-            playButton1.setBackground(getResources().getDrawable(R.drawable.button_blue_circle));
-            playButton1.setText("▶");
+            playButton1.setImageDrawable(getResources().getDrawable(R.drawable.button_play));
             progressBar1.setProgress(0);
             timeRemaining1.setText(times[0]);
             counter1 = 0;
         }
         if (playButton2Pressed) {
-            playButton2.setBackground(getResources().getDrawable(R.drawable.button_red_circle));
-            playButton2.setText("\u25A0");
+            playButton2.setImageDrawable(getResources().getDrawable(R.drawable.button_stop));
         } else {
-            playButton2.setBackground(getResources().getDrawable(R.drawable.button_blue_circle));
-            playButton2.setText("▶");
+            playButton2.setImageDrawable(getResources().getDrawable(R.drawable.button_play));
             progressBar2.setProgress(0);
             timeRemaining2.setText(times[1]);
             counter2 = 0;
         }
         if (playButton3Pressed) {
-            playButton3.setBackground(getResources().getDrawable(R.drawable.button_red_circle));
-            playButton3.setText("\u25A0");
+            playButton3.setImageDrawable(getResources().getDrawable(R.drawable.button_stop));
         } else {
-            playButton3.setBackground(getResources().getDrawable(R.drawable.button_blue_circle));
-            playButton3.setText("▶");
+            playButton3.setImageDrawable(getResources().getDrawable(R.drawable.button_play));
             progressBar3.setProgress(0);
             timeRemaining3.setText(times[2]);
             counter3 = 0;
         }
         if (playButton4Pressed) {
-            playButton4.setBackground(getResources().getDrawable(R.drawable.button_red_circle));
-            playButton4.setText("\u25A0");
+            playButton4.setImageDrawable(getResources().getDrawable(R.drawable.button_stop));
         } else {
-            playButton4.setBackground(getResources().getDrawable(R.drawable.button_blue_circle));
-            playButton4.setText("▶");
+            playButton4.setImageDrawable(getResources().getDrawable(R.drawable.button_play));
             progressBar4.setProgress(0);
             timeRemaining4.setText(times[3]);
             counter4 = 0;

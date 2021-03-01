@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greyExam">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4" />
+
+        <TextView
+            android:id="@+id/Answers"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:lines="1"
+            app:autoSizeMaxTextSize="70sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:text="@string/answers" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/congratulations"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/calibri"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@string/congratulations"
+            app:autoSizeMaxTextSize="50sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/answer_task1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:fontFamily="@font/calibrib"
+                    android:lines="1"
+                    app:autoSizeMaxTextSize="50sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform"
+                    android:text="@string/answer_task1" />
+
+                <ImageView
+                    android:id="@+id/answer_play1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleX="0.75"
+                    android:scaleY="0.75"
+                    tools:srcCompat="@drawable/button_play"
+                    android:gravity="center" />
+
+                <ProgressBar
+                    android:id="@+id/timeline1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:max="100"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="5"
+                    android:paddingRight="10dp"/>
+
+                <TextView
+                    android:id="@+id/time_remaining1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:lines="1"
+                    app:autoSizeMaxTextSize="70sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform"
+                    android:text="-01:10"
+                    android:fontFamily="@font/calibril"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/answer_task2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:fontFamily="@font/calibrib"
+                    android:lines="1"
+                    app:autoSizeMaxTextSize="50sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform"
+                    android:text="@string/answer_task2" />
+
+                <ImageView
+                    android:id="@+id/answer_play2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleX="0.75"
+                    android:scaleY="0.75"
+                    tools:srcCompat="@drawable/button_play"
+                    android:gravity="center" />
+
+                <ProgressBar
+                    android:id="@+id/timeline2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:max="100"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="5"
+                    android:paddingRight="10dp"/>
+
+                <TextView
+                    android:id="@+id/time_remaining2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:lines="1"
+                    app:autoSizeMaxTextSize="70sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform"
+                    android:text="-01:10"
+                    android:fontFamily="@font/calibril"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/answer_task3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:fontFamily="@font/calibrib"
+                    android:lines="1"
+                    app:autoSizeMaxTextSize="50sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform"
+                    android:text="@string/answer_task3" />
+
+                <ImageView
+                    android:id="@+id/answer_play3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleX="0.75"
+                    android:scaleY="0.75"
+                    tools:srcCompat="@drawable/button_play"
+                    android:gravity="center" />
+
+                <ProgressBar
+                    android:id="@+id/timeline3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:max="100"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="5"
+                    android:paddingRight="10dp"/>
+
+                <TextView
+                    android:id="@+id/time_remaining3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:lines="1"
+                    app:autoSizeMaxTextSize="70sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform"
+                    android:text="-01:10"
+                    android:fontFamily="@font/calibril"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/answer_task4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:fontFamily="@font/calibrib"
+                    android:lines="1"
+                    app:autoSizeMaxTextSize="50sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform"
+                    android:text="@string/answer_task4" />
+
+                <ImageView
+                    android:id="@+id/answer_play4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleX="0.75"
+                    android:scaleY="0.75"
+                    tools:srcCompat="@drawable/button_play"
+                    android:gravity="center" />
+
+                <ProgressBar
+                    android:id="@+id/timeline4"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:max="100"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="5"
+                    android:paddingRight="10dp"/>
+
+                <TextView
+                    android:id="@+id/time_remaining4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:lines="1"
+                    app:autoSizeMaxTextSize="70sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform"
+                    android:text="-01:10"
+                    android:fontFamily="@font/calibril"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="10" />
+
+        <Button
+            android:id="@+id/end_answers"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="@string/complete"
+            android:background="@drawable/button_blue"
+            android:textColor="#FFFFFF"
+            android:lines="1"
+            app:autoSizeMaxTextSize="70sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            android:layout_marginBottom="15dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textAllCaps="false"
+            android:visibility="visible"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4" />
+    </LinearLayout>
+</LinearLayout>

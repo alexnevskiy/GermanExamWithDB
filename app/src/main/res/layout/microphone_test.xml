@@ -1,72 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/greyExam">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5" />
 
     <TextView
         android:id="@+id/microphone_test_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/microphone_test"
+        android:text="@string/microphone_test_1_line"
         android:background="@drawable/button_blue_not_press"
         android:textColor="#FFFFFF"
-        android:lines="2"
         app:autoSizeMaxTextSize="45sp"
         app:autoSizeMinTextSize="20sp"
-        app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:autoSizeTextType="uniform" />
 
-    <Button
-        android:id="@+id/microphone_test_button"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:background="@drawable/button_blue"
-        android:lines="1"
-        android:text="@string/recording_microphone"
-        android:textColor="#FFFFFF"
-        app:autoSizeMaxTextSize="45sp"
-        app:autoSizeMinTextSize="10sp"
-        app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/microphone_test_title"
-        app:layout_constraintVertical_bias="0.25" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3" />
 
-    <Button
-        android:id="@+id/play_recording"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:background="@drawable/button_blue"
-        android:lines="1"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="@string/play_recording"
-        android:textColor="#FFFFFF"
-        app:autoSizeMaxTextSize="45sp"
-        app:autoSizeMinTextSize="10sp"
-        app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/microphone_test_title"
-        app:layout_constraintVertical_bias="0.75" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/microphone_test_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:lines="1"
+            android:background="@drawable/button_blue"
+            android:text="@string/recording_microphone"
+            android:textColor="#FFFFFF"
+            app:autoSizeMaxTextSize="45sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/play_recording"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:background="@drawable/button_blue"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:lines="1"
+            android:text="@string/play_recording"
+            android:textColor="#FFFFFF"
+            app:autoSizeMaxTextSize="80sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3" />
+
+</LinearLayout>

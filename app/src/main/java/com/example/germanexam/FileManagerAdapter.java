@@ -2,6 +2,7 @@ package com.example.germanexam;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -13,11 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
@@ -59,6 +62,11 @@ public class FileManagerAdapter extends RecyclerView.Adapter<FileManagerAdapter.
         String fileName = fileNameWithMp3.substring(0, fileNameWithMp3.length() - 4);
         String[] words = fileName.split("_");
         holder.title.setText(words[0] + " " + words[1] + " " + words[2] + " вариант " + words[5]);
+
+        holder.playButton1.setImageDrawable(holder.playButton1.getResources().getDrawable(R.drawable.button_play));
+        holder.playButton2.setImageDrawable(holder.playButton1.getResources().getDrawable(R.drawable.button_play));
+        holder.playButton3.setImageDrawable(holder.playButton1.getResources().getDrawable(R.drawable.button_play));
+        holder.playButton4.setImageDrawable(holder.playButton1.getResources().getDrawable(R.drawable.button_play));
 
         changeAllTimeRemaining(holder, files);
 
@@ -342,16 +350,28 @@ public class FileManagerAdapter extends RecyclerView.Adapter<FileManagerAdapter.
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteFiles(files);
-                System.out.println(position);
-                database.remove(position);
-                notifyItemRemoved(position);
-                notifyItemRangeChanged(position, database.size());
-                if (database.size() == 0) {
-                    Intent intent = new Intent(context, FilesNotFound.class);
-                    context.startActivity(intent);
-                    ((Activity) context).finish();
-                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle(R.string.dialog_window_title_delete_files);
+                builder.setNegativeButton(R.string.no_rus, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+                builder.setPositiveButton(R.string.yes_rus, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        deleteFiles(files);
+                        System.out.println(position);
+                        database.remove(position);
+                        notifyItemRemoved(position);
+                        notifyItemRangeChanged(position, database.size());
+                        if (database.size() == 0) {
+                            Intent intent = new Intent(context, FilesNotFound.class);
+                            context.startActivity(intent);
+                            ((Activity) context).finish();
+                        }
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
     }
@@ -376,41 +396,33 @@ public class FileManagerAdapter extends RecyclerView.Adapter<FileManagerAdapter.
 
     private void changeButtons(FileManagerViewHolder holder) {
         if (holder.playButton1Pressed) {
-            holder.playButton1.setBackground(holder.playButton1.getResources().getDrawable(R.drawable.button_red_circle));
-            holder.playButton1.setText("\u25A0");
+            holder.playButton1.setImageDrawable(holder.playButton1.getResources().getDrawable(R.drawable.button_stop));
         } else {
-            holder.playButton1.setBackground(holder.playButton1.getResources().getDrawable(R.drawable.button_blue_circle));
-            holder.playButton1.setText("▶");
+            holder.playButton1.setImageDrawable(holder.playButton1.getResources().getDrawable(R.drawable.button_play));
             holder.progressBar1.setProgress(0);
             holder.timeRemaining1.setText(holder.times[0]);
             holder.counter1 = 0;
         }
         if (holder.playButton2Pressed) {
-            holder.playButton2.setBackground(holder.playButton2.getResources().getDrawable(R.drawable.button_red_circle));
-            holder.playButton2.setText("\u25A0");
+            holder.playButton2.setImageDrawable(holder.playButton1.getResources().getDrawable(R.drawable.button_stop));
         } else {
-            holder.playButton2.setBackground(holder.playButton2.getResources().getDrawable(R.drawable.button_blue_circle));
-            holder.playButton2.setText("▶");
+            holder.playButton2.setImageDrawable(holder.playButton1.getResources().getDrawable(R.drawable.button_play));
             holder.progressBar2.setProgress(0);
             holder.timeRemaining2.setText(holder.times[1]);
             holder.counter2 = 0;
         }
         if (holder.playButton3Pressed) {
-            holder.playButton3.setBackground(holder.playButton3.getResources().getDrawable(R.drawable.button_red_circle));
-            holder.playButton3.setText("\u25A0");
+            holder.playButton3.setImageDrawable(holder.playButton1.getResources().getDrawable(R.drawable.button_stop));
         } else {
-            holder.playButton3.setBackground(holder.playButton3.getResources().getDrawable(R.drawable.button_blue_circle));
-            holder.playButton3.setText("▶");
+            holder.playButton3.setImageDrawable(holder.playButton1.getResources().getDrawable(R.drawable.button_play));
             holder.progressBar3.setProgress(0);
             holder.timeRemaining3.setText(holder.times[2]);
             holder.counter3 = 0;
         }
         if (holder.playButton4Pressed) {
-            holder.playButton4.setBackground(holder.playButton4.getResources().getDrawable(R.drawable.button_red_circle));
-            holder.playButton4.setText("\u25A0");
+            holder.playButton4.setImageDrawable(holder.playButton1.getResources().getDrawable(R.drawable.button_stop));
         } else {
-            holder.playButton4.setBackground(holder.playButton4.getResources().getDrawable(R.drawable.button_blue_circle));
-            holder.playButton4.setText("▶");
+            holder.playButton4.setImageDrawable(holder.playButton1.getResources().getDrawable(R.drawable.button_play));
             holder.progressBar4.setProgress(0);
             holder.timeRemaining4.setText(holder.times[3]);
             holder.counter4 = 0;
@@ -510,10 +522,10 @@ public class FileManagerAdapter extends RecyclerView.Adapter<FileManagerAdapter.
     static class FileManagerViewHolder extends RecyclerView.ViewHolder {
         TextView title;
 
-        Button playButton1;
-        Button playButton2;
-        Button playButton3;
-        Button playButton4;
+        ImageView playButton1;
+        ImageView playButton2;
+        ImageView playButton3;
+        ImageView playButton4;
 
         ProgressBar progressBar1;
         ProgressBar progressBar2;

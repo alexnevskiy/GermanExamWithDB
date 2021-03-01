@@ -8,4 +8,8 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="BottomNavigationViewBigSize" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">50sp</item>
+    </style>
+
 </resources>
