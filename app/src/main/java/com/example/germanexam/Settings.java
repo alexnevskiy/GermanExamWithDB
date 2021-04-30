@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,9 +17,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.germanexam.database.Database;
+import com.example.germanexam.datahandler.VariantWithAudioFiles;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.io.File;
+import java.util.List;
+
+import static com.example.germanexam.constants.Constants.*;
 
 public class Settings extends AppCompatActivity {
 
@@ -28,10 +33,6 @@ public class Settings extends AppCompatActivity {
     EditText personName;
     EditText personSurname;
     EditText personClass;
-
-    final String NAME = "Name";
-    final String SURNAME = "Surname";
-    final String CLASS = "Class";
 
     SharedPreferences sharedPreferences;
 
@@ -124,11 +125,15 @@ public class Settings extends AppCompatActivity {
         fileManager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+                int userId = sharedPreferences.getInt(USER_ID, 0);
+
                 String path = getFilesDir().toString() + "/audio";
-                File directory = new File(path);
-                File[] files = directory.listFiles();
+
+                List<VariantWithAudioFiles> userAudios = Database.getSolvedVariantsWithAudioFiles(userId, path + "/");
+
                 Intent intent;
-                if (files.length < 4) {
+                if (userAudios.isEmpty()) {
                     intent = new Intent(Settings.this, FilesNotFound.class);
                 } else {
                     intent = new Intent(Settings.this, FileManager.class);
@@ -149,12 +154,21 @@ public class Settings extends AppCompatActivity {
     }
 
     private void saveData() {
+        String name = personName.getText().toString();
+        String surname = personName.getText().toString();
+        String userClass = personName.getText().toString();
+        int userId = Database.insertUser(new String[] {name, surname, userClass});
+
+        Log.i("Settings", "Received user ID equal " + userId);
+
         sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(NAME, personName.getText().toString());
-        editor.putString(SURNAME, personSurname.getText().toString());
-        editor.putString(CLASS, personClass.getText().toString());
+        editor.putString(NAME, name);
+        editor.putString(SURNAME, surname);
+        editor.putString(CLASS, userClass);
+        editor.putInt(USER_ID, userId);
         editor.apply();
+
         Toast.makeText(Settings.this, "Данные сохранены", Toast.LENGTH_SHORT).show();
     }
 

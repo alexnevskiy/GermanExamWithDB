@@ -15,13 +15,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.germanexam.database.Database;
+
 import java.io.File;
 
-public class MainActivity extends AppCompatActivity {
+import static com.example.germanexam.constants.Constants.*;
 
-    final String NAME = "Name";
-    final String SURNAME = "Surname";
-    final String CLASS = "Class";
+public class MainActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
@@ -111,12 +111,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void saveData() {
+        String name = personName.getText().toString();
+        String surname = personSurname.getText().toString();
+        String userClass = personClass.getText().toString();
+        int userId = Database.insertUser(new String[] {name, surname, userClass});
+
         sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(NAME, personName.getText().toString());
-        editor.putString(SURNAME, personSurname.getText().toString());
-        editor.putString(CLASS, personClass.getText().toString());
+        editor.putString(NAME, name);
+        editor.putString(SURNAME, surname);
+        editor.putString(CLASS, userClass);
+        editor.putInt(USER_ID, userId);
         editor.apply();
+
         Toast.makeText(MainActivity.this, "Данные сохранены", Toast.LENGTH_SHORT).show();
     }
 }

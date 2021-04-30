@@ -23,6 +23,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.germanexam.database.Database;
+import com.example.germanexam.datahandler.VariantWithAudioFiles;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,13 +36,15 @@ import static androidx.core.content.FileProvider.getUriForFile;
 
 public class FileManagerAdapter extends RecyclerView.Adapter<FileManagerAdapter.FileManagerViewHolder> {
 
-    List<String[]> database;
-    Context context;
+    final private List<VariantWithAudioFiles> userAudios;
+    final private String[] userInfo;
+    final private Context context;
     int whoPlayed = -1;
     MediaPlayer player = null;
 
-    FileManagerAdapter(List<String[]> files, Context context) {
-        database = files;
+    FileManagerAdapter(List<VariantWithAudioFiles> userAudios, String[] userInfo, Context context) {
+        this.userAudios = userAudios;
+        this.userInfo = userInfo;
         this.context = context;
     }
 
@@ -55,13 +60,11 @@ public class FileManagerAdapter extends RecyclerView.Adapter<FileManagerAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull final FileManagerViewHolder holder, final int position) {
-        final String[] files = database.get(position);
-        String pathToFile = files[0];
-        File file = new File(pathToFile);
-        String fileNameWithMp3 = file.getName();
-        String fileName = fileNameWithMp3.substring(0, fileNameWithMp3.length() - 4);
-        String[] words = fileName.split("_");
-        holder.title.setText(words[0] + " " + words[1] + " " + words[2] + " вариант " + words[5]);
+        final String[] files = userAudios.get(position).getAudioFiles();
+        final int variant = userAudios.get(position).getVariant();
+        final int solvedVariantId = userAudios.get(position).getId();
+
+        holder.title.setText(userInfo[1] + " " + userInfo[0] + " " + userInfo[2] + " вариант " + variant);
 
         holder.playButton1.setImageDrawable(holder.playButton1.getResources().getDrawable(R.drawable.button_play));
         holder.playButton2.setImageDrawable(holder.playButton1.getResources().getDrawable(R.drawable.button_play));
@@ -360,10 +363,11 @@ public class FileManagerAdapter extends RecyclerView.Adapter<FileManagerAdapter.
                     public void onClick(DialogInterface dialog, int id) {
                         deleteFiles(files);
                         System.out.println(position);
-                        database.remove(position);
+                        userAudios.remove(position);
                         notifyItemRemoved(position);
-                        notifyItemRangeChanged(position, database.size());
-                        if (database.size() == 0) {
+                        notifyItemRangeChanged(position, userAudios.size());
+                        Database.deleteSolvedVariant(solvedVariantId);
+                        if (userAudios.size() == 0) {
                             Intent intent = new Intent(context, FilesNotFound.class);
                             context.startActivity(intent);
                             ((Activity) context).finish();
@@ -516,7 +520,7 @@ public class FileManagerAdapter extends RecyclerView.Adapter<FileManagerAdapter.
 
     @Override
     public int getItemCount() {
-        return database.size();
+        return userAudios.size();
     }
 
     static class FileManagerViewHolder extends RecyclerView.ViewHolder {
@@ -563,18 +567,22 @@ public class FileManagerAdapter extends RecyclerView.Adapter<FileManagerAdapter.
         public FileManagerViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.file_name);
+
             playButton1 = itemView.findViewById(R.id.answer_play1);
             playButton2 = itemView.findViewById(R.id.answer_play2);
             playButton3 = itemView.findViewById(R.id.answer_play3);
             playButton4 = itemView.findViewById(R.id.answer_play4);
+
             progressBar1 = itemView.findViewById(R.id.timeline1);
             progressBar2 = itemView.findViewById(R.id.timeline2);
             progressBar3 = itemView.findViewById(R.id.timeline3);
             progressBar4 = itemView.findViewById(R.id.timeline4);
+
             timeRemaining1 = itemView.findViewById(R.id.time_remaining1);
             timeRemaining2 = itemView.findViewById(R.id.time_remaining2);
             timeRemaining3 = itemView.findViewById(R.id.time_remaining3);
             timeRemaining4 = itemView.findViewById(R.id.time_remaining4);
+
             shareButton = itemView.findViewById(R.id.share_button);
             deleteButton = itemView.findViewById(R.id.delete_button);
         }

@@ -13,13 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
+import static com.example.germanexam.constants.Constants.*;
+
 public class TaskOne extends AppCompatActivity {
-    long timeLeft = 90000;
+
+    long timeLeft = TASK1_TIME;
     int counter = 0;
     CountDownTimer countDownTimer;
-
-    final String TASK1TEXT = "Task1Text";
-    final String RESTART = "Restart";
 
     private boolean isWorking = false;
 
@@ -33,8 +33,8 @@ public class TaskOne extends AppCompatActivity {
         final ProgressBar timeline = findViewById(R.id.timeline);
 
         TextView textView = findViewById(R.id.text1);
-        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
-        String text = sharedPreferences.getString(TASK1TEXT, "");
+        Intent myIntent = getIntent();
+        final String text = myIntent.getStringExtra("text");
         textView.setText(text);
 
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
@@ -59,8 +59,9 @@ public class TaskOne extends AppCompatActivity {
             public void onFinish() {
                 Intent intent = new Intent(TaskOne.this, Ready.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                intent.putExtra("task", "1");
-                intent.putExtra("answer", "yes");
+                intent.putExtra("task", 1);
+                intent.putExtra("answer", true);
+                intent.putExtra("text", text);
                 startActivity(intent);
                 isWorking = false;
                 countDownTimer.cancel();

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -23,21 +24,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
+import static com.example.germanexam.constants.Constants.*;
+
 public class TaskTwoAnswer extends AppCompatActivity {
-    final String TASK1 = "Task1";
-    final String TASK2 = "Task2";
-    final String VARIANT = "Variant";
-    final String NAME = "Name";
-    final String SURNAME = "Surname";
-    final String CLASS = "Class";
-    final String TASK2PICTURE = "Task2Picture";
-    final String TASK2QUESTION1 = "Task2Question1";
-    final String TASK2QUESTION2 = "Task2Question2";
-    final String TASK2QUESTION3 = "Task2Question3";
-    final String TASK2QUESTION4 = "Task2Question4";
-    final String TASK2QUESTION5 = "Task2Question5";
-    final String TASK2PICTURETEXT = "Task2PictureText";
-    final String RESTART = "Restart";
 
     private final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private String fileName = null;
@@ -50,7 +39,7 @@ public class TaskTwoAnswer extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    long timeLeft = 100000;
+    long timeLeft = TASK2_ANSWER_TIME;
     int counter = 0;
     CountDownTimer countDownTimer;
 
@@ -80,20 +69,26 @@ public class TaskTwoAnswer extends AppCompatActivity {
 
         TextView task2PictureTextView = findViewById(R.id.task2_title_image);
         ImageView task2ImageView = findViewById(R.id.task2_image);
-        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
-        String task2Text = sharedPreferences.getString(TASK2PICTURETEXT, "");
-        final String task2Question1 = sharedPreferences.getString(TASK2QUESTION1, "");
-        final String task2Question2 = sharedPreferences.getString(TASK2QUESTION2, "");
-        final String task2Question3 = sharedPreferences.getString(TASK2QUESTION3, "");
-        final String task2Question4 = sharedPreferences.getString(TASK2QUESTION4, "");
-        final String task2Question5 = sharedPreferences.getString(TASK2QUESTION5, "");
-        String task2Image = sharedPreferences.getString(TASK2PICTURE, "");
-        int pictureId = getResources().getIdentifier(task2Image, "drawable", getPackageName());
-        task2PictureTextView.setText(task2Text);
+
+        Intent myIntent = getIntent();
+        String task2Questions = myIntent.getStringExtra("questions");
+        String task2ImagePath = myIntent.getStringExtra("image");
+        String task2ImageText = myIntent.getStringExtra("imageText");
+
+        String[] questions = task2Questions.trim().split("\n");
+
+        final String task2Question1 = questions[0];
+        final String task2Question2 = questions[1];
+        final String task2Question3 = questions[2];
+        final String task2Question4 = questions[3];
+        final String task2Question5 = questions[4];
+
+        task2PictureTextView.setText(task2ImageText);
 
         task2PictureTextView.setVisibility(View.INVISIBLE);  //  Временно
 
-        task2ImageView.setImageDrawable(getResources().getDrawable(pictureId));
+        File task2Image = new File(task2ImagePath);
+        task2ImageView.setImageURI(Uri.fromFile(task2Image));
 
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
@@ -135,8 +130,8 @@ public class TaskTwoAnswer extends AppCompatActivity {
                 stopRecording();
                 Intent intent = new Intent(TaskTwoAnswer.this, Ready.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                intent.putExtra("task", "3");
-                intent.putExtra("answer", "no");
+                intent.putExtra("task", 3);
+                intent.putExtra("answer", false);
                 startActivity(intent);
                 isWorking = false;
                 countDownTimer.cancel();
@@ -171,12 +166,12 @@ public class TaskTwoAnswer extends AppCompatActivity {
         loadData(TASK1);
         File file1 = new File(fileName);
         boolean deleted1 = file1.delete();
-        Log.i("TaskFourAnswer", "Audio1 is deleting:" + deleted1);
+        Log.i("TaskTwoAnswer", "Audio1 is deleting: " + deleted1);
 
         loadData(TASK2);
         File file2 = new File(fileName);
         boolean deleted2 = file2.delete();
-        Log.i("TaskFourAnswer", "Audio2 is deleting:" + deleted2);
+        Log.i("TaskTwoAnswer", "Audio2 is deleting: " + deleted2);
     }
 
     @Override

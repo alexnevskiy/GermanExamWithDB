@@ -16,15 +16,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.germanexam.database.Database;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
+import static com.example.germanexam.constants.Constants.*;
+
 public class Answers extends AppCompatActivity {
-    final String TASK1 = "Task1";
-    final String TASK2 = "Task2";
-    final String TASK3 = "Task3";
-    final String TASK4 = "Task4";
-    final String VARIANT = "Variant";
 
     SharedPreferences sharedPreferences;
 
@@ -55,10 +55,12 @@ public class Answers extends AppCompatActivity {
     long timeLeft2 = 0;
     long timeLeft3 = 0;
     long timeLeft4 = 0;
+
     int counter1 = 0;
     int counter2 = 0;
     int counter3 = 0;
     int counter4 = 0;
+
     CountDownTimer countDownTimer;
 
     boolean isPlaying = false;
@@ -69,14 +71,17 @@ public class Answers extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.answers);
+
         playButton1 = findViewById(R.id.answer_play1);
         playButton2 = findViewById(R.id.answer_play2);
         playButton3 = findViewById(R.id.answer_play3);
         playButton4 = findViewById(R.id.answer_play4);
+
         progressBar1 = findViewById(R.id.timeline1);
         progressBar2 = findViewById(R.id.timeline2);
         progressBar3 = findViewById(R.id.timeline3);
         progressBar4 = findViewById(R.id.timeline4);
+
         timeRemaining1 = findViewById(R.id.time_remaining1);
         timeRemaining2 = findViewById(R.id.time_remaining2);
         timeRemaining3 = findViewById(R.id.time_remaining3);
@@ -306,11 +311,18 @@ public class Answers extends AppCompatActivity {
         endButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+                int userId = sharedPreferences.getInt(USER_ID, 0);
                 int variantNumber = sharedPreferences.getInt(VARIANT, 0);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean(VARIANT + variantNumber, true);
-                editor.apply();
+
+                String[] audioFiles = new String[4];
+
+                audioFiles[0] = new File(sharedPreferences.getString(TASK1, "")).getName();
+                audioFiles[1] = new File(sharedPreferences.getString(TASK2, "")).getName();
+                audioFiles[2] = new File(sharedPreferences.getString(TASK3, "")).getName();
+                audioFiles[3] = new File(sharedPreferences.getString(TASK4, "")).getName();
+
+                Database.insertSolvedVariant(userId, variantNumber, audioFiles);
+
                 Intent intent = new Intent(Answers.this, Share.class);
                 startActivity(intent);
                 finish();
@@ -323,18 +335,22 @@ public class Answers extends AppCompatActivity {
         playButton2Pressed = false;
         playButton3Pressed = false;
         playButton4Pressed = false;
+
         progressBar1.setProgress(0);
         progressBar2.setProgress(0);
         progressBar3.setProgress(0);
         progressBar4.setProgress(0);
+
         timeRemaining1.setText(times[0]);
         timeRemaining2.setText(times[1]);
         timeRemaining3.setText(times[2]);
         timeRemaining4.setText(times[3]);
+
         counter1 = 0;
         counter2 = 0;
         counter3 = 0;
         counter4 = 0;
+
         changeButtons();
     }
 

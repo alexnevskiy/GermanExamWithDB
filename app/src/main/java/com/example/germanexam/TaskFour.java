@@ -3,6 +3,7 @@ package com.example.germanexam;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -16,19 +17,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.File;
 import java.util.Locale;
 
+import static com.example.germanexam.constants.Constants.*;
+
 public class TaskFour extends AppCompatActivity {
 
-    long timeLeft = 90000;
+    long timeLeft = TASK4_TIME;
     int counter = 0;
     CountDownTimer countDownTimer;
-
-    final String TASK4QUESTIONS = "Task4Questions";
-    final String TASK4PICTURE1 = "Task4Picture1";
-    final String TASK4PICTURE2 = "Task4Picture2";
-    final String TASK1 = "Task1";
-    final String TASK2 = "Task2";
-    final String TASK3 = "Task3";
-    final String RESTART = "Restart";
 
     private String fileName = null;
     private boolean isWorking = false;
@@ -45,15 +40,19 @@ public class TaskFour extends AppCompatActivity {
         TextView task4CompareView = findViewById(R.id.task4_compare);
         ImageView task4ImageView1 = findViewById(R.id.task4_photo1);
         ImageView task4ImageView2 = findViewById(R.id.task4_photo2);
-        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
-        String task4Questions = sharedPreferences.getString(TASK4QUESTIONS, "");
-        String task4Image1 = sharedPreferences.getString(TASK4PICTURE1, "");
-        String task4Image2 = sharedPreferences.getString(TASK4PICTURE2, "");
-        int picture1Id = getResources().getIdentifier(task4Image1, "drawable", getPackageName());
-        int picture2Id = getResources().getIdentifier(task4Image2, "drawable", getPackageName());
+
+        Intent myIntent = getIntent();
+        final String task4Questions = myIntent.getStringExtra("questions");
+        final String task4ImagePath1 = myIntent.getStringExtra("image1");
+        final String task4ImagePath2 = myIntent.getStringExtra("image2");
+
         task4CompareView.setText(task4Questions);
-        task4ImageView1.setImageDrawable(getResources().getDrawable(picture1Id));
-        task4ImageView2.setImageDrawable(getResources().getDrawable(picture2Id));
+
+        File task4Image1 = new File(task4ImagePath1);
+        File task4Image2 = new File(task4ImagePath2);
+
+        task4ImageView1.setImageURI(Uri.fromFile(task4Image1));
+        task4ImageView2.setImageURI(Uri.fromFile(task4Image2));
 
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
@@ -77,8 +76,11 @@ public class TaskFour extends AppCompatActivity {
             public void onFinish() {
                 Intent intent = new Intent(TaskFour.this, Ready.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                intent.putExtra("task", "4");
-                intent.putExtra("answer", "yes");
+                intent.putExtra("task", 4);
+                intent.putExtra("answer", true);
+                intent.putExtra("questions", task4Questions);
+                intent.putExtra("image1", task4ImagePath1);
+                intent.putExtra("image2", task4ImagePath2);
                 startActivity(intent);
                 isWorking = false;
                 countDownTimer.cancel();
@@ -111,17 +113,17 @@ public class TaskFour extends AppCompatActivity {
         loadData(TASK1);
         File file1 = new File(fileName);
         boolean deleted1 = file1.delete();
-        Log.i("TaskFourAnswer", "Audio1 is deleting:" + deleted1);
+        Log.i("TaskFour", "Audio1 is deleting:" + deleted1);
 
         loadData(TASK2);
         File file2 = new File(fileName);
         boolean deleted2 = file2.delete();
-        Log.i("TaskFourAnswer", "Audio2 is deleting:" + deleted2);
+        Log.i("TaskFour", "Audio2 is deleting:" + deleted2);
 
         loadData(TASK3);
         File file3 = new File(fileName);
         boolean deleted3 = file3.delete();
-        Log.i("TaskFourAnswer", "Audio3 is deleting:" + deleted3);
+        Log.i("TaskFour", "Audio3 is deleting:" + deleted3);
     }
 
     @Override

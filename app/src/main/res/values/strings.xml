@@ -101,4 +101,6 @@
     <string name="reset_title">Вы уверены, что хотите сбросить все варианты?</string>
     <string name="yes_rus">Да</string>
     <string name="no_rus">Нет</string>
+    <string name="rating">Оцените сложность варианта</string>
+    <string name="rate">Оценить</string>
 </resources>

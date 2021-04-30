@@ -23,14 +23,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
+import static com.example.germanexam.constants.Constants.*;
+
 public class TaskOneAnswer extends AppCompatActivity {
-    final String TASK1 = "Task1";
-    final String VARIANT = "Variant";
-    final String NAME = "Name";
-    final String SURNAME = "Surname";
-    final String CLASS = "Class";
-    final String TASK1TEXT = "Task1Text";
-    final String RESTART = "Restart";
 
     private final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private String fileName = null;
@@ -43,7 +38,7 @@ public class TaskOneAnswer extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    long timeLeft = 90000;
+    long timeLeft = TASK1_ANSWER_TIME;
     int counter = 0;
     CountDownTimer countDownTimer;
 
@@ -72,8 +67,8 @@ public class TaskOneAnswer extends AppCompatActivity {
         Button buttonEndAnswer = findViewById(R.id.end_answer_task1);
 
         TextView textView = findViewById(R.id.text1);
-        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
-        String text = sharedPreferences.getString(TASK1TEXT, "");
+        Intent myIntent = getIntent();
+        String text = myIntent.getStringExtra("text");
         textView.setText(text);
 
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
@@ -99,8 +94,8 @@ public class TaskOneAnswer extends AppCompatActivity {
                 stopRecording();
                 Intent intent = new Intent(TaskOneAnswer.this, Ready.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                intent.putExtra("task", "2");
-                intent.putExtra("answer", "no");
+                intent.putExtra("task", 2);
+                intent.putExtra("answer", false);
                 startActivity(intent);
                 isWorking = false;
                 countDownTimer.cancel();
@@ -119,8 +114,8 @@ public class TaskOneAnswer extends AppCompatActivity {
                         stopRecording();
                         Intent intent = new Intent(TaskOneAnswer.this, Ready.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                        intent.putExtra("task", "2");
-                        intent.putExtra("answer", "no");
+                        intent.putExtra("task", 2);
+                        intent.putExtra("answer", false);
                         startActivity(intent);
                         isWorking = false;
                         countDownTimer.cancel();
@@ -160,7 +155,7 @@ public class TaskOneAnswer extends AppCompatActivity {
         loadData(TASK1);
         File file1 = new File(fileName);
         boolean deleted1 = file1.delete();
-        Log.i("TaskOneAnswer", "Audio1 is deleting:" + deleted1);
+        Log.i("TaskOneAnswer", "Audio1 is deleting: " + deleted1);
     }
 
     @Override

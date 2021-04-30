@@ -1,6 +1,5 @@
 package com.example.germanexam;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -10,16 +9,16 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.germanexam.database.Database;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Variants extends AppCompatActivity {
+import static com.example.germanexam.constants.Constants.*;
 
-    final String VARIANT = "Variant";
-    final String JSON = "Json";
+public class Variants extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
@@ -31,46 +30,26 @@ public class Variants extends AppCompatActivity {
         setContentView(R.layout.variants);
 
         defineButtons();
-
-        Button buttonReset = findViewById(R.id.reset_button);
-
-        buttonReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Variants.this);
-                builder.setTitle(R.string.reset_title);
-                sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
-                builder.setPositiveButton(R.string.yes_rus, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        for (Button button : buttonList) {
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putBoolean(VARIANT + button.getText(), false);
-                            editor.apply();
-                            button.setBackground(getResources().getDrawable(R.drawable.button_blue));
-                        }
-                    }
-                });
-                builder.setNegativeButton(R.string.no_rus, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
     }
 
     public void defineButtons() {
         sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
-        String json = sharedPreferences.getString(JSON, "");
 
-        JsonParser jsonParser = new JsonParser(json);
-        final int variantsNumber = jsonParser.getVariantsNumber();
+        final int variantsNumber = Database.getVariantsNumber();
+        int rows;
+        int columns;
 
-        int rows = 5;
-        int columns = variantsNumber / 5;
+        if (variantsNumber % 5 == 0) {
+            rows = variantsNumber / 5;
+        } else {
+            rows = variantsNumber / 5 + 1;
+        }
+        columns = 5;
 
         TableLayout tableLayout = findViewById(R.id.variants_layout);
+
+        int userId = sharedPreferences.getInt(USER_ID, 0);
+        List<Integer> solvedVariants = Database.getSolvedVariants(userId);
 
         for (int i = 0; i < rows; i++) {
             TableRow tableRow = new TableRow(this);
@@ -88,11 +67,10 @@ public class Variants extends AppCompatActivity {
                 paramsButton.bottomMargin = 20;
                 final Button button = new Button(this);
                 button.setLayoutParams(paramsButton);
-                int number = j + 1 + (i * rows);
+                int number = j + 1 + (i * 5);
                 button.setText("" + number);
                 button.setId(number);
-                boolean isFinished = sharedPreferences.getBoolean(VARIANT + number, false);
-                if (isFinished) {
+                if (solvedVariants.contains(number)) {
                     button.setBackground(getResources().getDrawable(R.drawable.button_green_fade));
                 } else {
                     button.setBackground(getResources().getDrawable(R.drawable.button_blue));
@@ -110,6 +88,9 @@ public class Variants extends AppCompatActivity {
                         finish();
                     }
                 });
+                if (number > variantsNumber) {
+                    button.setVisibility(View.INVISIBLE);
+                }
 
                 buttonList.add(button);
                 tableRow.addView(button, j);

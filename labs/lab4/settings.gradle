@@ -1,3 +1,0 @@
-include ':biblibrary'
-include ':app'
-rootProject.name = "lab4"

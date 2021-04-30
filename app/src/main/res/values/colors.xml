@@ -8,4 +8,6 @@
     <color name="blueExam">#27A3BE</color>
     <color name="greyAnswer">#3E413E</color>
     <color name="greyAnswerText">#5C5F5C</color>
+    <color name="duskYellow">#FFC922</color>
+    <color name="lightGrey">#D3D3D3</color>
 </resources>

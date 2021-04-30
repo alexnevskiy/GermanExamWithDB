@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -24,19 +25,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
+import static com.example.germanexam.constants.Constants.*;
+
 public class TaskFourAnswer extends AppCompatActivity {
-    final String TASK1 = "Task1";
-    final String TASK2 = "Task2";
-    final String TASK3 = "Task3";
-    final String TASK4 = "Task4";
-    final String VARIANT = "Variant";
-    final String NAME = "Name";
-    final String SURNAME = "Surname";
-    final String CLASS = "Class";
-    final String TASK4QUESTIONS = "Task4Questions";
-    final String TASK4PICTURE1 = "Task4Picture1";
-    final String TASK4PICTURE2 = "Task4Picture2";
-    final String RESTART = "Restart";
 
     private final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private String fileName = null;
@@ -49,7 +40,7 @@ public class TaskFourAnswer extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    long timeLeft = 120000;
+    long timeLeft = TASK4_ANSWER_TIME;
     int counter = 0;
     CountDownTimer countDownTimer;
 
@@ -80,15 +71,19 @@ public class TaskFourAnswer extends AppCompatActivity {
         TextView task4CompareView = findViewById(R.id.task4_compare);
         ImageView task4ImageView1 = findViewById(R.id.task4_photo1);
         ImageView task4ImageView2 = findViewById(R.id.task4_photo2);
-        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
-        String task4Questions = sharedPreferences.getString(TASK4QUESTIONS, "");
-        String task4Image1 = sharedPreferences.getString(TASK4PICTURE1, "");
-        String task4Image2 = sharedPreferences.getString(TASK4PICTURE2, "");
-        int picture1Id = getResources().getIdentifier(task4Image1, "drawable", getPackageName());
-        int picture2Id = getResources().getIdentifier(task4Image2, "drawable", getPackageName());
+
+        Intent myIntent = getIntent();
+        String task4Questions = myIntent.getStringExtra("questions");
+        String task4ImagePath1 = myIntent.getStringExtra("image1");
+        String task4ImagePath2 = myIntent.getStringExtra("image2");
+
         task4CompareView.setText(task4Questions);
-        task4ImageView1.setImageDrawable(getResources().getDrawable(picture1Id));
-        task4ImageView2.setImageDrawable(getResources().getDrawable(picture2Id));
+
+        File task4Image1 = new File(task4ImagePath1);
+        File task4Image2 = new File(task4ImagePath2);
+
+        task4ImageView1.setImageURI(Uri.fromFile(task4Image1));
+        task4ImageView2.setImageURI(Uri.fromFile(task4Image2));
 
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override

@@ -1,16 +1,22 @@
 package com.example.germanexam;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.germanexam.database.Database;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -18,11 +24,9 @@ import java.util.List;
 
 import static androidx.core.content.FileProvider.getUriForFile;
 
+import static com.example.germanexam.constants.Constants.*;
+
 public class Share extends AppCompatActivity {
-    final String TASK1 = "Task1";
-    final String TASK2 = "Task2";
-    final String TASK3 = "Task3";
-    final String TASK4 = "Task4";
 
     SharedPreferences sharedPreferences;
 
@@ -31,12 +35,38 @@ public class Share extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.share);
 
+        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(Share.this);
+        LayoutInflater inflater = Share.this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.rating_variant, null);
+        builder.setView(dialogView);
+        final RatingBar ratingBar = dialogView.findViewById(R.id.ratingBar);
+        builder.setPositiveButton(R.string.rate, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+            }
+        });
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                int rating = (int) ratingBar.getRating();
+                int userId = sharedPreferences.getInt(USER_ID, 0);
+                int variant = sharedPreferences.getInt(VARIANT, 0);
+                Database.insertFeedback(rating, userId, variant);
+                dialog.dismiss();
+            }
+        });
+
         Button buttonShare = findViewById(R.id.share);
 
         buttonShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
                 String audioPath1 = sharedPreferences.getString(TASK1, "");
                 String audioPath2 = sharedPreferences.getString(TASK2, "");
                 String audioPath3 = sharedPreferences.getString(TASK3, "");

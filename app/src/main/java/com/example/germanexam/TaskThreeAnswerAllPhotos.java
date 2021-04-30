@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -24,19 +25,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
+import static com.example.germanexam.constants.Constants.*;
+
 public class TaskThreeAnswerAllPhotos extends AppCompatActivity {
-    final String TASK1 = "Task1";
-    final String TASK2 = "Task2";
-    final String TASK3 = "Task3";
-    final String VARIANT = "Variant";
-    final String NAME = "Name";
-    final String SURNAME = "Surname";
-    final String CLASS = "Class";
-    final String TASK3QUESTIONS = "Task3Questions";
-    final String TASK3PICTURE1 = "Task3Picture1";
-    final String TASK3PICTURE2 = "Task3Picture2";
-    final String TASK3PICTURE3 = "Task3Picture3";
-    final String RESTART = "Restart";
 
     private final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private String fileName = null;
@@ -49,7 +40,7 @@ public class TaskThreeAnswerAllPhotos extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    long timeLeft = 120000;
+    long timeLeft = TASK3_ANSWER_TIME;
     int counter = 0;
     CountDownTimer countDownTimer;
 
@@ -81,18 +72,21 @@ public class TaskThreeAnswerAllPhotos extends AppCompatActivity {
         ImageView task3ImageView1 = findViewById(R.id.task3_photo1);
         ImageView task3ImageView2 = findViewById(R.id.task3_photo2);
         ImageView task3ImageView3 = findViewById(R.id.task3_photo3);
-        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
-        String task3Questions = sharedPreferences.getString(TASK3QUESTIONS, "");
-        String task3Image1 = sharedPreferences.getString(TASK3PICTURE1, "");
-        String task3Image2 = sharedPreferences.getString(TASK3PICTURE2, "");
-        String task3Image3 = sharedPreferences.getString(TASK3PICTURE3, "");
-        int picture1Id = getResources().getIdentifier(task3Image1, "drawable", getPackageName());
-        int picture2Id = getResources().getIdentifier(task3Image2, "drawable", getPackageName());
-        int picture3Id = getResources().getIdentifier(task3Image3, "drawable", getPackageName());
+
+        Intent myIntent = getIntent();
+        String task3Questions = myIntent.getStringExtra("questions");
+        String task3ImagePath1 = myIntent.getStringExtra("image1");
+        String task3ImagePath2 = myIntent.getStringExtra("image2");
+        String task3ImagePath3 = myIntent.getStringExtra("image3");
+
+        File task3Image1 = new File(task3ImagePath1);
+        File task3Image2 = new File(task3ImagePath2);
+        File task3Image3 = new File(task3ImagePath3);
+
         task3QuestionsView.setText(task3Questions);
-        task3ImageView1.setImageDrawable(getResources().getDrawable(picture1Id));
-        task3ImageView2.setImageDrawable(getResources().getDrawable(picture2Id));
-        task3ImageView3.setImageDrawable(getResources().getDrawable(picture3Id));
+        task3ImageView1.setImageURI(Uri.fromFile(task3Image1));
+        task3ImageView2.setImageURI(Uri.fromFile(task3Image2));
+        task3ImageView3.setImageURI(Uri.fromFile(task3Image3));
 
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
@@ -117,8 +111,8 @@ public class TaskThreeAnswerAllPhotos extends AppCompatActivity {
                 stopRecording();
                 Intent intent = new Intent(TaskThreeAnswerAllPhotos.this, Ready.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                intent.putExtra("task", "4");
-                intent.putExtra("answer", "no");
+                intent.putExtra("task", 4);
+                intent.putExtra("answer", false);
                 startActivity(intent);
                 isWorking = false;
                 countDownTimer.cancel();
@@ -137,8 +131,8 @@ public class TaskThreeAnswerAllPhotos extends AppCompatActivity {
                         stopRecording();
                         Intent intent = new Intent(TaskThreeAnswerAllPhotos.this, Ready.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                        intent.putExtra("task", "4");
-                        intent.putExtra("answer", "no");
+                        intent.putExtra("task", 4);
+                        intent.putExtra("answer", false);
                         startActivity(intent);
                         isWorking = false;
                         countDownTimer.cancel();
@@ -178,17 +172,17 @@ public class TaskThreeAnswerAllPhotos extends AppCompatActivity {
         loadData(TASK1);
         File file1 = new File(fileName);
         boolean deleted1 = file1.delete();
-        Log.i("TaskFourAnswer", "Audio1 is deleting:" + deleted1);
+        Log.i("TaskThreeAnswerAllPhoto", "Audio1 is deleting:" + deleted1);
 
         loadData(TASK2);
         File file2 = new File(fileName);
         boolean deleted2 = file2.delete();
-        Log.i("TaskFourAnswer", "Audio2 is deleting:" + deleted2);
+        Log.i("TaskThreeAnswerAllPhoto", "Audio2 is deleting:" + deleted2);
 
         loadData(TASK3);
         File file3 = new File(fileName);
         boolean deleted3 = file3.delete();
-        Log.i("TaskFourAnswer", "Audio3 is deleting:" + deleted3);
+        Log.i("TaskThreeAnswerAllPhoto", "Audio3 is deleting:" + deleted3);
     }
 
     @Override

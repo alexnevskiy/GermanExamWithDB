@@ -3,6 +3,8 @@ package com.example.germanexam;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -14,24 +16,23 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.germanexam.taskdata.Task2;
+
 import java.io.File;
 import java.util.Locale;
 
-public class TaskTwo extends AppCompatActivity {
+import static androidx.core.content.FileProvider.getUriForFile;
 
-    final String TASK2TITLE = "Task2Title";
-    final String TASK2QUESTIONS = "Task2Questions";
-    final String TASK2PICTURE = "Task2Picture";
-    final String TASK2PICTURETEXT = "Task2PictureText";
-    final String TASK1 = "Task1";
-    final String RESTART = "Restart";
+import static com.example.germanexam.constants.Constants.*;
+
+public class TaskTwo extends AppCompatActivity {
 
     private String fileName = null;
     private boolean isWorking = false;
 
     SharedPreferences sharedPreferences;
 
-    long timeLeft = 90000;
+    long timeLeft = TASK2_TIME;
     int counter = 0;
     CountDownTimer countDownTimer;
 
@@ -46,19 +47,21 @@ public class TaskTwo extends AppCompatActivity {
         TextView task2QuestionsView = findViewById(R.id.task2_questions);
         TextView task2PictureTextView = findViewById(R.id.task2_title_image);
         ImageView task2ImageView = findViewById(R.id.task2_image);
-        sharedPreferences = getSharedPreferences("StudentData", MODE_PRIVATE);
-        String task2PictureText = sharedPreferences.getString(TASK2PICTURETEXT, "");
-        String task2Text = sharedPreferences.getString(TASK2TITLE, "");
-        String task2Questions = sharedPreferences.getString(TASK2QUESTIONS, "");
-        String task2Image = sharedPreferences.getString(TASK2PICTURE, "");
-        int pictureId = getResources().getIdentifier(task2Image, "drawable", getPackageName());
-        task2TextView.setText("Aufgabe 2. Sehen Sie sich folgende Anzeige an.\n" + task2Text);
+
+        Intent myIntent = getIntent();
+        String task2Title = myIntent.getStringExtra("title");
+        final String task2Questions = myIntent.getStringExtra("questions");
+        final String task2ImagePath = myIntent.getStringExtra("image");
+        final String task2ImageText = myIntent.getStringExtra("imageText");
+
+        task2TextView.setText("Aufgabe 2. Sehen Sie sich folgende Anzeige an.\n" + task2Title);
         task2QuestionsView.setText(task2Questions);
-        task2PictureTextView.setText(task2PictureText);
+        task2PictureTextView.setText(task2ImageText);
 
         task2PictureTextView.setVisibility(View.INVISIBLE);  //  Временно
 
-        task2ImageView.setImageDrawable(getResources().getDrawable(pictureId));
+        File task2Image = new File(task2ImagePath);
+        task2ImageView.setImageURI(Uri.fromFile(task2Image));
 
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
@@ -82,8 +85,11 @@ public class TaskTwo extends AppCompatActivity {
             public void onFinish() {
                 Intent intent = new Intent(TaskTwo.this, Ready.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                intent.putExtra("task", "2");
-                intent.putExtra("answer", "yes");
+                intent.putExtra("task", 2);
+                intent.putExtra("answer", true);
+                intent.putExtra("questions", task2Questions);
+                intent.putExtra("image", task2ImagePath);
+                intent.putExtra("imageText", task2ImageText);
                 startActivity(intent);
                 isWorking = false;
                 countDownTimer.cancel();
@@ -117,7 +123,7 @@ public class TaskTwo extends AppCompatActivity {
         loadData(TASK1);
         File file1 = new File(fileName);
         boolean deleted1 = file1.delete();
-        Log.i("TaskFourAnswer", "Audio1 is deleting:" + deleted1);
+        Log.i("TaskFourAnswer", "Audio1 is deleting: " + deleted1);
     }
 
     @Override
